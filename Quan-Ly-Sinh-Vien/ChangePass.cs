@@ -10,13 +10,14 @@ using System.Windows.Forms;
 
 namespace Quan_Ly_Sinh_Vien
 {
-    public partial class FMain : Form
+    public partial class ChangePass : Form
     {
-        public FMain()
+        public ChangePass()
         {
             InitializeComponent();
         }
 
+        
         
     }
 }

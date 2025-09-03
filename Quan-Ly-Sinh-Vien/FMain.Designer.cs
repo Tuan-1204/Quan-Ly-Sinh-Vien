@@ -52,6 +52,10 @@
             this.lblMaMH = new System.Windows.Forms.Label();
             this.quan_Ly_Sinh_VienDataSet1 = new Quan_Ly_Sinh_Vien.Quan_Ly_Sinh_VienDataSet();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.dvgShow = new System.Windows.Forms.DataGridView();
+            this.panel21 = new System.Windows.Forms.Panel();
+            this.btnShowAll = new System.Windows.Forms.Button();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel19 = new System.Windows.Forms.Panel();
             this.btnDiemTheoMon = new System.Windows.Forms.Button();
@@ -69,10 +73,6 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.panel11 = new System.Windows.Forms.Panel();
             this.btnSave = new System.Windows.Forms.Button();
-            this.panel21 = new System.Windows.Forms.Panel();
-            this.btnShowAll = new System.Windows.Forms.Button();
-            this.panel20 = new System.Windows.Forms.Panel();
-            this.dvgShow = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -84,6 +84,9 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quan_Ly_Sinh_VienDataSet1)).BeginInit();
             this.panel10.SuspendLayout();
+            this.panel20.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgShow)).BeginInit();
+            this.panel21.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel19.SuspendLayout();
             this.panel18.SuspendLayout();
@@ -93,9 +96,6 @@
             this.panel14.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel11.SuspendLayout();
-            this.panel21.SuspendLayout();
-            this.panel20.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgShow)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -306,6 +306,41 @@
             this.panel10.Size = new System.Drawing.Size(1157, 366);
             this.panel10.TabIndex = 1;
             // 
+            // panel20
+            // 
+            this.panel20.Controls.Add(this.dvgShow);
+            this.panel20.Location = new System.Drawing.Point(3, 49);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(1151, 314);
+            this.panel20.TabIndex = 14;
+            // 
+            // dvgShow
+            // 
+            this.dvgShow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvgShow.Location = new System.Drawing.Point(3, 3);
+            this.dvgShow.Name = "dvgShow";
+            this.dvgShow.RowHeadersWidth = 51;
+            this.dvgShow.RowTemplate.Height = 24;
+            this.dvgShow.Size = new System.Drawing.Size(1145, 308);
+            this.dvgShow.TabIndex = 0;
+            // 
+            // panel21
+            // 
+            this.panel21.Controls.Add(this.btnShowAll);
+            this.panel21.Location = new System.Drawing.Point(11, 3);
+            this.panel21.Name = "panel21";
+            this.panel21.Size = new System.Drawing.Size(201, 39);
+            this.panel21.TabIndex = 13;
+            // 
+            // btnShowAll
+            // 
+            this.btnShowAll.Location = new System.Drawing.Point(6, 4);
+            this.btnShowAll.Name = "btnShowAll";
+            this.btnShowAll.Size = new System.Drawing.Size(192, 32);
+            this.btnShowAll.TabIndex = 8;
+            this.btnShowAll.Text = "Hiển Thị Tất Cả";
+            this.btnShowAll.UseVisualStyleBackColor = true;
+            // 
             // panel12
             // 
             this.panel12.Controls.Add(this.panel19);
@@ -318,22 +353,22 @@
             this.panel12.Controls.Add(this.panel11);
             this.panel12.Location = new System.Drawing.Point(13, 587);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(1157, 54);
+            this.panel12.Size = new System.Drawing.Size(1157, 64);
             this.panel12.TabIndex = 2;
             // 
             // panel19
             // 
             this.panel19.Controls.Add(this.btnDiemTheoMon);
-            this.panel19.Location = new System.Drawing.Point(934, 10);
+            this.panel19.Location = new System.Drawing.Point(934, 12);
             this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(217, 39);
+            this.panel19.Size = new System.Drawing.Size(217, 41);
             this.panel19.TabIndex = 15;
             // 
             // btnDiemTheoMon
             // 
-            this.btnDiemTheoMon.Location = new System.Drawing.Point(3, 3);
+            this.btnDiemTheoMon.Location = new System.Drawing.Point(0, 5);
             this.btnDiemTheoMon.Name = "btnDiemTheoMon";
-            this.btnDiemTheoMon.Size = new System.Drawing.Size(211, 36);
+            this.btnDiemTheoMon.Size = new System.Drawing.Size(211, 32);
             this.btnDiemTheoMon.TabIndex = 16;
             this.btnDiemTheoMon.Text = "Xem Điểm Theo Môn";
             this.btnDiemTheoMon.UseVisualStyleBackColor = true;
@@ -341,14 +376,14 @@
             // panel18
             // 
             this.panel18.Controls.Add(this.btnXemDiem);
-            this.panel18.Location = new System.Drawing.Point(815, 10);
+            this.panel18.Location = new System.Drawing.Point(815, 12);
             this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(116, 39);
+            this.panel18.Size = new System.Drawing.Size(116, 41);
             this.panel18.TabIndex = 14;
             // 
             // btnXemDiem
             // 
-            this.btnXemDiem.Location = new System.Drawing.Point(3, 3);
+            this.btnXemDiem.Location = new System.Drawing.Point(3, 5);
             this.btnXemDiem.Name = "btnXemDiem";
             this.btnXemDiem.Size = new System.Drawing.Size(110, 32);
             this.btnXemDiem.TabIndex = 15;
@@ -358,16 +393,16 @@
             // panel17
             // 
             this.panel17.Controls.Add(this.btnCategorySinhVienKhoa);
-            this.panel17.Location = new System.Drawing.Point(580, 10);
+            this.panel17.Location = new System.Drawing.Point(580, 12);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(232, 39);
+            this.panel17.Size = new System.Drawing.Size(232, 41);
             this.panel17.TabIndex = 13;
             // 
             // btnCategorySinhVienKhoa
             // 
-            this.btnCategorySinhVienKhoa.Location = new System.Drawing.Point(3, 3);
+            this.btnCategorySinhVienKhoa.Location = new System.Drawing.Point(3, 5);
             this.btnCategorySinhVienKhoa.Name = "btnCategorySinhVienKhoa";
-            this.btnCategorySinhVienKhoa.Size = new System.Drawing.Size(226, 36);
+            this.btnCategorySinhVienKhoa.Size = new System.Drawing.Size(226, 33);
             this.btnCategorySinhVienKhoa.TabIndex = 14;
             this.btnCategorySinhVienKhoa.Text = "Xem DSSV Theo Khoa";
             this.btnCategorySinhVienKhoa.UseVisualStyleBackColor = true;
@@ -375,7 +410,7 @@
             // panel16
             // 
             this.panel16.Controls.Add(this.btnCategorySinhVien);
-            this.panel16.Location = new System.Drawing.Point(443, 12);
+            this.panel16.Location = new System.Drawing.Point(443, 13);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(134, 39);
             this.panel16.TabIndex = 12;
@@ -457,41 +492,6 @@
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
-            // panel21
-            // 
-            this.panel21.Controls.Add(this.btnShowAll);
-            this.panel21.Location = new System.Drawing.Point(11, 3);
-            this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(201, 39);
-            this.panel21.TabIndex = 13;
-            // 
-            // btnShowAll
-            // 
-            this.btnShowAll.Location = new System.Drawing.Point(6, 4);
-            this.btnShowAll.Name = "btnShowAll";
-            this.btnShowAll.Size = new System.Drawing.Size(192, 32);
-            this.btnShowAll.TabIndex = 8;
-            this.btnShowAll.Text = "Hiển Thị Tất Cả";
-            this.btnShowAll.UseVisualStyleBackColor = true;
-            // 
-            // panel20
-            // 
-            this.panel20.Controls.Add(this.dvgShow);
-            this.panel20.Location = new System.Drawing.Point(3, 49);
-            this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(1151, 314);
-            this.panel20.TabIndex = 14;
-            // 
-            // dvgShow
-            // 
-            this.dvgShow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgShow.Location = new System.Drawing.Point(3, 3);
-            this.dvgShow.Name = "dvgShow";
-            this.dvgShow.RowHeadersWidth = 51;
-            this.dvgShow.RowTemplate.Height = 24;
-            this.dvgShow.Size = new System.Drawing.Size(1145, 308);
-            this.dvgShow.TabIndex = 0;
-            // 
             // FMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
@@ -522,6 +522,9 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quan_Ly_Sinh_VienDataSet1)).EndInit();
             this.panel10.ResumeLayout(false);
+            this.panel20.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dvgShow)).EndInit();
+            this.panel21.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             this.panel19.ResumeLayout(false);
             this.panel18.ResumeLayout(false);
@@ -531,9 +534,6 @@
             this.panel14.ResumeLayout(false);
             this.panel13.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
-            this.panel21.ResumeLayout(false);
-            this.panel20.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dvgShow)).EndInit();
             this.ResumeLayout(false);
 
         }

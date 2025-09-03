@@ -17,6 +17,8 @@ namespace Quan_Ly_Sinh_Vien
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FDangNhap());
+            //Application.Run(new FMain());
+            //Application.Run(new ChangePass());
         }
     }
 }
