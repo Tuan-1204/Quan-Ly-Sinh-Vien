@@ -228,6 +228,7 @@
             // 
             // txbTinChi
             // 
+            this.txbTinChi.Enabled = false;
             this.txbTinChi.Location = new System.Drawing.Point(138, 11);
             this.txbTinChi.Name = "txbTinChi";
             this.txbTinChi.Size = new System.Drawing.Size(144, 30);
@@ -253,6 +254,7 @@
             // 
             // txbTenMH
             // 
+            this.txbTenMH.Enabled = false;
             this.txbTenMH.Location = new System.Drawing.Point(138, 11);
             this.txbTenMH.Name = "txbTenMH";
             this.txbTenMH.Size = new System.Drawing.Size(144, 30);
@@ -278,6 +280,7 @@
             // 
             // txbMaMH
             // 
+            this.txbMaMH.Enabled = false;
             this.txbMaMH.Location = new System.Drawing.Point(138, 11);
             this.txbMaMH.Name = "txbMaMH";
             this.txbMaMH.Size = new System.Drawing.Size(144, 30);
@@ -491,6 +494,7 @@
             // 
             // btnSave
             // 
+            this.btnSave.Enabled = false;
             this.btnSave.Location = new System.Drawing.Point(3, 3);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(64, 32);
