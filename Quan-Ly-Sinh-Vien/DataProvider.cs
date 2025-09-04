@@ -119,5 +119,27 @@ namespace Quan_Ly_Sinh_Vien
             }
             return dt;
         }
+
+        //hàm thêm dữ liệu vào database : bao gồm các thao tác: thêm, sửa, xóa, update
+        public static int ThaoTacCSDL(string query)
+        {
+            int kq = 0;
+            try
+            {
+                OpenConnection();
+                SqlCommand cmd = new SqlCommand(query, connection); // tạo lệnh
+                kq = cmd.ExecuteNonQuery(); //thực thi lệnh
+            }
+            //bắt lỗi
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return kq;
+        }
     }
 }

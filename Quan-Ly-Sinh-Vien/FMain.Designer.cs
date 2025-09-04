@@ -502,6 +502,7 @@
             this.btnSave.TabIndex = 10;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // FMain
             // 

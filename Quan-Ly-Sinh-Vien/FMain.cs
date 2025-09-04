@@ -24,9 +24,12 @@ namespace Quan_Ly_Sinh_Vien
         private void btnShowAll_Click(object sender, EventArgs e)
         {
             //câu lệnh query -> lấy dữ liệu từ database ->  table ->hiển thị lên datagridview
-            string query = "SELECT * FROM MonHoc";
-            //hàm xóa 
-            dt.Clear();
+            LoadTableMonHoc();
+        }
+
+        private  void LoadTableMonHoc()
+        {
+          string query = "select * from MonHoc";
             dt = DataProvider.LoadCSDL(query);
             dvgShow.DataSource = dt;
         }
@@ -66,6 +69,26 @@ namespace Quan_Ly_Sinh_Vien
             }
         }
 
-       
+        //lưu dữ liệu vào database
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            string maMH = txbMaMH.Text;
+            string tenMH = txbTenMH.Text;
+            string tinChi = txbTinChi.Text;
+
+            string query = $"insert into MonHoc(MaMH, TenMH ,SoTiet) values ('{maMH}',N'{tenMH}','{tinChi}') ";
+            int kq = DataProvider.ThaoTacCSDL(query);
+            if (kq > 0)
+            {
+                MessageBox.Show("Thêm mới môn học thành công");
+                LoadTableMonHoc();
+                UnEnableControls(new List<Control> { txbMaMH, txbTenMH, txbTinChi, btnSave });
+                ResetText(new List<Control> { txbMaMH, txbTenMH, txbTinChi });
+            }
+            else
+            {
+                MessageBox.Show("Thêm mới môn học thất bại. Vui lòng xem lại !");
+            }
+        }
     }
 }
