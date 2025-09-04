@@ -320,6 +320,7 @@
             this.dvgShow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dvgShow.Location = new System.Drawing.Point(3, 3);
             this.dvgShow.Name = "dvgShow";
+            this.dvgShow.ReadOnly = true;
             this.dvgShow.RowHeadersWidth = 51;
             this.dvgShow.RowTemplate.Height = 24;
             this.dvgShow.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
