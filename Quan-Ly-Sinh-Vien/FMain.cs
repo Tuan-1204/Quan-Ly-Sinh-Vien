@@ -90,7 +90,7 @@ namespace Quan_Ly_Sinh_Vien
                 MessageBox.Show("Thêm mới môn học thất bại. Vui lòng xem lại !");
             }
         }
-
+        //hiển thị dữ liệu lên textbox khi chọn dòng trong datagridview
         private void dvgShow_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if(dvgShow.SelectedRows.Count > 0)
@@ -106,6 +106,33 @@ namespace Quan_Ly_Sinh_Vien
                 EnableControls(new List<Control> { txbTenMH, txbTinChi, btnDelete, btnEdit });
               
             }
+        }
+
+        //sửa dữ liệu
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            string maMH = txbMaMH.Text;
+            string tenMH = txbTenMH.Text;
+            string tinChi = txbTinChi.Text;
+            string query = $"UPDATE MonHoc SET TenMH = N'{tenMH}', SoTiet = '{tinChi}'  WHERE MaMH = '{maMH}'";
+            int kq = DataProvider.ThaoTacCSDL(query);
+            if (kq > 0)
+            {
+                MessageBox.Show("Cập nhật môn học thành công");
+                LoadTableMonHoc();
+                UnEnableControls(new List<Control> { txbMaMH, txbTenMH, txbTinChi, btnSave, btnEdit, btnDelete });
+                ResetText(new List<Control> { txbMaMH, txbTenMH, txbTinChi });
+            }
+            else
+            {
+                MessageBox.Show("Cập nhật môn học thất bại. Vui lòng xem lại !");
+            }
+        }
+
+        //xóa dữ liệu
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            string maMH = txbMaMH.Text;
         }
     }
 }
