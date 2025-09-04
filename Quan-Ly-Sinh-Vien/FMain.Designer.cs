@@ -129,6 +129,7 @@
             this.btnSearchMaMh.TabIndex = 5;
             this.btnSearchMaMh.Text = "Tìm Kiếm";
             this.btnSearchMaMh.UseVisualStyleBackColor = true;
+            this.btnSearchMaMh.Click += new System.EventHandler(this.btnSearchMaMh_Click);
             // 
             // panel8
             // 

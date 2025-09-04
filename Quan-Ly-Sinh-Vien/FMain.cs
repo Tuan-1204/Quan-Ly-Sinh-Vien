@@ -161,5 +161,14 @@ namespace Quan_Ly_Sinh_Vien
             cbSearchMaMH.DisplayMember = "TenMH"; //hiển thị mã môn học
             cbSearchMaMH.ValueMember = "MaMH"; //giá trị mã môn họcs
         }
+
+        private void btnSearchMaMh_Click(object sender, EventArgs e)
+        {
+            string maMH = cbSearchMaMH.SelectedValue.ToString();
+            string query = $"select * from MonHoc where MaMH = '{maMH}'";
+            dt.Clear();
+            dt = DataProvider.LoadCSDL(query);
+            dvgShow.DataSource = dt;
+        }
     }
 }
