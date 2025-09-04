@@ -37,6 +37,7 @@ namespace Quan_Ly_Sinh_Vien
         private void btnAdd_Click(object sender, EventArgs e)
         {
             EnableControls(new List<Control> { txbMaMH, txbTenMH, txbTinChi , btnSave});
+            UnEnableControls(new List<Control> { btnEdit, btnDelete });
             ResetText(new List<Control> { txbMaMH, txbTenMH, txbTinChi });
             txbMaMH.Focus();
             
@@ -104,7 +105,10 @@ namespace Quan_Ly_Sinh_Vien
 
                 //hiển thị các textbox 
                 EnableControls(new List<Control> { txbTenMH, txbTinChi, btnDelete, btnEdit });
-              
+
+                //ẩn textbox mã môn học
+                txbMaMH.Enabled = false;
+
             }
         }
 
