@@ -90,5 +90,22 @@ namespace Quan_Ly_Sinh_Vien
                 MessageBox.Show("Thêm mới môn học thất bại. Vui lòng xem lại !");
             }
         }
+
+        private void dvgShow_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(dvgShow.SelectedRows.Count > 0)
+            {
+                //lấy dòng dữ liệu được chọn
+                var row = dvgShow.SelectedRows[0];
+                //truyền giá trị dữ liệu lên textbox
+                txbMaMH.Text = row.Cells["MaMH"].Value.ToString();
+                txbTenMH.Text = row.Cells["TenMH"].Value.ToString();
+                txbTinChi.Text = row.Cells["SoTiet"].Value.ToString();
+
+                //hiển thị các textbox 
+                EnableControls(new List<Control> { txbTenMH, txbTinChi, btnDelete, btnEdit });
+              
+            }
+        }
     }
 }

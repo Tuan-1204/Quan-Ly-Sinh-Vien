@@ -331,6 +331,7 @@
             this.dvgShow.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dvgShow.Size = new System.Drawing.Size(1145, 308);
             this.dvgShow.TabIndex = 0;
+            this.dvgShow.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgShow_CellContentClick);
             // 
             // panel21
             // 
