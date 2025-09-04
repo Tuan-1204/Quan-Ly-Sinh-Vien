@@ -97,6 +97,7 @@
             this.btnChangePasswordExit.TabIndex = 5;
             this.btnChangePasswordExit.Text = "Thoát";
             this.btnChangePasswordExit.UseVisualStyleBackColor = true;
+            this.btnChangePasswordExit.Click += new System.EventHandler(this.btnChangePasswordExit_Click);
             // 
             // panel9
             // 
@@ -114,6 +115,7 @@
             this.btnChangePassword.TabIndex = 5;
             this.btnChangePassword.Text = "Đổi Mật Khẩu";
             this.btnChangePassword.UseVisualStyleBackColor = true;
+            this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
             // 
             // panel6
             // 
@@ -132,6 +134,7 @@
             this.chekPassCurrently.TabIndex = 0;
             this.chekPassCurrently.Text = "Hiển Thị Mật Khẩu";
             this.chekPassCurrently.UseVisualStyleBackColor = true;
+            this.chekPassCurrently.CheckedChanged += new System.EventHandler(this.chekPassCurrently_CheckedChanged);
             // 
             // panel5
             // 

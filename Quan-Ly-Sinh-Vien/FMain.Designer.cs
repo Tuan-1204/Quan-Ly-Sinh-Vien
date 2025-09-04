@@ -316,11 +316,13 @@
             // 
             // dvgShow
             // 
+            this.dvgShow.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dvgShow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dvgShow.Location = new System.Drawing.Point(3, 3);
             this.dvgShow.Name = "dvgShow";
             this.dvgShow.RowHeadersWidth = 51;
             this.dvgShow.RowTemplate.Height = 24;
+            this.dvgShow.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dvgShow.Size = new System.Drawing.Size(1145, 308);
             this.dvgShow.TabIndex = 0;
             // 
@@ -340,6 +342,7 @@
             this.btnShowAll.TabIndex = 8;
             this.btnShowAll.Text = "Hiển Thị Tất Cả";
             this.btnShowAll.UseVisualStyleBackColor = true;
+            this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
             // 
             // panel12
             // 

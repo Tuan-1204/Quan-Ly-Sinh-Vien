@@ -30,7 +30,9 @@ namespace Quan_Ly_Sinh_Vien
         //link quên mật khẩu
         private void LnkQuenPass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            // Mở form đổi mật khẩu (ChangePass)
+            ChangePass changePassForm = new ChangePass();
+            changePassForm.ShowDialog();
         }
 
 
