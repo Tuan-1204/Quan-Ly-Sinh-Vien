@@ -12,7 +12,7 @@ namespace Quan_Ly_Sinh_Vien
 {
     public partial class FMain : Form
     {
-        public FMain()
+        public FMain(DangNhap dn)
         {
             InitializeComponent();
         }

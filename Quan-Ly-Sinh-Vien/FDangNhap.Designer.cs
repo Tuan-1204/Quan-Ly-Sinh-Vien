@@ -30,26 +30,26 @@
         {
             this.quan_Ly_Sinh_VienDataSet1 = new Quan_Ly_Sinh_Vien.Quan_Ly_Sinh_VienDataSet();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.LnkQuenPass = new System.Windows.Forms.LinkLabel();
+            this.chkPassWord = new System.Windows.Forms.CheckBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btnExit = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnLogin = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txbPassWord = new System.Windows.Forms.TextBox();
             this.lblPassWord = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtUserName = new System.Windows.Forms.TextBox();
+            this.txbUserName = new System.Windows.Forms.TextBox();
             this.lblTenDangNhap = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.chkPassWord = new System.Windows.Forms.CheckBox();
-            this.LnkQuenPass = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.quan_Ly_Sinh_VienDataSet1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // quan_Ly_Sinh_VienDataSet1
@@ -69,6 +69,56 @@
             this.panel1.Size = new System.Drawing.Size(558, 229);
             this.panel1.TabIndex = 0;
             // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.LnkQuenPass);
+            this.panel6.Controls.Add(this.chkPassWord);
+            this.panel6.Location = new System.Drawing.Point(120, 139);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(420, 36);
+            this.panel6.TabIndex = 4;
+            // 
+            // LnkQuenPass
+            // 
+            this.LnkQuenPass.AutoSize = true;
+            this.LnkQuenPass.LinkColor = System.Drawing.Color.Red;
+            this.LnkQuenPass.Location = new System.Drawing.Point(247, 5);
+            this.LnkQuenPass.Name = "LnkQuenPass";
+            this.LnkQuenPass.Size = new System.Drawing.Size(170, 23);
+            this.LnkQuenPass.TabIndex = 4;
+            this.LnkQuenPass.TabStop = true;
+            this.LnkQuenPass.Text = "Quên Mật Khẩu ? ";
+            this.LnkQuenPass.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkQuenPass_LinkClicked);
+            // 
+            // chkPassWord
+            // 
+            this.chkPassWord.AutoSize = true;
+            this.chkPassWord.Location = new System.Drawing.Point(6, 4);
+            this.chkPassWord.Name = "chkPassWord";
+            this.chkPassWord.Size = new System.Drawing.Size(192, 27);
+            this.chkPassWord.TabIndex = 3;
+            this.chkPassWord.Text = "Hiển Thị Mật Khẩu";
+            this.chkPassWord.UseVisualStyleBackColor = true;
+            this.chkPassWord.CheckedChanged += new System.EventHandler(this.chkPassWord_CheckedChanged);
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.btnExit);
+            this.panel5.Location = new System.Drawing.Point(331, 182);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(132, 44);
+            this.panel5.TabIndex = 3;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(0, 3);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(127, 33);
+            this.btnExit.TabIndex = 6;
+            this.btnExit.Text = "Thoát";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.btnLogin);
@@ -85,6 +135,7 @@
             this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "Đăng Nhập";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // panel3
             // 
@@ -114,19 +165,19 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.txtUserName);
+            this.panel2.Controls.Add(this.txbUserName);
             this.panel2.Controls.Add(this.lblTenDangNhap);
             this.panel2.Location = new System.Drawing.Point(36, 33);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(433, 37);
             this.panel2.TabIndex = 0;
             // 
-            // txtUserName
+            // txbUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(167, 4);
-            this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(260, 30);
-            this.txtUserName.TabIndex = 1;
+            this.txbUserName.Location = new System.Drawing.Point(167, 4);
+            this.txbUserName.Name = "txbUserName";
+            this.txbUserName.Size = new System.Drawing.Size(260, 30);
+            this.txbUserName.TabIndex = 1;
             // 
             // lblTenDangNhap
             // 
@@ -136,53 +187,6 @@
             this.lblTenDangNhap.Size = new System.Drawing.Size(158, 23);
             this.lblTenDangNhap.TabIndex = 0;
             this.lblTenDangNhap.Text = "Tên Đăng Nhập :";
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.btnExit);
-            this.panel5.Location = new System.Drawing.Point(331, 182);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(132, 44);
-            this.panel5.TabIndex = 3;
-            // 
-            // btnExit
-            // 
-            this.btnExit.Location = new System.Drawing.Point(0, 3);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(127, 33);
-            this.btnExit.TabIndex = 6;
-            this.btnExit.Text = "Thoát";
-            this.btnExit.UseVisualStyleBackColor = true;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.LnkQuenPass);
-            this.panel6.Controls.Add(this.chkPassWord);
-            this.panel6.Location = new System.Drawing.Point(120, 139);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(420, 36);
-            this.panel6.TabIndex = 4;
-            // 
-            // chkPassWord
-            // 
-            this.chkPassWord.AutoSize = true;
-            this.chkPassWord.Location = new System.Drawing.Point(6, 4);
-            this.chkPassWord.Name = "chkPassWord";
-            this.chkPassWord.Size = new System.Drawing.Size(192, 27);
-            this.chkPassWord.TabIndex = 3;
-            this.chkPassWord.Text = "Hiển Thị Mật Khẩu";
-            this.chkPassWord.UseVisualStyleBackColor = true;
-            // 
-            // LnkQuenPass
-            // 
-            this.LnkQuenPass.AutoSize = true;
-            this.LnkQuenPass.LinkColor = System.Drawing.Color.Red;
-            this.LnkQuenPass.Location = new System.Drawing.Point(247, 5);
-            this.LnkQuenPass.Name = "LnkQuenPass";
-            this.LnkQuenPass.Size = new System.Drawing.Size(170, 23);
-            this.LnkQuenPass.TabIndex = 4;
-            this.LnkQuenPass.TabStop = true;
-            this.LnkQuenPass.Text = "Quên Mật Khẩu ? ";
             // 
             // FDangNhap
             // 
@@ -195,16 +199,17 @@
             this.Name = "FDangNhap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng Nhập Hệ Thống";
+            this.Load += new System.EventHandler(this.FDangNhap_Load);
             ((System.ComponentModel.ISupportInitialize)(this.quan_Ly_Sinh_VienDataSet1)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -214,7 +219,7 @@
         private Quan_Ly_Sinh_VienDataSet quan_Ly_Sinh_VienDataSet1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox txtUserName;
+        private System.Windows.Forms.TextBox txbUserName;
         private System.Windows.Forms.Label lblTenDangNhap;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox txbPassWord;
