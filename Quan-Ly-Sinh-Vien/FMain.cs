@@ -133,6 +133,19 @@ namespace Quan_Ly_Sinh_Vien
         private void btnDelete_Click(object sender, EventArgs e)
         {
             string maMH = txbMaMH.Text;
+            string query = $"DELETE FROM MonHoc WHERE MaMH = '{maMH}'";
+            int kq = DataProvider.ThaoTacCSDL(query);
+            if (kq > 0)
+            {
+                MessageBox.Show("Xóa môn học thành công");
+                LoadTableMonHoc();
+                UnEnableControls(new List<Control> { txbMaMH, txbTenMH, txbTinChi, btnSave, btnEdit, btnDelete });
+                ResetText(new List<Control> { txbMaMH, txbTenMH, txbTinChi });
+            }
+            else
+            {
+                MessageBox.Show("Xóa môn học thất bại. Vui lòng xem lại !");
+            }
         }
     }
 }
