@@ -147,6 +147,7 @@
             this.btnSearchTT.TabIndex = 7;
             this.btnSearchTT.Text = "Tìm Kiếm";
             this.btnSearchTT.UseVisualStyleBackColor = true;
+            this.btnSearchTT.Click += new System.EventHandler(this.btnSearchTT_Click);
             // 
             // panel7
             // 

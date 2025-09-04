@@ -170,5 +170,15 @@ namespace Quan_Ly_Sinh_Vien
             dt = DataProvider.LoadCSDL(query);
             dvgShow.DataSource = dt;
         }
+        //tìm kiếm theo tên môn học
+        private void btnSearchTT_Click(object sender, EventArgs e)
+        {
+            string tenMH = txbSearchTT.Text;
+            string query = $"select * from MonHoc where TenMH like N'%{tenMH}%'";
+            dt.Clear();
+            dt = DataProvider.LoadCSDL(query);
+            dvgShow.DataSource = dt;
+
+        }
     }
 }
