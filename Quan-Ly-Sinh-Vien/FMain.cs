@@ -147,5 +147,19 @@ namespace Quan_Ly_Sinh_Vien
                 MessageBox.Show("Xóa môn học thất bại. Vui lòng xem lại !");
             }
         }
+
+        private void cbSearchMaMH_Click(object sender, EventArgs e)
+        {
+            LoadcbSearchMaMH();
+        }
+
+        //hàm load combo box tìm kiếm mã môn học
+        private void LoadcbSearchMaMH()
+        {
+            string query = "select MaMH, TenMH from MonHoc";
+            cbSearchMaMH.DataSource = DataProvider.LoadCSDL(query);
+            cbSearchMaMH.DisplayMember = "TenMH"; //hiển thị mã môn học
+            cbSearchMaMH.ValueMember = "MaMH"; //giá trị mã môn họcs
+        }
     }
 }

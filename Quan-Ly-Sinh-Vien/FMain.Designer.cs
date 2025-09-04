@@ -207,6 +207,7 @@
             this.cbSearchMaMH.Name = "cbSearchMaMH";
             this.cbSearchMaMH.Size = new System.Drawing.Size(250, 31);
             this.cbSearchMaMH.TabIndex = 4;
+            this.cbSearchMaMH.Click += new System.EventHandler(this.cbSearchMaMH_Click);
             // 
             // lblSearchMaMh
             // 
