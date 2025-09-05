@@ -18,6 +18,7 @@ namespace Quan_Ly_Sinh_Vien
         public FDangNhap()
         {
             InitializeComponent();
+            this.AcceptButton = btnLogin;
         }
         //nút hiện mật khẩu
         private void chkPassWord_CheckedChanged(object sender, EventArgs e)
@@ -56,10 +57,10 @@ namespace Quan_Ly_Sinh_Vien
             if (isFound)
             {
                 //hiện form chính
-              
+              this.Hide();
                 FMain fMain = new FMain(dn);
                 fMain.ShowDialog();
-              
+              this.Show();
             }
             else
             {

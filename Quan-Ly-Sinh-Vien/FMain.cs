@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Reporting.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,27 +21,30 @@ namespace Quan_Ly_Sinh_Vien
         }
 
 
-        //nút hiển thị tất cả 
+
+     
+        
+             //nút hiển thị tất cả 
         private void btnShowAll_Click(object sender, EventArgs e)
         {
             //câu lệnh query -> lấy dữ liệu từ database ->  table ->hiển thị lên datagridview
             LoadTableMonHoc();
         }
 
-        private  void LoadTableMonHoc()
+        private void LoadTableMonHoc()
         {
-          string query = "select * from MonHoc";
+            string query = "select * from MonHoc";
             dt = DataProvider.LoadCSDL(query);
             dvgShow.DataSource = dt;
         }
         //thêm mới dữ liệu
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            EnableControls(new List<Control> { txbMaMH, txbTenMH, txbTinChi , btnSave});
+            EnableControls(new List<Control> { txbMaMH, txbTenMH, txbTinChi, btnSave });
             UnEnableControls(new List<Control> { btnEdit, btnDelete });
             ResetText(new List<Control> { txbMaMH, txbTenMH, txbTinChi });
             txbMaMH.Focus();
-            
+
 
         }
 
@@ -66,7 +70,7 @@ namespace Quan_Ly_Sinh_Vien
         {
             foreach (var control in controls)
             {
-              control.Text = string.Empty;
+                control.Text = string.Empty;
             }
         }
 
@@ -94,7 +98,7 @@ namespace Quan_Ly_Sinh_Vien
         //hiển thị dữ liệu lên textbox khi chọn dòng trong datagridview
         private void dvgShow_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(dvgShow.SelectedRows.Count > 0)
+            if (dvgShow.SelectedRows.Count > 0)
             {
                 //lấy dòng dữ liệu được chọn
                 var row = dvgShow.SelectedRows[0];
@@ -184,5 +188,18 @@ namespace Quan_Ly_Sinh_Vien
             dvgShow.DataSource = dt;
 
         }
+
+        private void btnCategorySinhVien_Click(object sender, EventArgs e)
+        {
+            FReport f = new FReport("XemDSSV");
+            f.ShowDialog();
+        }
+
+        private void quảnLýMônHọcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
+
+
