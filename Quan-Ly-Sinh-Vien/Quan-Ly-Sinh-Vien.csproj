@@ -78,6 +78,18 @@
     <Compile Include="FDangNhap.Designer.cs">
       <DependentUpon>FDangNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="FHeThong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FHeThong.Designer.cs">
+      <DependentUpon>FHeThong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FKhoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FKhoa.Designer.cs">
+      <DependentUpon>FKhoa.cs</DependentUpon>
+    </Compile>
     <Compile Include="FMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +116,9 @@
     <EmbeddedResource Include="FDangNhap.resx">
       <DependentUpon>FDangNhap.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FHeThong.resx">
+      <DependentUpon>FHeThong.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FMain.resx">
       <DependentUpon>FMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -121,6 +136,7 @@
     </Compile>
     <EmbeddedResource Include="ReportSinhVien.rdlc" />
     <EmbeddedResource Include="ReportSVTheoKhoa.rdlc" />
+    <EmbeddedResource Include="ReportXemDiem.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
