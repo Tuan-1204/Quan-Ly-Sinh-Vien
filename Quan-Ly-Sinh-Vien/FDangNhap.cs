@@ -58,10 +58,10 @@ namespace Quan_Ly_Sinh_Vien
             {
                 //hiện form chính
               this.Hide();
-                //FMain fMain = new FMain(dn);
-                FHeThong fHeThong = new FHeThong(dn);
-                //fMain.ShowDialog();
-                fHeThong.ShowDialog();
+                FMain fMain = new FMain(dn);
+                //FHeThong fHeThong = new FHeThong(dn);
+                fMain.ShowDialog();
+                //fHeThong.ShowDialog();
                 this.Show();
             }
             else
