@@ -419,6 +419,7 @@
             this.btnCategorySinhVienKhoa.TabIndex = 14;
             this.btnCategorySinhVienKhoa.Text = "Xem DSSV Theo Khoa";
             this.btnCategorySinhVienKhoa.UseVisualStyleBackColor = true;
+            this.btnCategorySinhVienKhoa.Click += new System.EventHandler(this.btnCategorySinhVienKhoa_Click);
             // 
             // panel16
             // 
@@ -434,7 +435,7 @@
             this.btnCategorySinhVien.Name = "btnCategorySinhVien";
             this.btnCategorySinhVien.Size = new System.Drawing.Size(123, 32);
             this.btnCategorySinhVien.TabIndex = 13;
-            this.btnCategorySinhVien.Text = "A";
+            this.btnCategorySinhVien.Text = "Xem DSSV";
             this.btnCategorySinhVien.UseVisualStyleBackColor = true;
             this.btnCategorySinhVien.Click += new System.EventHandler(this.btnCategorySinhVien_Click);
             // 

@@ -195,9 +195,11 @@ namespace Quan_Ly_Sinh_Vien
             f.ShowDialog();
         }
 
-        private void quảnLýMônHọcToolStripMenuItem_Click(object sender, EventArgs e)
+        
+        private void btnCategorySinhVienKhoa_Click(object sender, EventArgs e)
         {
-
+            FReport f = new FReport("XemDSSVTheoKhoa");
+            f.ShowDialog();
         }
     }
 }
