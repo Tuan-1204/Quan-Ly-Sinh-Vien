@@ -188,17 +188,30 @@ namespace Quan_Ly_Sinh_Vien
             dvgShow.DataSource = dt;
 
         }
-
+        //nút xem danh sách sinh viên
         private void btnCategorySinhVien_Click(object sender, EventArgs e)
         {
             FReport f = new FReport("XemDSSV");
             f.ShowDialog();
         }
 
-        
+        //nút xem danh sách sinh viên theo khoa
         private void btnCategorySinhVienKhoa_Click(object sender, EventArgs e)
         {
             FReport f = new FReport("XemDSSVTheoKhoa");
+            f.ShowDialog();
+        }
+
+        //xem điểm sinh viên
+        private void btnXemDiem_Click(object sender, EventArgs e)
+        {
+            FReport f = new FReport("XemDiem");
+            f.ShowDialog();
+        }
+        //xem điểm theo môn
+        private void btnDiemTheoMon_Click(object sender, EventArgs e)
+        {
+            FReport f = new FReport("XemDiemTheoMon");
             f.ShowDialog();
         }
     }

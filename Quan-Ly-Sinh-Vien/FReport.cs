@@ -73,7 +73,7 @@ namespace Quan_Ly_Sinh_Vien
                                 FROM SinhVien sv
                                 INNER JOIN Khoa k ON sv.MaKhoa = k.MaKhoa
                                 ORDER BY k.MaKhoa;";
-                     
+
                     string queryKhoa = @"SELECT 
                                  k.TenKhoa 
                                 FROM SinhVien sv
@@ -95,10 +95,10 @@ namespace Quan_Ly_Sinh_Vien
                         Value = dtKhoa
                     };
 
-                 
+
                     reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
                     reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
-              
+
                 }
                 catch (Exception ex)
                 {
@@ -107,7 +107,15 @@ namespace Quan_Ly_Sinh_Vien
             }
             else if(_option == "XemDiem")
             {
+                try
+                {
 
+
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else if(_option == "XemDiemTheoMon")
             {

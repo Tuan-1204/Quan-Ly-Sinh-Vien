@@ -95,7 +95,7 @@ namespace Quan_Ly_Sinh_Vien
                 CloseConnection();
             }
         }
-
+        //hàm load dữ liệu từ database
         public static DataTable LoadCSDL(string query)
         {
             DataTable dt = new DataTable();
@@ -105,8 +105,6 @@ namespace Quan_Ly_Sinh_Vien
                 SqlCommand command = new SqlCommand(query, connection); // tạo lệnh
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 adapter.Fill(dt);
-               
-
             }
             //bắt lỗi
             catch (Exception ex)
