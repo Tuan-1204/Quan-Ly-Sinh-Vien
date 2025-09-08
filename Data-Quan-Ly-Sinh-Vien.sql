@@ -160,3 +160,8 @@ SELECT
 FROM SinhVien sv
 INNER JOIN Khoa k ON sv.MaKhoa = k.MaKhoa
  ORDER BY k.MaKhoa;
+
+
+
+
+
