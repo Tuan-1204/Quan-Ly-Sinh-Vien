@@ -10,13 +10,11 @@ using System.Windows.Forms;
 
 namespace Quan_Ly_Sinh_Vien
 {
-    public partial class FHeThong : Form
+    public partial class FQuanLyKhoa : Form
     {
-        public FHeThong(DangNhap dn)
+        public FQuanLyKhoa()
         {
             InitializeComponent();
         }
-
-       
     }
 }

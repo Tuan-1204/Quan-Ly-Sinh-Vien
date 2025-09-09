@@ -78,12 +78,6 @@
     <Compile Include="FDangNhap.Designer.cs">
       <DependentUpon>FDangNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="FHeThong.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FHeThong.Designer.cs">
-      <DependentUpon>FHeThong.cs</DependentUpon>
-    </Compile>
     <Compile Include="FKhoa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +89,18 @@
     </Compile>
     <Compile Include="FMain.Designer.cs">
       <DependentUpon>FMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FQuanLyKhoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FQuanLyKhoa.Designer.cs">
+      <DependentUpon>FQuanLyKhoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FQuanLySinhVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FQuanLySinhVien.Designer.cs">
+      <DependentUpon>FQuanLySinhVien.cs</DependentUpon>
     </Compile>
     <Compile Include="FReport.cs">
       <SubType>Form</SubType>
@@ -116,11 +122,14 @@
     <EmbeddedResource Include="FDangNhap.resx">
       <DependentUpon>FDangNhap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FHeThong.resx">
-      <DependentUpon>FHeThong.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FMain.resx">
       <DependentUpon>FMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FQuanLyKhoa.resx">
+      <DependentUpon>FQuanLyKhoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FQuanLySinhVien.resx">
+      <DependentUpon>FQuanLySinhVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FReport.resx">
       <DependentUpon>FReport.cs</DependentUpon>
