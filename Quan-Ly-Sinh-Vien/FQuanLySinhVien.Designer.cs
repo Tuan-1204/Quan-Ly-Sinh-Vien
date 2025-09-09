@@ -153,6 +153,7 @@
             this.txbHoTen.Name = "txbHoTen";
             this.txbHoTen.Size = new System.Drawing.Size(165, 26);
             this.txbHoTen.TabIndex = 1;
+          
             // 
             // lblNameSv
             // 

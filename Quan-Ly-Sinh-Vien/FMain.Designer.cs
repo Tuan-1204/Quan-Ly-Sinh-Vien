@@ -162,7 +162,7 @@
             // 
             this.txbSearchTT.Location = new System.Drawing.Point(149, 11);
             this.txbSearchTT.Name = "txbSearchTT";
-            this.txbSearchTT.Size = new System.Drawing.Size(170, 30);
+            this.txbSearchTT.Size = new System.Drawing.Size(170, 26);
             this.txbSearchTT.TabIndex = 6;
             // 
             // label3
@@ -170,7 +170,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(3, 14);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(152, 23);
+            this.label3.Size = new System.Drawing.Size(119, 18);
             this.label3.TabIndex = 0;
             this.label3.Text = "Nhập Từ khóa : ";
             // 
@@ -189,7 +189,7 @@
             this.lblSearchTT.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblSearchTT.Location = new System.Drawing.Point(93, 8);
             this.lblSearchTT.Name = "lblSearchTT";
-            this.lblSearchTT.Size = new System.Drawing.Size(289, 33);
+            this.lblSearchTT.Size = new System.Drawing.Size(222, 26);
             this.lblSearchTT.TabIndex = 0;
             this.lblSearchTT.Text = "Tìm Kiếm Thông Tin";
             // 
@@ -207,7 +207,7 @@
             this.cbSearchMaMH.FormattingEnabled = true;
             this.cbSearchMaMH.Location = new System.Drawing.Point(22, 47);
             this.cbSearchMaMH.Name = "cbSearchMaMH";
-            this.cbSearchMaMH.Size = new System.Drawing.Size(250, 31);
+            this.cbSearchMaMH.Size = new System.Drawing.Size(250, 26);
             this.cbSearchMaMH.TabIndex = 4;
             this.cbSearchMaMH.Click += new System.EventHandler(this.cbSearchMaMH_Click);
             // 
@@ -216,7 +216,7 @@
             this.lblSearchMaMh.AutoSize = true;
             this.lblSearchMaMh.Location = new System.Drawing.Point(18, 11);
             this.lblSearchMaMh.Name = "lblSearchMaMh";
-            this.lblSearchMaMh.Size = new System.Drawing.Size(254, 23);
+            this.lblSearchMaMh.Size = new System.Drawing.Size(199, 18);
             this.lblSearchMaMh.TabIndex = 0;
             this.lblSearchMaMh.Text = "Chọn Mã Môn Học Cần Tìm";
             // 
@@ -234,7 +234,7 @@
             this.txbTinChi.Enabled = false;
             this.txbTinChi.Location = new System.Drawing.Point(138, 11);
             this.txbTinChi.Name = "txbTinChi";
-            this.txbTinChi.Size = new System.Drawing.Size(144, 30);
+            this.txbTinChi.Size = new System.Drawing.Size(144, 26);
             this.txbTinChi.TabIndex = 3;
             // 
             // lblTinChi
@@ -242,7 +242,7 @@
             this.lblTinChi.AutoSize = true;
             this.lblTinChi.Location = new System.Drawing.Point(3, 14);
             this.lblTinChi.Name = "lblTinChi";
-            this.lblTinChi.Size = new System.Drawing.Size(120, 23);
+            this.lblTinChi.Size = new System.Drawing.Size(92, 18);
             this.lblTinChi.TabIndex = 0;
             this.lblTinChi.Text = "Số Tín Chỉ : ";
             // 
@@ -260,7 +260,7 @@
             this.txbTenMH.Enabled = false;
             this.txbTenMH.Location = new System.Drawing.Point(138, 11);
             this.txbTenMH.Name = "txbTenMH";
-            this.txbTenMH.Size = new System.Drawing.Size(144, 30);
+            this.txbTenMH.Size = new System.Drawing.Size(144, 26);
             this.txbTenMH.TabIndex = 2;
             // 
             // lblTenMonHoc
@@ -268,7 +268,7 @@
             this.lblTenMonHoc.AutoSize = true;
             this.lblTenMonHoc.Location = new System.Drawing.Point(3, 14);
             this.lblTenMonHoc.Name = "lblTenMonHoc";
-            this.lblTenMonHoc.Size = new System.Drawing.Size(139, 23);
+            this.lblTenMonHoc.Size = new System.Drawing.Size(108, 18);
             this.lblTenMonHoc.TabIndex = 0;
             this.lblTenMonHoc.Text = "Tên Môn Học :";
             // 
@@ -286,15 +286,16 @@
             this.txbMaMH.Enabled = false;
             this.txbMaMH.Location = new System.Drawing.Point(138, 11);
             this.txbMaMH.Name = "txbMaMH";
-            this.txbMaMH.Size = new System.Drawing.Size(144, 30);
+            this.txbMaMH.Size = new System.Drawing.Size(144, 26);
             this.txbMaMH.TabIndex = 1;
+           
             // 
             // lblMaMH
             // 
             this.lblMaMH.AutoSize = true;
             this.lblMaMH.Location = new System.Drawing.Point(3, 14);
             this.lblMaMH.Name = "lblMaMH";
-            this.lblMaMH.Size = new System.Drawing.Size(140, 23);
+            this.lblMaMH.Size = new System.Drawing.Size(108, 18);
             this.lblMaMH.TabIndex = 0;
             this.lblMaMH.Text = "Mã Môn Học : ";
             // 
@@ -516,7 +517,7 @@
             // 
             // FMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 653);
             this.Controls.Add(this.panel12);
