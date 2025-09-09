@@ -78,12 +78,6 @@
     <Compile Include="FDangNhap.Designer.cs">
       <DependentUpon>FDangNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="FKhoa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FKhoa.Designer.cs">
-      <DependentUpon>FKhoa.cs</DependentUpon>
-    </Compile>
     <Compile Include="FMain.cs">
       <SubType>Form</SubType>
     </Compile>
