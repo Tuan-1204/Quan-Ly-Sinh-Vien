@@ -32,17 +32,17 @@
             this.lblInffoKhoa = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel18 = new System.Windows.Forms.Panel();
-            this.btnDeleteInfoSv = new System.Windows.Forms.Button();
+            this.btnDeleteInfoKhoa = new System.Windows.Forms.Button();
             this.panel17 = new System.Windows.Forms.Panel();
-            this.btnEditInfoSv = new System.Windows.Forms.Button();
+            this.btnEditInfoKhoa = new System.Windows.Forms.Button();
             this.panel16 = new System.Windows.Forms.Panel();
-            this.btnSaveInfoSv = new System.Windows.Forms.Button();
+            this.btnSaveInfoKhoa = new System.Windows.Forms.Button();
             this.panel15 = new System.Windows.Forms.Panel();
             this.btnAddInffoSv = new System.Windows.Forms.Button();
             this.panel14 = new System.Windows.Forms.Panel();
             this.lblExtension = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.txbTenKhoa = new System.Windows.Forms.TextBox();
+            this.txbNameKhoa = new System.Windows.Forms.TextBox();
             this.lblTenKhoa = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.txbIdKhoa = new System.Windows.Forms.TextBox();
@@ -51,7 +51,7 @@
             this.lblInfoKhoa = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.dvgInKhoa = new System.Windows.Forms.DataGridView();
+            this.dgvInKhoa = new System.Windows.Forms.DataGridView();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnShowALLKhoa = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -66,7 +66,7 @@
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgInKhoa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInKhoa)).BeginInit();
             this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,55 +106,55 @@
             // 
             // panel18
             // 
-            this.panel18.Controls.Add(this.btnDeleteInfoSv);
+            this.panel18.Controls.Add(this.btnDeleteInfoKhoa);
             this.panel18.Location = new System.Drawing.Point(747, 104);
             this.panel18.Name = "panel18";
             this.panel18.Size = new System.Drawing.Size(64, 39);
             this.panel18.TabIndex = 15;
             // 
-            // btnDeleteInfoSv
+            // btnDeleteInfoKhoa
             // 
-            this.btnDeleteInfoSv.Location = new System.Drawing.Point(3, 3);
-            this.btnDeleteInfoSv.Name = "btnDeleteInfoSv";
-            this.btnDeleteInfoSv.Size = new System.Drawing.Size(58, 32);
-            this.btnDeleteInfoSv.TabIndex = 12;
-            this.btnDeleteInfoSv.Text = "Xóa";
-            this.btnDeleteInfoSv.UseVisualStyleBackColor = true;
+            this.btnDeleteInfoKhoa.Location = new System.Drawing.Point(3, 3);
+            this.btnDeleteInfoKhoa.Name = "btnDeleteInfoKhoa";
+            this.btnDeleteInfoKhoa.Size = new System.Drawing.Size(58, 32);
+            this.btnDeleteInfoKhoa.TabIndex = 12;
+            this.btnDeleteInfoKhoa.Text = "Xóa";
+            this.btnDeleteInfoKhoa.UseVisualStyleBackColor = true;
             // 
             // panel17
             // 
-            this.panel17.Controls.Add(this.btnEditInfoSv);
+            this.panel17.Controls.Add(this.btnEditInfoKhoa);
             this.panel17.Location = new System.Drawing.Point(676, 104);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(65, 39);
             this.panel17.TabIndex = 14;
             // 
-            // btnEditInfoSv
+            // btnEditInfoKhoa
             // 
-            this.btnEditInfoSv.Location = new System.Drawing.Point(3, 3);
-            this.btnEditInfoSv.Name = "btnEditInfoSv";
-            this.btnEditInfoSv.Size = new System.Drawing.Size(58, 32);
-            this.btnEditInfoSv.TabIndex = 11;
-            this.btnEditInfoSv.Text = "Sửa";
-            this.btnEditInfoSv.UseVisualStyleBackColor = true;
+            this.btnEditInfoKhoa.Location = new System.Drawing.Point(3, 3);
+            this.btnEditInfoKhoa.Name = "btnEditInfoKhoa";
+            this.btnEditInfoKhoa.Size = new System.Drawing.Size(58, 32);
+            this.btnEditInfoKhoa.TabIndex = 11;
+            this.btnEditInfoKhoa.Text = "Sửa";
+            this.btnEditInfoKhoa.UseVisualStyleBackColor = true;
             // 
             // panel16
             // 
-            this.panel16.Controls.Add(this.btnSaveInfoSv);
+            this.panel16.Controls.Add(this.btnSaveInfoKhoa);
             this.panel16.Location = new System.Drawing.Point(598, 104);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(72, 39);
             this.panel16.TabIndex = 13;
             // 
-            // btnSaveInfoSv
+            // btnSaveInfoKhoa
             // 
-            this.btnSaveInfoSv.Enabled = false;
-            this.btnSaveInfoSv.Location = new System.Drawing.Point(3, 3);
-            this.btnSaveInfoSv.Name = "btnSaveInfoSv";
-            this.btnSaveInfoSv.Size = new System.Drawing.Size(64, 32);
-            this.btnSaveInfoSv.TabIndex = 10;
-            this.btnSaveInfoSv.Text = "Lưu";
-            this.btnSaveInfoSv.UseVisualStyleBackColor = true;
+            this.btnSaveInfoKhoa.Enabled = false;
+            this.btnSaveInfoKhoa.Location = new System.Drawing.Point(3, 3);
+            this.btnSaveInfoKhoa.Name = "btnSaveInfoKhoa";
+            this.btnSaveInfoKhoa.Size = new System.Drawing.Size(64, 32);
+            this.btnSaveInfoKhoa.TabIndex = 10;
+            this.btnSaveInfoKhoa.Text = "Lưu";
+            this.btnSaveInfoKhoa.UseVisualStyleBackColor = true;
             // 
             // panel15
             // 
@@ -193,20 +193,20 @@
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.txbTenKhoa);
+            this.panel6.Controls.Add(this.txbNameKhoa);
             this.panel6.Controls.Add(this.lblTenKhoa);
             this.panel6.Location = new System.Drawing.Point(228, 93);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(264, 50);
             this.panel6.TabIndex = 4;
             // 
-            // txbTenKhoa
+            // txbNameKhoa
             // 
-            this.txbTenKhoa.Enabled = false;
-            this.txbTenKhoa.Location = new System.Drawing.Point(96, 11);
-            this.txbTenKhoa.Name = "txbTenKhoa";
-            this.txbTenKhoa.Size = new System.Drawing.Size(151, 26);
-            this.txbTenKhoa.TabIndex = 3;
+            this.txbNameKhoa.Enabled = false;
+            this.txbNameKhoa.Location = new System.Drawing.Point(96, 11);
+            this.txbNameKhoa.Name = "txbNameKhoa";
+            this.txbNameKhoa.Size = new System.Drawing.Size(151, 26);
+            this.txbNameKhoa.TabIndex = 2;
             // 
             // lblTenKhoa
             // 
@@ -233,7 +233,6 @@
             this.txbIdKhoa.Name = "txbIdKhoa";
             this.txbIdKhoa.Size = new System.Drawing.Size(151, 26);
             this.txbIdKhoa.TabIndex = 1;
-            this.txbIdKhoa.TextChanged += new System.EventHandler(this.txbIdKhoa_TextChanged);
             // 
             // lblIdKhoa
             // 
@@ -272,22 +271,20 @@
             // 
             // panel8
             // 
-            this.panel8.Controls.Add(this.dvgInKhoa);
-            this.panel8.Location = new System.Drawing.Point(3, 61);
+            this.panel8.Controls.Add(this.dgvInKhoa);
+            this.panel8.Location = new System.Drawing.Point(7, 64);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(1169, 321);
             this.panel8.TabIndex = 1;
             // 
-            // dvgInKhoa
+            // dgvInKhoa
             // 
-            this.dvgInKhoa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgInKhoa.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dvgInKhoa.Location = new System.Drawing.Point(0, 0);
-            this.dvgInKhoa.Name = "dvgInKhoa";
-            this.dvgInKhoa.RowHeadersWidth = 51;
-            this.dvgInKhoa.RowTemplate.Height = 24;
-            this.dvgInKhoa.Size = new System.Drawing.Size(1169, 321);
-            this.dvgInKhoa.TabIndex = 0;
+            this.dgvInKhoa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInKhoa.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvInKhoa.Location = new System.Drawing.Point(0, 0);
+            this.dgvInKhoa.Name = "dgvInKhoa";
+            this.dgvInKhoa.Size = new System.Drawing.Size(1169, 321);
+            this.dgvInKhoa.TabIndex = 0;
             // 
             // panel7
             // 
@@ -305,7 +302,6 @@
             this.btnShowALLKhoa.TabIndex = 0;
             this.btnShowALLKhoa.Text = "Hiển thị tất cả";
             this.btnShowALLKhoa.UseVisualStyleBackColor = true;
-            this.btnShowALLKhoa.Click += new System.EventHandler(this.btnShowALLKhoa_Click);
             // 
             // FQuanLyKhoa
             // 
@@ -337,7 +333,7 @@
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dvgInKhoa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInKhoa)).EndInit();
             this.panel7.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -349,11 +345,11 @@
         private System.Windows.Forms.Label lblInffoKhoa;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel18;
-        private System.Windows.Forms.Button btnDeleteInfoSv;
+        private System.Windows.Forms.Button btnDeleteInfoKhoa;
         private System.Windows.Forms.Panel panel17;
-        private System.Windows.Forms.Button btnEditInfoSv;
+        private System.Windows.Forms.Button btnEditInfoKhoa;
         private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.Button btnSaveInfoSv;
+        private System.Windows.Forms.Button btnSaveInfoKhoa;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Button btnAddInffoSv;
         private System.Windows.Forms.Panel panel14;
@@ -371,5 +367,7 @@
         private System.Windows.Forms.Button btnShowALLKhoa;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.DataGridView dvgInKhoa;
+        private System.Windows.Forms.DataGridView dgvInKhoa;
+        private System.Windows.Forms.TextBox txbNameKhoa;
     }
 }
