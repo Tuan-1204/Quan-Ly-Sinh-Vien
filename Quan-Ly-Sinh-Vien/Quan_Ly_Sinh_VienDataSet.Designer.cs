@@ -36,6 +36,8 @@ namespace Quan_Ly_Sinh_Vien {
         
         private global::System.Data.DataRelation relationFK__KetQua__MaMH__412EB0B6;
         
+        private global::System.Data.DataRelation relationFK_KetQua_SinhVien;
+        
         private global::System.Data.DataRelation relationFK__SinhVien__MaKhoa__3C69FB99;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
@@ -295,6 +297,7 @@ namespace Quan_Ly_Sinh_Vien {
                 }
             }
             this.relationFK__KetQua__MaMH__412EB0B6 = this.Relations["FK__KetQua__MaMH__412EB0B6"];
+            this.relationFK_KetQua_SinhVien = this.Relations["FK_KetQua_SinhVien"];
             this.relationFK__SinhVien__MaKhoa__3C69FB99 = this.Relations["FK__SinhVien__MaKhoa__3C69FB99"];
         }
         
@@ -320,6 +323,10 @@ namespace Quan_Ly_Sinh_Vien {
                         this.tableMonHoc.MaMHColumn}, new global::System.Data.DataColumn[] {
                         this.tableKetQua.MaMHColumn}, false);
             this.Relations.Add(this.relationFK__KetQua__MaMH__412EB0B6);
+            this.relationFK_KetQua_SinhVien = new global::System.Data.DataRelation("FK_KetQua_SinhVien", new global::System.Data.DataColumn[] {
+                        this.tableSinhVien.MaSoColumn}, new global::System.Data.DataColumn[] {
+                        this.tableKetQua.MaSoColumn}, false);
+            this.Relations.Add(this.relationFK_KetQua_SinhVien);
             this.relationFK__SinhVien__MaKhoa__3C69FB99 = new global::System.Data.DataRelation("FK__SinhVien__MaKhoa__3C69FB99", new global::System.Data.DataColumn[] {
                         this.tableKhoa.MaKhoaColumn}, new global::System.Data.DataColumn[] {
                         this.tableSinhVien.MaKhoaColumn}, false);
@@ -838,12 +845,15 @@ namespace Quan_Ly_Sinh_Vien {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public KetQuaRow AddKetQuaRow(int MaSo, MonHocRow parentMonHocRowByFK__KetQua__MaMH__412EB0B6, decimal Diem) {
+            public KetQuaRow AddKetQuaRow(SinhVienRow parentSinhVienRowByFK_KetQua_SinhVien, MonHocRow parentMonHocRowByFK__KetQua__MaMH__412EB0B6, decimal Diem) {
                 KetQuaRow rowKetQuaRow = ((KetQuaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        MaSo,
+                        null,
                         null,
                         Diem};
+                if ((parentSinhVienRowByFK_KetQua_SinhVien != null)) {
+                    columnValuesArray[0] = parentSinhVienRowByFK_KetQua_SinhVien[0];
+                }
                 if ((parentMonHocRowByFK__KetQua__MaMH__412EB0B6 != null)) {
                     columnValuesArray[1] = parentMonHocRowByFK__KetQua__MaMH__412EB0B6[0];
                 }
@@ -2092,6 +2102,17 @@ namespace Quan_Ly_Sinh_Vien {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SinhVienRow SinhVienRow {
+                get {
+                    return ((SinhVienRow)(this.GetParentRow(this.Table.ParentRelations["FK_KetQua_SinhVien"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_KetQua_SinhVien"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsDiemNull() {
                 return this.IsNull(this.tableKetQua.DiemColumn);
             }
@@ -2463,6 +2484,17 @@ namespace Quan_Ly_Sinh_Vien {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetMaKhoaNull() {
                 this[this.tableSinhVien.MaKhoaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public KetQuaRow[] GetKetQuaRows() {
+                if ((this.Table.ChildRelations["FK_KetQua_SinhVien"] == null)) {
+                    return new KetQuaRow[0];
+                }
+                else {
+                    return ((KetQuaRow[])(base.GetChildRows(this.Table.ChildRelations["FK_KetQua_SinhVien"])));
+                }
             }
         }
         
@@ -4835,6 +4867,15 @@ SELECT MaSo, HoTen, NgaySinh, GioiTinh, DiaChi, DienThoai, MaKhoa FROM SinhVien 
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._sinhVienTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.SinhVien.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._sinhVienTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._dangNhapTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.DangNhap.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -4850,15 +4891,6 @@ SELECT MaSo, HoTen, NgaySinh, GioiTinh, DiaChi, DienThoai, MaKhoa FROM SinhVien 
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._ketQuaTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._sinhVienTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.SinhVien.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._sinhVienTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -4888,6 +4920,14 @@ SELECT MaSo, HoTen, NgaySinh, GioiTinh, DiaChi, DienThoai, MaKhoa FROM SinhVien 
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._sinhVienTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.SinhVien.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._sinhVienTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._dangNhapTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.DangNhap.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -4904,14 +4944,6 @@ SELECT MaSo, HoTen, NgaySinh, GioiTinh, DiaChi, DienThoai, MaKhoa FROM SinhVien 
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._sinhVienTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.SinhVien.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._sinhVienTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             return result;
         }
         
@@ -4922,14 +4954,6 @@ SELECT MaSo, HoTen, NgaySinh, GioiTinh, DiaChi, DienThoai, MaKhoa FROM SinhVien 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private int UpdateDeletedRows(Quan_Ly_Sinh_VienDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._sinhVienTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.SinhVien.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._sinhVienTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._ketQuaTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.KetQua.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -4943,6 +4967,14 @@ SELECT MaSo, HoTen, NgaySinh, GioiTinh, DiaChi, DienThoai, MaKhoa FROM SinhVien 
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._dangNhapTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._sinhVienTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.SinhVien.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._sinhVienTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

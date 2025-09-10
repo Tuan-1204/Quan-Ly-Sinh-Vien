@@ -7,81 +7,89 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace Quan_Ly_Sinh_Vien
 {
     public partial class FDangNhap : Form
     {
-        private DangNhap dn;
-
         public FDangNhap()
         {
             InitializeComponent();
+
+            // Enter = Đăng nhập
             this.AcceptButton = btnLogin;
+            // Esc = Thoát
+            this.CancelButton = btnExit;
         }
-        //nút hiện mật khẩu
-        private void chkPassWord_CheckedChanged(object sender, EventArgs e)
+
+        private void FDangNhap_Load(object sender, EventArgs e)
         {
-            // Nếu được chọn, hiển thị mật khẩu; ngược lại, ẩn mật khẩu
-            txbPassWord.UseSystemPasswordChar = !chkPassWord.Checked;
+            // Load dữ liệu đăng nhập
+            DataProvider.GetAllDangNhap();
         }
 
-
-        //link quên mật khẩu
-        private void LnkQuenPass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            // Mở form đổi mật khẩu (ChangePass)
-            ChangePass changePassForm = new ChangePass();
-            changePassForm.ShowDialog();
-        }
-
-
-        //nút đăng nhập
+        // Sự kiện nút đăng nhập
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //lấy tên đăng nhập và mật khẩu
-            string tenDangNhap = txbUserName.Text;
-            string matKhau = txbPassWord.Text;
-            bool isFound = false;
-            foreach (DangNhap dn in DataProvider.dangNhaps)
-            {
-                if (dn.TenDangNhap == tenDangNhap && dn.MatKhau == matKhau)
-                {
-                    isFound = true;
-                    break;
+            string tenDangNhap = txbUserName.Text.Trim();
+            string matKhau = txbPassWord.Text.Trim();
+            // Kiểm tra tài khoản và mật khẩu
+            var dn = DataProvider.dangNhaps
+                .FirstOrDefault(x => x.TenDangNhap == tenDangNhap && x.MatKhau == matKhau);
 
-                }
-               
-            }
-            if (isFound)
+            if (dn != null)
             {
-                //hiện form chính
-              this.Hide();
+                // Đăng nhập thành công
+                MessageBox.Show("Đăng nhập thành công!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Mở form chính
                 FMain fMain = new FMain(dn);
+                this.Hide();//Ẩn form đăng nhập
                 fMain.ShowDialog();
-                this.Show();
+                this.Close();//Đóng form đăng nhập khi form chính đóng
+
+                // Reset textbox
+                txbUserName.Text = "";
+                txbPassWord.Text = "";
+                txbUserName.Focus();
             }
             else
             {
-                MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu");
+                // Sai tài khoản hoặc mật khẩu
+                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txbPassWord.Text = "";
+                txbUserName.Focus();
             }
         }
 
-        //nút thoát
+        // Sự kiện nút thoát
         private void btnExit_Click(object sender, EventArgs e)
         {
-           //hiện hộp thoại xác nhận thoát
-            if (MessageBox.Show("Bạn có muốn thoát không?", "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            if (MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Thông báo",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Application.Exit();
             }
         }
 
-        //Hàm load form
-        private void FDangNhap_Load(object sender, EventArgs e)
+        // Sự kiện checkbox hiện mật khẩu
+        private void chekShowPass_CheckedChanged(object sender, EventArgs e)
         {
-            DataProvider.GetAllDangNhap();
+            if (chekShowPass.Checked)
+                txbPassWord.UseSystemPasswordChar = false;
+            else
+                txbPassWord.UseSystemPasswordChar = true;
         }
+
+        // Sự kiện link quên mật khẩu
+        private void linkQuenPass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MessageBox.Show("Chức năng quên mật khẩu chưa được hỗ trợ!", "Thông báo",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+
     }
 }

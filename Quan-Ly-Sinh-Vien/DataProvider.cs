@@ -27,7 +27,7 @@ namespace Quan_Ly_Sinh_Vien
         public static void OpenConnection()
         {
             connection = new SqlConnection(connString); //khởi tạo data base
-            if (connection.State != ConnectionState.Open)
+            if (connection.State != ConnectionState.Open) //kiểm tra trạng thái kết nối
             {
                 connection.Open();
             }
@@ -35,7 +35,7 @@ namespace Quan_Ly_Sinh_Vien
         //Đóng kết nối
         public static void CloseConnection()
         {
-            if (connection != null && connection.State != ConnectionState.Closed)
+            if (connection != null && connection.State != ConnectionState.Closed) //kiểm tra trạng thái kết nối
             {
                 connection.Close();
             }
@@ -53,52 +53,30 @@ namespace Quan_Ly_Sinh_Vien
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    DangNhap dangNhap = new DangNhap();
-                    dangNhap.TenDangNhap = reader["TenDangNhap"].ToString();
+                    DangNhap dangNhap = new DangNhap(); //tạo đối tượng
+                    dangNhap.TenDangNhap = reader["TenDangNhap"].ToString(); //gán giá trị
                     dangNhap.MatKhau = reader["MatKhau"].ToString();
                     dangNhap.HoTen = reader["HoTen"].ToString();
                     dangNhap.Quyen = reader["Quyen"].ToString();
-                    dangNhaps.Add(dangNhap);
+                    dangNhaps.Add(dangNhap);//thêm vào list
                 }
             }
             //bắt lỗi
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi: " + ex.Message);
+                MessageBox.Show("Lỗi: " + ex.Message); //hiện thông báo lỗi
             }
             finally
             {
-                CloseConnection();
+                CloseConnection();//đóng kết nối
             }
         }
 
-        //Hàm cập nhật mật khẩu
-        public static bool UpdateMatKhau(string tenDangNhap, string matKhauMoi)
-        {
-            try
-            {
-                OpenConnection();
-                string query = "UPDATE DangNhap SET MatKhau = @MatKhauMoi WHERE TenDangNhap = @TenDangNhap";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@MatKhauMoi", matKhauMoi);
-                command.Parameters.AddWithValue("@TenDangNhap", tenDangNhap);
-                int rowsAffected = command.ExecuteNonQuery();
-                return rowsAffected > 0; // Trả về true nếu có ít nhất một hàng bị ảnh hưởng
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex.Message);
-                return false;
-            }
-            finally
-            {
-                CloseConnection();
-            }
-        }
+      
         //hàm load dữ liệu từ database
         public static DataTable LoadCSDL(string query)
         {
-            DataTable dt = new DataTable();
+            DataTable dt = new DataTable(); 
             try
             {
                 OpenConnection();

@@ -478,6 +478,7 @@ SELECT MaSo, HoTen, NgaySinh, GioiTinh, DiaChi, DienThoai, MaKhoa FROM SinhVien 
   <xs:annotation>
     <xs:appinfo>
       <msdata:Relationship name="FK__KetQua__MaMH__412EB0B6" msdata:parent="MonHoc" msdata:child="KetQua" msdata:parentkey="MaMH" msdata:childkey="MaMH" msprop:Generator_UserParentTable="MonHoc" msprop:Generator_UserChildTable="KetQua" msprop:Generator_RelationVarName="relationFK__KetQua__MaMH__412EB0B6" msprop:Generator_UserRelationName="FK__KetQua__MaMH__412EB0B6" msprop:Generator_ChildPropName="GetKetQuaRows" msprop:Generator_ParentPropName="MonHocRow" />
+      <msdata:Relationship name="FK_KetQua_SinhVien" msdata:parent="SinhVien" msdata:child="KetQua" msdata:parentkey="MaSo" msdata:childkey="MaSo" msprop:Generator_UserParentTable="SinhVien" msprop:Generator_UserChildTable="KetQua" msprop:Generator_RelationVarName="relationFK_KetQua_SinhVien" msprop:Generator_UserRelationName="FK_KetQua_SinhVien" msprop:Generator_ChildPropName="GetKetQuaRows" msprop:Generator_ParentPropName="SinhVienRow" />
       <msdata:Relationship name="FK__SinhVien__MaKhoa__3C69FB99" msdata:parent="Khoa" msdata:child="SinhVien" msdata:parentkey="MaKhoa" msdata:childkey="MaKhoa" msprop:Generator_UserParentTable="Khoa" msprop:Generator_UserChildTable="SinhVien" msprop:Generator_RelationVarName="relationFK__SinhVien__MaKhoa__3C69FB99" msprop:Generator_ChildPropName="GetSinhVienRows" msprop:Generator_ParentPropName="KhoaRow" msprop:Generator_UserRelationName="FK__SinhVien__MaKhoa__3C69FB99" />
     </xs:appinfo>
   </xs:annotation>

@@ -8,8 +8,10 @@ using System.Data.SqlClient;
 
 namespace Quan_Ly_Sinh_Vien
 {
+    //tạo đối tượng đăng nhập
     public class DangNhap
     {
+        //tạo các thuộc tính
         public string  TenDangNhap { get; set; }    
         public string MatKhau { get; set; }
 
