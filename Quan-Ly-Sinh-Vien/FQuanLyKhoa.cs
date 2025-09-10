@@ -142,11 +142,36 @@ namespace Quan_Ly_Sinh_Vien
             }
         }
 
-        private void btnAddInffoSv_Click(object sender, EventArgs e)
+
+        //nút lưu thông tin khoa
+        private void btnSaveInfoKhoa_Click(object sender, EventArgs e)
         {
 
         }
+        //nút sửa thông tin khoa
+        private void btnEditInfoKhoa_Click(object sender, EventArgs e)
+        {
 
-        
+        }
+        //nút xóa thông tin khoa
+        private void btnDeleteInfoKhoa_Click(object sender, EventArgs e)
+        {
+
+        }
+        //nút thêm mới khoa
+        private void btnAddKhoa_Click(object sender, EventArgs e)
+        {
+
+        }
+        //nút hiển thị tất cả khoa
+        private void btnShowALLKhoa_Click(object sender, EventArgs e)
+        {
+
+        }
+        //hiển thị dữ liệu khoa lên datagridview
+        private void dgvInKhoa_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

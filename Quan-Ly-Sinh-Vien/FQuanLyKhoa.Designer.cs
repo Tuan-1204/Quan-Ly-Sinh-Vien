@@ -38,7 +38,7 @@
             this.panel16 = new System.Windows.Forms.Panel();
             this.btnSaveInfoKhoa = new System.Windows.Forms.Button();
             this.panel15 = new System.Windows.Forms.Panel();
-            this.btnAddInffoSv = new System.Windows.Forms.Button();
+            this.btnAddKhoa = new System.Windows.Forms.Button();
             this.panel14 = new System.Windows.Forms.Panel();
             this.lblExtension = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -120,6 +120,7 @@
             this.btnDeleteInfoKhoa.TabIndex = 12;
             this.btnDeleteInfoKhoa.Text = "Xóa";
             this.btnDeleteInfoKhoa.UseVisualStyleBackColor = true;
+            this.btnDeleteInfoKhoa.Click += new System.EventHandler(this.btnDeleteInfoKhoa_Click);
             // 
             // panel17
             // 
@@ -137,6 +138,7 @@
             this.btnEditInfoKhoa.TabIndex = 11;
             this.btnEditInfoKhoa.Text = "Sửa";
             this.btnEditInfoKhoa.UseVisualStyleBackColor = true;
+            this.btnEditInfoKhoa.Click += new System.EventHandler(this.btnEditInfoKhoa_Click);
             // 
             // panel16
             // 
@@ -155,24 +157,25 @@
             this.btnSaveInfoKhoa.TabIndex = 10;
             this.btnSaveInfoKhoa.Text = "Lưu";
             this.btnSaveInfoKhoa.UseVisualStyleBackColor = true;
+            this.btnSaveInfoKhoa.Click += new System.EventHandler(this.btnSaveInfoKhoa_Click);
             // 
             // panel15
             // 
-            this.panel15.Controls.Add(this.btnAddInffoSv);
+            this.panel15.Controls.Add(this.btnAddKhoa);
             this.panel15.Location = new System.Drawing.Point(598, 59);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(116, 39);
             this.panel15.TabIndex = 12;
             // 
-            // btnAddInffoSv
+            // btnAddKhoa
             // 
-            this.btnAddInffoSv.Location = new System.Drawing.Point(3, 3);
-            this.btnAddInffoSv.Name = "btnAddInffoSv";
-            this.btnAddInffoSv.Size = new System.Drawing.Size(110, 32);
-            this.btnAddInffoSv.TabIndex = 9;
-            this.btnAddInffoSv.Text = "Thêm Mới";
-            this.btnAddInffoSv.UseVisualStyleBackColor = true;
-            this.btnAddInffoSv.Click += new System.EventHandler(this.btnAddInffoSv_Click);
+            this.btnAddKhoa.Location = new System.Drawing.Point(3, 3);
+            this.btnAddKhoa.Name = "btnAddKhoa";
+            this.btnAddKhoa.Size = new System.Drawing.Size(110, 32);
+            this.btnAddKhoa.TabIndex = 9;
+            this.btnAddKhoa.Text = "Thêm Mới";
+            this.btnAddKhoa.UseVisualStyleBackColor = true;
+            this.btnAddKhoa.Click += new System.EventHandler(this.btnAddKhoa_Click);
             // 
             // panel14
             // 
@@ -285,6 +288,7 @@
             this.dgvInKhoa.Name = "dgvInKhoa";
             this.dgvInKhoa.Size = new System.Drawing.Size(1169, 321);
             this.dgvInKhoa.TabIndex = 0;
+            this.dgvInKhoa.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInKhoa_CellContentClick);
             // 
             // panel7
             // 
@@ -302,6 +306,7 @@
             this.btnShowALLKhoa.TabIndex = 0;
             this.btnShowALLKhoa.Text = "Hiển thị tất cả";
             this.btnShowALLKhoa.UseVisualStyleBackColor = true;
+            this.btnShowALLKhoa.Click += new System.EventHandler(this.btnShowALLKhoa_Click);
             // 
             // FQuanLyKhoa
             // 
@@ -351,7 +356,7 @@
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Button btnSaveInfoKhoa;
         private System.Windows.Forms.Panel panel15;
-        private System.Windows.Forms.Button btnAddInffoSv;
+        private System.Windows.Forms.Button btnAddKhoa;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Label lblExtension;
         private System.Windows.Forms.Panel panel6;
