@@ -52,6 +52,8 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnShowALLKhoa = new System.Windows.Forms.Button();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.dvgInKhoa = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel18.SuspendLayout();
@@ -64,6 +66,8 @@
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgInKhoa)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -81,7 +85,7 @@
             this.lblInffoKhoa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblInffoKhoa.Location = new System.Drawing.Point(93, 8);
             this.lblInffoKhoa.Name = "lblInffoKhoa";
-            this.lblInffoKhoa.Size = new System.Drawing.Size(158, 26);
+            this.lblInffoKhoa.Size = new System.Drawing.Size(205, 33);
             this.lblInffoKhoa.TabIndex = 0;
             this.lblInffoKhoa.Text = "Quản Lý Khoa";
             // 
@@ -182,7 +186,7 @@
             this.lblExtension.AutoSize = true;
             this.lblExtension.Location = new System.Drawing.Point(3, 4);
             this.lblExtension.Name = "lblExtension";
-            this.lblExtension.Size = new System.Drawing.Size(96, 18);
+            this.lblExtension.Size = new System.Drawing.Size(120, 23);
             this.lblExtension.TabIndex = 0;
             this.lblExtension.Text = "Chức Năng: ";
             // 
@@ -200,7 +204,7 @@
             this.txbDiaChi.Enabled = false;
             this.txbDiaChi.Location = new System.Drawing.Point(96, 11);
             this.txbDiaChi.Name = "txbDiaChi";
-            this.txbDiaChi.Size = new System.Drawing.Size(151, 26);
+            this.txbDiaChi.Size = new System.Drawing.Size(151, 30);
             this.txbDiaChi.TabIndex = 3;
             // 
             // lblTenKhoa
@@ -208,7 +212,7 @@
             this.lblTenKhoa.AutoSize = true;
             this.lblTenKhoa.Location = new System.Drawing.Point(3, 14);
             this.lblTenKhoa.Name = "lblTenKhoa";
-            this.lblTenKhoa.Size = new System.Drawing.Size(87, 18);
+            this.lblTenKhoa.Size = new System.Drawing.Size(112, 23);
             this.lblTenKhoa.TabIndex = 0;
             this.lblTenKhoa.Text = "Tên Khoa : ";
             // 
@@ -226,7 +230,7 @@
             this.txbIdKhoa.Enabled = false;
             this.txbIdKhoa.Location = new System.Drawing.Point(96, 11);
             this.txbIdKhoa.Name = "txbIdKhoa";
-            this.txbIdKhoa.Size = new System.Drawing.Size(151, 26);
+            this.txbIdKhoa.Size = new System.Drawing.Size(151, 30);
             this.txbIdKhoa.TabIndex = 1;
             // 
             // lblIdKhoa
@@ -234,7 +238,7 @@
             this.lblIdKhoa.AutoSize = true;
             this.lblIdKhoa.Location = new System.Drawing.Point(3, 14);
             this.lblIdKhoa.Name = "lblIdKhoa";
-            this.lblIdKhoa.Size = new System.Drawing.Size(83, 18);
+            this.lblIdKhoa.Size = new System.Drawing.Size(107, 23);
             this.lblIdKhoa.TabIndex = 0;
             this.lblIdKhoa.Text = "Mã Khoa : ";
             // 
@@ -249,14 +253,15 @@
             // lblInfoKhoa
             // 
             this.lblInfoKhoa.AutoSize = true;
-            this.lblInfoKhoa.Location = new System.Drawing.Point(17, 4);
+            this.lblInfoKhoa.Location = new System.Drawing.Point(16, 0);
             this.lblInfoKhoa.Name = "lblInfoKhoa";
-            this.lblInfoKhoa.Size = new System.Drawing.Size(124, 18);
+            this.lblInfoKhoa.Size = new System.Drawing.Size(159, 23);
             this.lblInfoKhoa.TabIndex = 0;
             this.lblInfoKhoa.Text = "Thông tin Khoa : ";
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.panel8);
             this.panel4.Controls.Add(this.panel7);
             this.panel4.Location = new System.Drawing.Point(12, 226);
             this.panel4.Name = "panel4";
@@ -280,9 +285,28 @@
             this.btnShowALLKhoa.Text = "Hiển thị tất cả";
             this.btnShowALLKhoa.UseVisualStyleBackColor = true;
             // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.dvgInKhoa);
+            this.panel8.Location = new System.Drawing.Point(3, 61);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(1169, 321);
+            this.panel8.TabIndex = 1;
+            // 
+            // dvgInKhoa
+            // 
+            this.dvgInKhoa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvgInKhoa.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dvgInKhoa.Location = new System.Drawing.Point(0, 0);
+            this.dvgInKhoa.Name = "dvgInKhoa";
+            this.dvgInKhoa.RowHeadersWidth = 51;
+            this.dvgInKhoa.RowTemplate.Height = 24;
+            this.dvgInKhoa.Size = new System.Drawing.Size(1169, 321);
+            this.dvgInKhoa.TabIndex = 0;
+            // 
             // FQuanLyKhoa
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 623);
             this.Controls.Add(this.panel4);
@@ -310,6 +334,8 @@
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dvgInKhoa)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -340,5 +366,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button btnShowALLKhoa;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.DataGridView dvgInKhoa;
     }
 }

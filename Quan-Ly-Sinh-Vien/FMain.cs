@@ -201,6 +201,10 @@ namespace Quan_Ly_Sinh_Vien
         //nút xem danh sách sinh viên theo khoa
         private void btnCategorySinhVienKhoa_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            FQuanLyKhoa f = new FQuanLyKhoa();
+            f.ShowDialog();
+            this.Show();
 
         }
 
