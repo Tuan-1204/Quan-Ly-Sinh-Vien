@@ -60,7 +60,7 @@
             this.panel19 = new System.Windows.Forms.Panel();
             this.btnDiemTheoMon = new System.Windows.Forms.Button();
             this.panel18 = new System.Windows.Forms.Panel();
-            this.btnXemDiem = new System.Windows.Forms.Button();
+            this.btnXemKetQua = new System.Windows.Forms.Button();
             this.panel17 = new System.Windows.Forms.Panel();
             this.btnCategorySinhVienKhoa = new System.Windows.Forms.Button();
             this.panel16 = new System.Windows.Forms.Panel();
@@ -288,7 +288,6 @@
             this.txbMaMH.Name = "txbMaMH";
             this.txbMaMH.Size = new System.Drawing.Size(144, 26);
             this.txbMaMH.TabIndex = 1;
-           
             // 
             // lblMaMH
             // 
@@ -390,21 +389,21 @@
             // 
             // panel18
             // 
-            this.panel18.Controls.Add(this.btnXemDiem);
+            this.panel18.Controls.Add(this.btnXemKetQua);
             this.panel18.Location = new System.Drawing.Point(815, 12);
             this.panel18.Name = "panel18";
             this.panel18.Size = new System.Drawing.Size(116, 41);
             this.panel18.TabIndex = 14;
             // 
-            // btnXemDiem
+            // btnXemKetQua
             // 
-            this.btnXemDiem.Location = new System.Drawing.Point(3, 5);
-            this.btnXemDiem.Name = "btnXemDiem";
-            this.btnXemDiem.Size = new System.Drawing.Size(110, 32);
-            this.btnXemDiem.TabIndex = 15;
-            this.btnXemDiem.Text = "Xem Điểm";
-            this.btnXemDiem.UseVisualStyleBackColor = true;
-            this.btnXemDiem.Click += new System.EventHandler(this.btnXemDiem_Click);
+            this.btnXemKetQua.Location = new System.Drawing.Point(3, 5);
+            this.btnXemKetQua.Name = "btnXemKetQua";
+            this.btnXemKetQua.Size = new System.Drawing.Size(110, 32);
+            this.btnXemKetQua.TabIndex = 15;
+            this.btnXemKetQua.Text = "Xem Kết Qủa";
+            this.btnXemKetQua.UseVisualStyleBackColor = true;
+            this.btnXemKetQua.Click += new System.EventHandler(this.btnXemDiem_Click);
             // 
             // panel17
             // 
@@ -597,7 +596,7 @@
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Button btnDiemTheoMon;
         private System.Windows.Forms.Panel panel18;
-        private System.Windows.Forms.Button btnXemDiem;
+        private System.Windows.Forms.Button btnXemKetQua;
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Button btnCategorySinhVienKhoa;
         private System.Windows.Forms.Panel panel16;

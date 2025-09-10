@@ -72,6 +72,12 @@
     <Compile Include="FDangNhap.Designer.cs">
       <DependentUpon>FDangNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="FKetQua.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FKetQua.Designer.cs">
+      <DependentUpon>FKetQua.cs</DependentUpon>
+    </Compile>
     <Compile Include="FMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="FDangNhap.resx">
       <DependentUpon>FDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FKetQua.resx">
+      <DependentUpon>FKetQua.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FMain.resx">
       <DependentUpon>FMain.cs</DependentUpon>
