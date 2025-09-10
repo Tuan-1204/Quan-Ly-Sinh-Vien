@@ -17,6 +17,40 @@ namespace Quan_Ly_Sinh_Vien
             InitializeComponent();
         }
 
-        
+        //nút thêm mới sinh viên
+        private void btnAddSinhvien_Click(object sender, EventArgs e)
+        {
+
+        }
+        //nút lưu thông tin sinh viên
+        private void btnSaveSinhvien_Click(object sender, EventArgs e)
+        {
+
+        }
+        //nút sửa thông tin sinh viên
+        private void btnEditSinhVien_Click(object sender, EventArgs e)
+        {
+
+        }
+        //nút xóa thông tin sinh viên
+        private void btnDeleteSinhVien_Click(object sender, EventArgs e)
+        {
+
+        }
+        //nút tìm kiếm  lớp của sinh viên
+        private void cbSelectionClass_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnShowAllInfoSv_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dvgInfoSinhVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
