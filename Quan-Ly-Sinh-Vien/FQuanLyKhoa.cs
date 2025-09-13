@@ -146,32 +146,74 @@ namespace Quan_Ly_Sinh_Vien
         //nút lưu thông tin khoa
         private void btnSaveInfoKhoa_Click(object sender, EventArgs e)
         {
-
+            string maKhoa = txbIdKhoa.Text;
+            string tenKhoa = txbNameKhoa.Text;
+            string query = $"insert into Khoa(MaKhoa, TenKhoa) values ('{maKhoa}',N'{tenKhoa}')";
+            int kq = DataProvider.ThaoTacCSDL(query);
+            if (kq > 0)
+            {
+                MessageBox.Show("Thêm mới khoa thành công");
+                LoadTableKhoa();
+                UnEnableControls(new List<Control> { txbIdKhoa, txbNameKhoa, btnDeleteInfoKhoa });
+                ResetText(new List<Control> { txbIdKhoa, txbNameKhoa });
+            }
+            else
+            {
+                MessageBox.Show("Thêm mới khoa thất bại. Vui lòng xem lại !");
+            }
         }
         //nút sửa thông tin khoa
         private void btnEditInfoKhoa_Click(object sender, EventArgs e)
         {
-
-        }
+            string maKhoa = txbIdKhoa.Text;
+            string tenKhoa = txbNameKhoa.Text;
+            string query = $"UPDATE Khoa SET TenKhoa = N'{tenKhoa}' WHERE MaKhoa = '{maKhoa}'";
+            int kq = DataProvider.ThaoTacCSDL(query);
+            if (kq > 0)
+            {
+                MessageBox.Show("Cập nhật khoa thành công");
+                LoadTableKhoa();
+                UnEnableControls(new List<Control> { txbIdKhoa, txbNameKhoa, btnEditInfoKhoa, btnDeleteInfoKhoa });
+                ResetText(new List<Control> { txbIdKhoa, txbNameKhoa });
+            }
+            else
+            {
+                MessageBox.Show("Cập nhật khoa thất bại. Vui lòng xem lại !");
+            }
+          }
         //nút xóa thông tin khoa
         private void btnDeleteInfoKhoa_Click(object sender, EventArgs e)
         {
-
-        }
+            string maKhoa = txbIdKhoa.Text;
+            string query = $"DELETE FROM Khoa WHERE MaKhoa = '{maKhoa}'";
+            int kq = DataProvider.ThaoTacCSDL(query);
+            if (kq > 0) { }
+            }
+            
+        
         //nút thêm mới khoa
         private void btnAddKhoa_Click(object sender, EventArgs e)
         {
-
+            string maKhoa = txbIdKhoa.Text;
+            string tenKhoa = txbNameKhoa.Text;
+            string query = $"insert into Khoa(MaKhoa, TenKhoa) values ('{maKhoa}',N'{tenKhoa}')";
+            int kq = DataProvider.ThaoTacCSDL(query);
+            if (kq > 0) { }
+                
         }
         //nút hiển thị tất cả khoa
         private void btnShowALLKhoa_Click(object sender, EventArgs e)
         {
-
+            string query = "select * from Khoa";
+            DataTable dt = DataProvider.LoadCSDL(query);
+            dvgInKhoa.DataSource = dt;
+          
         }
         //hiển thị dữ liệu khoa lên datagridview
         private void dgvInKhoa_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            string maKhoa = txbIdKhoa.Text;
+            string tenKhoa = txbNameKhoa.Text;
         }
 
         
