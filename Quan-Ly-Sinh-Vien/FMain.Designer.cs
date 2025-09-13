@@ -73,6 +73,8 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.panel11 = new System.Windows.Forms.Panel();
             this.btnSave = new System.Windows.Forms.Button();
+            this.panel22 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -96,6 +98,7 @@
             this.panel14.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel11.SuspendLayout();
+            this.panel22.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -356,6 +359,7 @@
             // 
             // panel12
             // 
+            this.panel12.Controls.Add(this.panel22);
             this.panel12.Controls.Add(this.panel19);
             this.panel12.Controls.Add(this.panel18);
             this.panel12.Controls.Add(this.panel17);
@@ -379,7 +383,7 @@
             // 
             // btnBaoCaoMh
             // 
-            this.btnBaoCaoMh.Location = new System.Drawing.Point(3, 7);
+            this.btnBaoCaoMh.Location = new System.Drawing.Point(3, 3);
             this.btnBaoCaoMh.Name = "btnBaoCaoMh";
             this.btnBaoCaoMh.Size = new System.Drawing.Size(157, 32);
             this.btnBaoCaoMh.TabIndex = 16;
@@ -397,7 +401,7 @@
             // 
             // btnXemKetQua
             // 
-            this.btnXemKetQua.Location = new System.Drawing.Point(3, 5);
+            this.btnXemKetQua.Location = new System.Drawing.Point(3, 3);
             this.btnXemKetQua.Name = "btnXemKetQua";
             this.btnXemKetQua.Size = new System.Drawing.Size(146, 32);
             this.btnXemKetQua.TabIndex = 15;
@@ -415,7 +419,7 @@
             // 
             // btnCategorySinhVienKhoa
             // 
-            this.btnCategorySinhVienKhoa.Location = new System.Drawing.Point(3, 5);
+            this.btnCategorySinhVienKhoa.Location = new System.Drawing.Point(3, 3);
             this.btnCategorySinhVienKhoa.Name = "btnCategorySinhVienKhoa";
             this.btnCategorySinhVienKhoa.Size = new System.Drawing.Size(226, 33);
             this.btnCategorySinhVienKhoa.TabIndex = 14;
@@ -433,7 +437,7 @@
             // 
             // btnCategorySinhVien
             // 
-            this.btnCategorySinhVien.Location = new System.Drawing.Point(6, 4);
+            this.btnCategorySinhVien.Location = new System.Drawing.Point(6, 3);
             this.btnCategorySinhVien.Name = "btnCategorySinhVien";
             this.btnCategorySinhVien.Size = new System.Drawing.Size(123, 32);
             this.btnCategorySinhVien.TabIndex = 13;
@@ -444,7 +448,7 @@
             // panel15
             // 
             this.panel15.Controls.Add(this.btnDelete);
-            this.panel15.Location = new System.Drawing.Point(289, 10);
+            this.panel15.Location = new System.Drawing.Point(262, 9);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(64, 39);
             this.panel15.TabIndex = 11;
@@ -462,7 +466,7 @@
             // panel14
             // 
             this.panel14.Controls.Add(this.btnEdit);
-            this.panel14.Location = new System.Drawing.Point(218, 10);
+            this.panel14.Location = new System.Drawing.Point(195, 9);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(65, 39);
             this.panel14.TabIndex = 10;
@@ -480,7 +484,7 @@
             // panel13
             // 
             this.panel13.Controls.Add(this.btnAdd);
-            this.panel13.Location = new System.Drawing.Point(18, 10);
+            this.panel13.Location = new System.Drawing.Point(3, 10);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(116, 39);
             this.panel13.TabIndex = 9;
@@ -498,7 +502,7 @@
             // panel11
             // 
             this.panel11.Controls.Add(this.btnSave);
-            this.panel11.Location = new System.Drawing.Point(140, 10);
+            this.panel11.Location = new System.Drawing.Point(122, 9);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(72, 39);
             this.panel11.TabIndex = 8;
@@ -513,6 +517,24 @@
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // panel22
+            // 
+            this.panel22.Controls.Add(this.button1);
+            this.panel22.Location = new System.Drawing.Point(332, 10);
+            this.panel22.Name = "panel22";
+            this.panel22.Size = new System.Drawing.Size(116, 39);
+            this.panel22.TabIndex = 16;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(107, 32);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "DS Lớp";
+            this.button1.UseVisualStyleBackColor = true;
+      
             // 
             // FMain
             // 
@@ -556,6 +578,7 @@
             this.panel14.ResumeLayout(false);
             this.panel13.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
+            this.panel22.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -607,5 +630,7 @@
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.Button btnShowAll;
         private System.Windows.Forms.DataGridView dvgShow;
+        private System.Windows.Forms.Panel panel22;
+        private System.Windows.Forms.Button button1;
     }
 }

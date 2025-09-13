@@ -57,55 +57,53 @@ namespace Quan_Ly_Sinh_Vien
         {
             string query = "SELECT MaLop FROM Lop";
             DataTable dt = DataProvider.LoadCSDL(query);
-            cbSearchMaMH.DataSource = dt;
-            cbSearchMaMH.DisplayMember = "MaLop";
-            cbSearchMaMH.ValueMember = "MaLop";
-            cbSearchMaMH.SelectedIndex = -1; // Không chọn mục nào ban đầu
+            cbSearchLop.DataSource = dt;
+            cbSearchLop.DisplayMember = "MaLop";
+            cbSearchLop.ValueMember = "MaLop";
+            cbSearchLop.SelectedIndex = -1; // Không chọn mục nào ban đầu
         }
 
 
         // cau lệnh query -> lấy dữ liệu từ database ->  table ->hiển thị lên datagridview
 
-        private void cbSearchMaMH_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string malop = cbSearchMaMH.SelectedItem.ToString();
-            string query = $"SELECT sv.MaSV, sv.HoTen, sv.GioiTinh, sv.NgaySinh, k.TenKhoa, l.TenLop, mh.TenMH, dk.DiemGK, dk.DiemCK, dk.DiemKhac, dk.DiemTong " +
-                           $"FROM SinhVien sv " +
-                           $"JOIN Lop l ON sv.MaLop = l.MaLop " +
-                           $"JOIN Khoa k ON l.MaKhoa = k.MaKhoa " +
-                           $"JOIN DangKyMonHoc dk ON sv.MaSV = dk.MaSV " +
-                           $"JOIN MonHoc mh ON dk.MaMH = mh.MaMH " +
-                           $"WHERE l.MaLop = '{malop}'";
-            DataTable dt = DataProvider.LoadCSDL(query);
-            dgvDiemSinhVien.DataSource = dt;
-
-        }
+       
        
         //hiển thị kết quả điểm sinh viên
         private void dgvDiemSinhVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string masv = dgvDiemSinhVien.CurrentRow.Cells["MaSV"].Value.ToString();
-            string query = $"SELECT sv.MaSV, sv.HoTen, sv.GioiTinh, sv.NgaySinh, k.TenKhoa, l.TenLop, mh.TenMH, dk.DiemGK, dk.DiemCK, dk.DiemKhac, dk.DiemTong " +
+
+            string query = $"SELECT sv.MaSV, sv.HoTen, sv.GioiTinh, sv.NgaySinh, " +
+                           $"       k.TenKhoa, l.TenLop, mh.TenMH, " +
+                           $"       kq.DiemLan1, kq.DiemThiLai, " +
+                           $"       ISNULL(kq.DiemLan1, 0) + ISNULL(kq.DiemThiLai, 0) AS DiemTong " +
                            $"FROM SinhVien sv " +
                            $"JOIN Lop l ON sv.MaLop = l.MaLop " +
                            $"JOIN Khoa k ON l.MaKhoa = k.MaKhoa " +
-                           $"JOIN DangKyMonHoc dk ON sv.MaSV = dk.MaSV " +
-                           $"JOIN MonHoc mh ON dk.MaMH = mh.MaMH " +
+                           $"JOIN KetQua kq ON sv.MaSV = kq.MaSV " +
+                           $"JOIN MonHoc mh ON kq.MaMH = mh.MaMH " +
                            $"WHERE sv.MaSV = '{masv}'";
+
             DataTable dt = DataProvider.LoadCSDL(query);
+            dgvDiemSinhVien.DataSource = dt;
         }
         //hiển thị kết quả môn học
         private void dgvDanhmucketqua_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string mamh = dgvDanhmucketqua.CurrentRow.Cells["MaMH"].Value.ToString();
-            string query = $"SELECT sv.MaSV, sv.HoTen, sv.GioiTinh, sv.NgaySinh, k.TenKhoa, l.TenLop, mh.TenMH, dk.DiemGK, dk.DiemCK, dk.DiemKhac, dk.DiemTong " +
+
+            string query = $"SELECT sv.MaSV, sv.HoTen, sv.GioiTinh, sv.NgaySinh, " +
+                           $"       k.TenKhoa, l.TenLop, mh.TenMH, " +
+                           $"       kq.DiemLan1, kq.DiemThiLai " +
                            $"FROM SinhVien sv " +
                            $"JOIN Lop l ON sv.MaLop = l.MaLop " +
                            $"JOIN Khoa k ON l.MaKhoa = k.MaKhoa " +
-                           $"JOIN DangKyMonHoc dk ON sv.MaSV = dk.MaSV " +
-                           $"JOIN MonHoc mh ON dk.MaMH = mh.MaMH " +
+                           $"JOIN KetQua kq ON sv.MaSV = kq.MaSV " +
+                           $"JOIN MonHoc mh ON kq.MaMH = mh.MaMH " +
                            $"WHERE mh.MaMH = '{mamh}'";
+
             DataTable dt = DataProvider.LoadCSDL(query);
+            dgvDanhmucketqua.DataSource = dt;
 
         }
 
@@ -113,12 +111,12 @@ namespace Quan_Ly_Sinh_Vien
         private void btnAddDiem_Click(object sender, EventArgs e)
         {
             string masv = txbIdDiemSINHVIEN.Text;
-            string mamh = txbNamekqMH.Text;
-            float diemgk = float.Parse(txbDiemlan1.Text);
-            float diemck = float.Parse(txbDiemThiLai.Text);
-            float diemkhac = float.Parse(btnAddDiem.Text);
-            
-            string query = $"insert into DangKyMonHoc(MaSV, MaMH, DiemGK, DiemCK, DiemKhac, DiemTong) values ('{masv}','{mamh}','{diemgk}','{diemck}','{diemkhac}')";
+            string monhoc = txbNamekqMH.Text;
+            float diemlan1 = float.Parse(txbDiemlan1.Text);
+            float diemthilai = float.Parse(txbDiemThiLai.Text);
+
+
+            string query = $"INSERT INTO KetQua (MaSV, MaMH, DiemLan1, DiemThiLai) values ('{masv}', '{monhoc}', '{diemlan1}', '{diemthilai})";
             int kq = DataProvider.ThaoTacCSDL(query);
             if (kq > 0)
             
@@ -137,19 +135,22 @@ namespace Quan_Ly_Sinh_Vien
         //lưu điểm
         private void btnSaveDiem_Click(object sender, EventArgs e)
         {
-            string masv = txbIdDiemSINHVIEN.Text;
-            string mamh = txbNamekqMH.Text;
-            float diemgk = float.Parse(txbDiemlan1.Text);
-            float diemck = float.Parse(txbDiemThiLai.Text);
-            float diemkhac = float.Parse(btnAddDiem.Text);
-            
-            string query = $"UPDATE DangKyMonHoc SET DiemGK = '{diemgk}', DiemCK = '{diemck}', DiemKhac = '{diemkhac}',' WHERE MaSV = '{masv}' AND MaMH = '{mamh}'";
+            string masv = txbIdDiemSINHVIEN.Text;   // Mã sinh viên
+            string mamh = txbNamekqMH.Text;         // Mã môn học
+            float diemlan1 = float.Parse(txbDiemlan1.Text);   // Điểm lần 1
+            float diemthilai = float.Parse(txbDiemThiLai.Text); // Điểm thi lại
+
+            // Lệnh UPDATE vào bảng KetQua
+            string query = $"UPDATE KetQua " +
+                           $"SET DiemLan1 = {diemlan1}, DiemThiLai = {diemthilai} " +
+                           $"WHERE MaSV = '{masv}' AND MaMH = '{mamh}'";
+
             int kq = DataProvider.ThaoTacCSDL(query);
             if (kq > 0)
             {
                 MessageBox.Show("Lưu điểm thành công");
                 LoadTableKetQua();
-                ResetText(new List<Control> { txbIdDiemSINHVIEN, txbNamekqMH, txbDiemlan1, txbDiemThiLai, btnAddDiem });
+                ResetText(new List<Control> { txbIdDiemSINHVIEN, txbNamekqMH, txbDiemlan1, txbDiemThiLai });
             }
             else
             {
@@ -164,8 +165,10 @@ namespace Quan_Ly_Sinh_Vien
             float diemgk = float.Parse(txbDiemlan1.Text);
             float diemck = float.Parse(txbDiemThiLai.Text);
             float diemkhac = float.Parse(btnAddDiem.Text);
-     
-            string query =$"UPDATE Dang KyMonHoc SET DiemGK = '{diemgk}', DiemCK = '{diemck}', DiemKhac = '{diemkhac}',' WHERE MaSV = '{masv}' AND MaMH = '{mamh}'";
+
+            string query = "UPDATE KetQua " +
+                   "SET DiemLan1 = @DiemLan1, DiemThiLai = @DiemThiLai " +
+                   "WHERE MaSV = @MaSV AND MaMH = @MaMH";
             int kq = DataProvider.ThaoTacCSDL(query);
             if (kq > 0)
             {
@@ -228,7 +231,25 @@ namespace Quan_Ly_Sinh_Vien
             }
 
         }
+        //tìm kiếm lớp
+        private void cbSearchLop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string malop = cbSearchLop.SelectedItem.ToString();
 
-        
+            string query = $"SELECT sv.MaSV, sv.HoTen, sv.GioiTinh, sv.NgaySinh, " +
+                           $"       k.TenKhoa, l.TenLop, mh.TenMH, " +
+                           $"       kq.DiemLan1, kq.DiemThiLai, " +
+                           $"       ISNULL(kq.DiemLan1, 0) + ISNULL(kq.DiemThiLai, 0) AS DiemTong " +
+                           $"FROM SinhVien sv " +
+                           $"JOIN Lop l ON sv.MaLop = l.MaLop " +
+                           $"JOIN Khoa k ON l.MaKhoa = k.MaKhoa " +
+                           $"JOIN KetQua kq ON sv.MaSV = kq.MaSV " +
+                           $"JOIN MonHoc mh ON kq.MaMH = mh.MaMH " +
+                           $"WHERE l.MaLop = '{malop}'";
+
+            DataTable dt = DataProvider.LoadCSDL(query);
+            dgvDiemSinhVien.DataSource = dt;
+
+        }
     }
 }

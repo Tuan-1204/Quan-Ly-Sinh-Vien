@@ -31,7 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblInffoKetQua = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.cbSearchMaMH = new System.Windows.Forms.ComboBox();
+            this.cbSearchLop = new System.Windows.Forms.ComboBox();
             this.lblSearchClass = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -119,21 +119,21 @@
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.cbSearchMaMH);
+            this.panel5.Controls.Add(this.cbSearchLop);
             this.panel5.Controls.Add(this.lblSearchClass);
             this.panel5.Location = new System.Drawing.Point(12, 12);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(365, 45);
             this.panel5.TabIndex = 8;
             // 
-            // cbSearchMaMH
+            // cbSearchLop
             // 
-            this.cbSearchMaMH.FormattingEnabled = true;
-            this.cbSearchMaMH.Location = new System.Drawing.Point(104, 8);
-            this.cbSearchMaMH.Name = "cbSearchMaMH";
-            this.cbSearchMaMH.Size = new System.Drawing.Size(250, 26);
-            this.cbSearchMaMH.TabIndex = 4;
-            this.cbSearchMaMH.SelectedIndexChanged += new System.EventHandler(this.cbSearchMaMH_SelectedIndexChanged);
+            this.cbSearchLop.FormattingEnabled = true;
+            this.cbSearchLop.Location = new System.Drawing.Point(104, 8);
+            this.cbSearchLop.Name = "cbSearchLop";
+            this.cbSearchLop.Size = new System.Drawing.Size(250, 26);
+            this.cbSearchLop.TabIndex = 4;
+            this.cbSearchLop.SelectedIndexChanged += new System.EventHandler(this.cbSearchLop_SelectedIndexChanged);
             // 
             // lblSearchClass
             // 
@@ -558,7 +558,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblInffoKetQua;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.ComboBox cbSearchMaMH;
+        private System.Windows.Forms.ComboBox cbSearchLop;
         private System.Windows.Forms.Label lblSearchClass;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
