@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Quan_Ly_Sinh_Vien.DTO__DATA_TRANSFER_OBJECT_;
 
 namespace Quan_Ly_Sinh_Vien.DAO__DATA_ACCESS_OBJECT_
 {
