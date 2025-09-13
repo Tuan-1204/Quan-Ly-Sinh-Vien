@@ -1,119 +1,119 @@
-﻿using System;
+﻿using Quan_Ly_Sinh_Vien.DTO__DATA_TRANSFER_OBJECT_;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Quan_Ly_Sinh_Vien
 {
     public class DataProvider
     {
+        // Chuỗi kết nối
+        private const string connString = @"Data Source=.\SQLEXPRESS;Initial Catalog=Quan-Ly-Sinh-Vien;Integrated Security=True;";
 
-        //Khởi tạo kết nối
-        const string connString = "Data Source=.\\Sqlexpress;" +
-            "Initial Catalog=Quan-Ly-Sinh-Vien;" +
-            "Integrated Security=True;";
+        // Tạo list đăng nhập
+        public static List<Dangnhap> dangNhaps = new List<Dangnhap>();
 
-
-        //Tạo đối tượng kết nối
-        private static SqlConnection connection;
-
-        //Tạo list đăng nhập
-        public static List<DangNhap> dangNhaps = new List<DangNhap>();
-        //Mở kết nối
-        public static void OpenConnection()
-        {
-            connection = new SqlConnection(connString); //khởi tạo data base
-            if (connection.State != ConnectionState.Open) //kiểm tra trạng thái kết nối
-            {
-                connection.Open();
-            }
-        }
-        //Đóng kết nối
-        public static void CloseConnection()
-        {
-            if (connection != null && connection.State != ConnectionState.Closed) //kiểm tra trạng thái kết nối
-            {
-                connection.Close();
-            }
-        }
-
-        //Hàm lấy danh sách đăng nhập và truyền vào list 
+        // Hàm lấy danh sách đăng nhập và truyền vào list 
         public static void GetAllDangNhap()
         {
             try
             {
-                OpenConnection();
-                string query = "SELECT * FROM DangNhap";
-                SqlCommand command = new SqlCommand(query, connection);
-                //đọc dữ liệu
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                using (SqlConnection connection = new SqlConnection(connString))
                 {
-                    DangNhap dangNhap = new DangNhap(); //tạo đối tượng
-                    dangNhap.TenDangNhap = reader["TenDangNhap"].ToString(); //gán giá trị
-                    dangNhap.MatKhau = reader["MatKhau"].ToString();
-                    dangNhap.HoTen = reader["HoTen"].ToString();
-                    dangNhap.Quyen = reader["Quyen"].ToString();
-                    dangNhaps.Add(dangNhap);//thêm vào list
+                    connection.Open();
+                    string query = "SELECT * FROM DangNhap";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Dangnhap dangNhap = new Dangnhap
+                        {
+                            TenDangNhap = reader["TenDangNhap"].ToString(),
+                            MatKhau = reader["MatKhau"].ToString(),
+                            HoTen = reader["HoTen"].ToString(),
+                            Quyen = reader["Quyen"].ToString()
+                        };
+                        dangNhaps.Add(dangNhap);
+                    }
                 }
             }
-            //bắt lỗi
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex.Message); //hiện thông báo lỗi
-            }
-            finally
-            {
-                CloseConnection();//đóng kết nối
-            }
-        }
-
-      
-        //hàm load dữ liệu từ database
-        public static DataTable LoadCSDL(string query)
-        {
-            DataTable dt = new DataTable(); 
-            try
-            {
-                OpenConnection();
-                SqlCommand command = new SqlCommand(query, connection); // tạo lệnh
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-                adapter.Fill(dt);
-            }
-            //bắt lỗi
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi: " + ex.Message);
             }
-            finally
+        }
+
+        // Hàm load dữ liệu từ database (SELECT)
+        public static DataTable LoadCSDL(string query, object[] parameters = null)
+        {
+            DataTable dt = new DataTable();
+            try
             {
-                CloseConnection();
+                using (SqlConnection connection = new SqlConnection(connString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        if (parameters != null)
+                        {
+                            string[] listPara = query.Split(' ');
+                            int i = 0;
+                            foreach (string item in listPara)
+                            {
+                                if (item.Contains("@"))
+                                {
+                                    command.Parameters.AddWithValue(item, parameters[i]);
+                                    i++;
+                                }
+                            }
+                        }
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        adapter.Fill(dt);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
             }
             return dt;
         }
 
-        //hàm thêm dữ liệu vào database : bao gồm các thao tác: thêm, sửa, xóa, update
-        public static int ThaoTacCSDL(string query)
+        // Hàm thêm/sửa/xóa (INSERT, UPDATE, DELETE)
+        public static int ThaoTacCSDL(string query, object[] parameters = null)
         {
             int kq = 0;
             try
             {
-                OpenConnection();
-                SqlCommand cmd = new SqlCommand(query, connection); // tạo lệnh
-                kq = cmd.ExecuteNonQuery(); //thực thi lệnh
+                using (SqlConnection connection = new SqlConnection(connString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        if (parameters != null)
+                        {
+                            string[] listPara = query.Split(' ');
+                            int i = 0;
+                            foreach (string item in listPara)
+                            {
+                                if (item.Contains("@"))
+                                {
+                                    command.Parameters.AddWithValue(item, parameters[i]);
+                                    i++;
+                                }
+                            }
+                        }
+
+                        kq = command.ExecuteNonQuery();
+                    }
+                }
             }
-            //bắt lỗi
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi: " + ex.Message);
-            }
-            finally
-            {
-                CloseConnection();
             }
             return kq;
         }

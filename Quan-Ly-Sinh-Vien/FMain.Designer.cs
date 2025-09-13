@@ -57,6 +57,8 @@
             this.panel21 = new System.Windows.Forms.Panel();
             this.btnShowAll = new System.Windows.Forms.Button();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.panel22 = new System.Windows.Forms.Panel();
+            this.btnDsLop = new System.Windows.Forms.Button();
             this.panel19 = new System.Windows.Forms.Panel();
             this.btnBaoCaoMh = new System.Windows.Forms.Button();
             this.panel18 = new System.Windows.Forms.Panel();
@@ -73,8 +75,6 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.panel11 = new System.Windows.Forms.Panel();
             this.btnSave = new System.Windows.Forms.Button();
-            this.panel22 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -90,6 +90,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dvgShow)).BeginInit();
             this.panel21.SuspendLayout();
             this.panel12.SuspendLayout();
+            this.panel22.SuspendLayout();
             this.panel19.SuspendLayout();
             this.panel18.SuspendLayout();
             this.panel17.SuspendLayout();
@@ -98,7 +99,6 @@
             this.panel14.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel11.SuspendLayout();
-            this.panel22.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -373,6 +373,23 @@
             this.panel12.Size = new System.Drawing.Size(1157, 64);
             this.panel12.TabIndex = 2;
             // 
+            // panel22
+            // 
+            this.panel22.Controls.Add(this.btnDsLop);
+            this.panel22.Location = new System.Drawing.Point(332, 10);
+            this.panel22.Name = "panel22";
+            this.panel22.Size = new System.Drawing.Size(116, 39);
+            this.panel22.TabIndex = 16;
+            // 
+            // btnDsLop
+            // 
+            this.btnDsLop.Location = new System.Drawing.Point(3, 3);
+            this.btnDsLop.Name = "btnDsLop";
+            this.btnDsLop.Size = new System.Drawing.Size(107, 32);
+            this.btnDsLop.TabIndex = 13;
+            this.btnDsLop.Text = "DS Lớp";
+            this.btnDsLop.UseVisualStyleBackColor = true;
+            // 
             // panel19
             // 
             this.panel19.Controls.Add(this.btnBaoCaoMh);
@@ -518,24 +535,6 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // panel22
-            // 
-            this.panel22.Controls.Add(this.button1);
-            this.panel22.Location = new System.Drawing.Point(332, 10);
-            this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(116, 39);
-            this.panel22.TabIndex = 16;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 32);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "DS Lớp";
-            this.button1.UseVisualStyleBackColor = true;
-      
-            // 
             // FMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -570,6 +569,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dvgShow)).EndInit();
             this.panel21.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
+            this.panel22.ResumeLayout(false);
             this.panel19.ResumeLayout(false);
             this.panel18.ResumeLayout(false);
             this.panel17.ResumeLayout(false);
@@ -578,7 +578,6 @@
             this.panel14.ResumeLayout(false);
             this.panel13.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
-            this.panel22.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -631,6 +630,6 @@
         private System.Windows.Forms.Button btnShowAll;
         private System.Windows.Forms.DataGridView dvgShow;
         private System.Windows.Forms.Panel panel22;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDsLop;
     }
 }

@@ -15,7 +15,7 @@ namespace Quan_Ly_Sinh_Vien
     public partial class FMain : Form
     {
         DataTable dt = new DataTable();
-        public FMain(DangNhap dn)
+        public FMain(Dangnhap dn)
         {
             InitializeComponent();
         }
@@ -223,7 +223,7 @@ namespace Quan_Ly_Sinh_Vien
 
         }
 
-        
+       
     }
 }
 
