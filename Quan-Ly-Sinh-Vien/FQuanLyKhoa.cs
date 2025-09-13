@@ -187,8 +187,17 @@ namespace Quan_Ly_Sinh_Vien
             string maKhoa = txbIdKhoa.Text;
             string query = $"DELETE FROM Khoa WHERE MaKhoa = '{maKhoa}'";
             int kq = DataProvider.ThaoTacCSDL(query);
-            if (kq > 0) { }
+            if (kq > 0) { 
+                MessageBox.Show("Xóa khoa thành công");
+                LoadTableKhoa();
+                UnEnableControls(new List<Control> { txbIdKhoa, txbNameKhoa, btnEditInfoKhoa, btnDeleteInfoKhoa });
+                ResetText(new List<Control> { txbIdKhoa, txbNameKhoa });
             }
+            else
+            {
+                MessageBox.Show("Xóa khoa thất bại. Vui lòng xem lại !");
+            }
+      }
             
         
         //nút thêm mới khoa
@@ -198,7 +207,18 @@ namespace Quan_Ly_Sinh_Vien
             string tenKhoa = txbNameKhoa.Text;
             string query = $"insert into Khoa(MaKhoa, TenKhoa) values ('{maKhoa}',N'{tenKhoa}')";
             int kq = DataProvider.ThaoTacCSDL(query);
-            if (kq > 0) { }
+            if (kq > 0) {
+            MessageBox.Show("thêm khoa thành công");
+                LoadTableKhoa();
+                UnEnableControls(new List<Control> { txbIdKhoa, txbNameKhoa, btnDeleteInfoKhoa });
+                ResetText(new List<Control> { txbIdKhoa, txbNameKhoa });
+                    
+            }
+            else
+            {
+                MessageBox.Show("thêm khoa thất bại. Vui lòng xem lại !");
+
+            }
                 
         }
         //nút hiển thị tất cả khoa
