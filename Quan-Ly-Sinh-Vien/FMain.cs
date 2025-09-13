@@ -211,7 +211,10 @@ namespace Quan_Ly_Sinh_Vien
         //xem điểm sinh viên
         private void btnXemDiem_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            FKetQua fKetQua = new FKetQua();
+            fKetQua.ShowDialog();
+            this.Show();
         }
         //xem điểm theo môn
         private void btnDiemTheoMon_Click(object sender, EventArgs e)
