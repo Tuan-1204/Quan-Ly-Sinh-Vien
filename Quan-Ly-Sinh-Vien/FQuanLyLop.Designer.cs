@@ -29,20 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.lblInffoKetQua = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.dvgInfoLop = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.lblInfoKhoa = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.txbMalop = new System.Windows.Forms.TextBox();
-            this.lblIdKhoa = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.txbTenLop = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cbKhoa = new System.Windows.Forms.ComboBox();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.btnShowAllLop = new System.Windows.Forms.Button();
             this.panel19 = new System.Windows.Forms.Panel();
             this.btnBaoCaoKhoa = new System.Windows.Forms.Button();
             this.panel18 = new System.Windows.Forms.Panel();
@@ -55,26 +46,35 @@
             this.btnAddLop = new System.Windows.Forms.Button();
             this.panel14 = new System.Windows.Forms.Panel();
             this.lblExtension = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.btnShowAllLop = new System.Windows.Forms.Button();
-            this.dvgInfoLop = new System.Windows.Forms.DataGridView();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.cbKhoa = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.txbTenLop = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.txbMalop = new System.Windows.Forms.TextBox();
+            this.lblIdKhoa = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lblInfoKhoa = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblInffoKetQua = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgInfoLop)).BeginInit();
             this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.panel19.SuspendLayout();
             this.panel18.SuspendLayout();
             this.panel17.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel14.SuspendLayout();
-            this.panel8.SuspendLayout();
-            this.panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgInfoLop)).BeginInit();
+            this.panel7.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -88,24 +88,23 @@
             this.panel1.Size = new System.Drawing.Size(1200, 623);
             this.panel1.TabIndex = 0;
             // 
-            // panel2
+            // panel8
             // 
-            this.panel2.Controls.Add(this.lblInffoKetQua);
-            this.panel2.Location = new System.Drawing.Point(382, 12);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(385, 45);
-            this.panel2.TabIndex = 8;
+            this.panel8.Controls.Add(this.dvgInfoLop);
+            this.panel8.Location = new System.Drawing.Point(13, 288);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(1175, 323);
+            this.panel8.TabIndex = 10;
             // 
-            // lblInffoKetQua
+            // dvgInfoLop
             // 
-            this.lblInffoKetQua.AutoSize = true;
-            this.lblInffoKetQua.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInffoKetQua.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.lblInffoKetQua.Location = new System.Drawing.Point(92, 9);
-            this.lblInffoKetQua.Name = "lblInffoKetQua";
-            this.lblInffoKetQua.Size = new System.Drawing.Size(193, 26);
-            this.lblInffoKetQua.TabIndex = 0;
-            this.lblInffoKetQua.Text = "Quản Lý Lớp Học";
+            this.dvgInfoLop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvgInfoLop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dvgInfoLop.Location = new System.Drawing.Point(0, 0);
+            this.dvgInfoLop.Name = "dvgInfoLop";
+            this.dvgInfoLop.Size = new System.Drawing.Size(1175, 323);
+            this.dvgInfoLop.TabIndex = 0;
+            this.dvgInfoLop.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgInfoLop_CellContentClick);
             // 
             // panel3
             // 
@@ -125,100 +124,23 @@
             this.panel3.Size = new System.Drawing.Size(1175, 204);
             this.panel3.TabIndex = 9;
             // 
-            // panel4
+            // panel9
             // 
-            this.panel4.Controls.Add(this.lblInfoKhoa);
-            this.panel4.Location = new System.Drawing.Point(3, 3);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(200, 26);
-            this.panel4.TabIndex = 1;
+            this.panel9.Controls.Add(this.btnShowAllLop);
+            this.panel9.Location = new System.Drawing.Point(662, 125);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(200, 38);
+            this.panel9.TabIndex = 23;
             // 
-            // lblInfoKhoa
+            // btnShowAllLop
             // 
-            this.lblInfoKhoa.AutoSize = true;
-            this.lblInfoKhoa.Location = new System.Drawing.Point(17, 4);
-            this.lblInfoKhoa.Name = "lblInfoKhoa";
-            this.lblInfoKhoa.Size = new System.Drawing.Size(148, 18);
-            this.lblInfoKhoa.TabIndex = 0;
-            this.lblInfoKhoa.Text = "Thông tin Lớp Học : ";
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.txbMalop);
-            this.panel5.Controls.Add(this.lblIdKhoa);
-            this.panel5.Location = new System.Drawing.Point(160, 35);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(264, 50);
-            this.panel5.TabIndex = 3;
-            // 
-            // txbMalop
-            // 
-            this.txbMalop.Enabled = false;
-            this.txbMalop.Location = new System.Drawing.Point(96, 11);
-            this.txbMalop.Name = "txbMalop";
-            this.txbMalop.Size = new System.Drawing.Size(151, 26);
-            this.txbMalop.TabIndex = 1;
-            // 
-            // lblIdKhoa
-            // 
-            this.lblIdKhoa.AutoSize = true;
-            this.lblIdKhoa.Location = new System.Drawing.Point(3, 14);
-            this.lblIdKhoa.Name = "lblIdKhoa";
-            this.lblIdKhoa.Size = new System.Drawing.Size(79, 18);
-            this.lblIdKhoa.TabIndex = 0;
-            this.lblIdKhoa.Text = "Mã Lớp  : ";
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.txbTenLop);
-            this.panel6.Controls.Add(this.label1);
-            this.panel6.Location = new System.Drawing.Point(160, 91);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(264, 50);
-            this.panel6.TabIndex = 4;
-            // 
-            // txbTenLop
-            // 
-            this.txbTenLop.Enabled = false;
-            this.txbTenLop.Location = new System.Drawing.Point(96, 11);
-            this.txbTenLop.Name = "txbTenLop";
-            this.txbTenLop.Size = new System.Drawing.Size(151, 26);
-            this.txbTenLop.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 18);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Tên Lớp  : ";
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.cbKhoa);
-            this.panel7.Controls.Add(this.label2);
-            this.panel7.Location = new System.Drawing.Point(160, 147);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(264, 50);
-            this.panel7.TabIndex = 5;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 18);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Khoa  : ";
-            // 
-            // cbKhoa
-            // 
-            this.cbKhoa.FormattingEnabled = true;
-            this.cbKhoa.Location = new System.Drawing.Point(96, 11);
-            this.cbKhoa.Name = "cbKhoa";
-            this.cbKhoa.Size = new System.Drawing.Size(151, 26);
-            this.cbKhoa.TabIndex = 1;
+            this.btnShowAllLop.Location = new System.Drawing.Point(20, 4);
+            this.btnShowAllLop.Name = "btnShowAllLop";
+            this.btnShowAllLop.Size = new System.Drawing.Size(149, 31);
+            this.btnShowAllLop.TabIndex = 0;
+            this.btnShowAllLop.Text = "Hiển thị tất cả";
+            this.btnShowAllLop.UseVisualStyleBackColor = true;
+            this.btnShowAllLop.Click += new System.EventHandler(this.btnShowAllLop_Click);
             // 
             // panel19
             // 
@@ -253,6 +175,7 @@
             this.btnDeleteLop.TabIndex = 12;
             this.btnDeleteLop.Text = "Xóa";
             this.btnDeleteLop.UseVisualStyleBackColor = true;
+            this.btnDeleteLop.Click += new System.EventHandler(this.btnDeleteLop_Click);
             // 
             // panel17
             // 
@@ -270,6 +193,7 @@
             this.btnEditLop.TabIndex = 11;
             this.btnEditLop.Text = "Sửa";
             this.btnEditLop.UseVisualStyleBackColor = true;
+            this.btnEditLop.Click += new System.EventHandler(this.btnEditLop_Click);
             // 
             // panel16
             // 
@@ -288,6 +212,7 @@
             this.btnSaveLop.TabIndex = 10;
             this.btnSaveLop.Text = "Lưu";
             this.btnSaveLop.UseVisualStyleBackColor = true;
+            this.btnSaveLop.Click += new System.EventHandler(this.btnSaveLop_Click);
             // 
             // panel15
             // 
@@ -305,6 +230,7 @@
             this.btnAddLop.TabIndex = 9;
             this.btnAddLop.Text = "Thêm Mới";
             this.btnAddLop.UseVisualStyleBackColor = true;
+            this.btnAddLop.Click += new System.EventHandler(this.btnAddLop_Click);
             // 
             // panel14
             // 
@@ -323,39 +249,119 @@
             this.lblExtension.TabIndex = 0;
             this.lblExtension.Text = "Chức Năng: ";
             // 
-            // panel8
+            // panel7
             // 
-            this.panel8.Controls.Add(this.dvgInfoLop);
-            this.panel8.Location = new System.Drawing.Point(13, 288);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1175, 323);
-            this.panel8.TabIndex = 10;
+            this.panel7.Controls.Add(this.cbKhoa);
+            this.panel7.Controls.Add(this.label2);
+            this.panel7.Location = new System.Drawing.Point(160, 147);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(264, 50);
+            this.panel7.TabIndex = 5;
             // 
-            // panel9
+            // cbKhoa
             // 
-            this.panel9.Controls.Add(this.btnShowAllLop);
-            this.panel9.Location = new System.Drawing.Point(662, 125);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(200, 38);
-            this.panel9.TabIndex = 23;
+            this.cbKhoa.FormattingEnabled = true;
+            this.cbKhoa.Location = new System.Drawing.Point(96, 11);
+            this.cbKhoa.Name = "cbKhoa";
+            this.cbKhoa.Size = new System.Drawing.Size(151, 26);
+            this.cbKhoa.TabIndex = 1;
             // 
-            // btnShowAllLop
+            // label2
             // 
-            this.btnShowAllLop.Location = new System.Drawing.Point(20, 4);
-            this.btnShowAllLop.Name = "btnShowAllLop";
-            this.btnShowAllLop.Size = new System.Drawing.Size(149, 31);
-            this.btnShowAllLop.TabIndex = 0;
-            this.btnShowAllLop.Text = "Hiển thị tất cả";
-            this.btnShowAllLop.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 18);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Khoa  : ";
             // 
-            // dvgInfoLop
+            // panel6
             // 
-            this.dvgInfoLop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgInfoLop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dvgInfoLop.Location = new System.Drawing.Point(0, 0);
-            this.dvgInfoLop.Name = "dvgInfoLop";
-            this.dvgInfoLop.Size = new System.Drawing.Size(1175, 323);
-            this.dvgInfoLop.TabIndex = 0;
+            this.panel6.Controls.Add(this.txbTenLop);
+            this.panel6.Controls.Add(this.label1);
+            this.panel6.Location = new System.Drawing.Point(160, 91);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(264, 50);
+            this.panel6.TabIndex = 4;
+            // 
+            // txbTenLop
+            // 
+            this.txbTenLop.Enabled = false;
+            this.txbTenLop.Location = new System.Drawing.Point(96, 11);
+            this.txbTenLop.Name = "txbTenLop";
+            this.txbTenLop.Size = new System.Drawing.Size(151, 26);
+            this.txbTenLop.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(83, 18);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Tên Lớp  : ";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.txbMalop);
+            this.panel5.Controls.Add(this.lblIdKhoa);
+            this.panel5.Location = new System.Drawing.Point(160, 35);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(264, 50);
+            this.panel5.TabIndex = 3;
+            // 
+            // txbMalop
+            // 
+            this.txbMalop.Enabled = false;
+            this.txbMalop.Location = new System.Drawing.Point(96, 11);
+            this.txbMalop.Name = "txbMalop";
+            this.txbMalop.Size = new System.Drawing.Size(151, 26);
+            this.txbMalop.TabIndex = 1;
+            // 
+            // lblIdKhoa
+            // 
+            this.lblIdKhoa.AutoSize = true;
+            this.lblIdKhoa.Location = new System.Drawing.Point(3, 14);
+            this.lblIdKhoa.Name = "lblIdKhoa";
+            this.lblIdKhoa.Size = new System.Drawing.Size(79, 18);
+            this.lblIdKhoa.TabIndex = 0;
+            this.lblIdKhoa.Text = "Mã Lớp  : ";
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.lblInfoKhoa);
+            this.panel4.Location = new System.Drawing.Point(3, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(200, 26);
+            this.panel4.TabIndex = 1;
+            // 
+            // lblInfoKhoa
+            // 
+            this.lblInfoKhoa.AutoSize = true;
+            this.lblInfoKhoa.Location = new System.Drawing.Point(17, 4);
+            this.lblInfoKhoa.Name = "lblInfoKhoa";
+            this.lblInfoKhoa.Size = new System.Drawing.Size(148, 18);
+            this.lblInfoKhoa.TabIndex = 0;
+            this.lblInfoKhoa.Text = "Thông tin Lớp Học : ";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.lblInffoKetQua);
+            this.panel2.Location = new System.Drawing.Point(382, 12);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(385, 45);
+            this.panel2.TabIndex = 8;
+            // 
+            // lblInffoKetQua
+            // 
+            this.lblInffoKetQua.AutoSize = true;
+            this.lblInffoKetQua.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInffoKetQua.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.lblInffoKetQua.Location = new System.Drawing.Point(92, 9);
+            this.lblInffoKetQua.Name = "lblInffoKetQua";
+            this.lblInffoKetQua.Size = new System.Drawing.Size(193, 26);
+            this.lblInffoKetQua.TabIndex = 0;
+            this.lblInffoKetQua.Text = "Quản Lý Lớp Học";
             // 
             // FQuanLyLop
             // 
@@ -364,22 +370,15 @@
             this.ClientSize = new System.Drawing.Size(1200, 623);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FQuanLyLop";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FQuanLyLop";
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dvgInfoLop)).EndInit();
             this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
+            this.panel9.ResumeLayout(false);
             this.panel19.ResumeLayout(false);
             this.panel18.ResumeLayout(false);
             this.panel17.ResumeLayout(false);
@@ -387,9 +386,16 @@
             this.panel15.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
-            this.panel8.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dvgInfoLop)).EndInit();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }

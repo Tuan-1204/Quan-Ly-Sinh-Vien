@@ -31,6 +31,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblInffoKhoa = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.btnBaoCaoKhoa = new System.Windows.Forms.Button();
             this.panel18 = new System.Windows.Forms.Panel();
             this.btnDeleteInfoKhoa = new System.Windows.Forms.Button();
             this.panel17 = new System.Windows.Forms.Panel();
@@ -42,7 +44,7 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.lblExtension = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.txbNameKhoa = new System.Windows.Forms.TextBox();
+            this.txbQLNameKhoa = new System.Windows.Forms.TextBox();
             this.lblTenKhoa = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.txbIdKhoa = new System.Windows.Forms.TextBox();
@@ -54,10 +56,9 @@
             this.dgvInKhoa = new System.Windows.Forms.DataGridView();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnShowALLKhoa = new System.Windows.Forms.Button();
-            this.panel19 = new System.Windows.Forms.Panel();
-            this.btnBaoCaoKhoa = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel19.SuspendLayout();
             this.panel18.SuspendLayout();
             this.panel17.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -70,7 +71,6 @@
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInKhoa)).BeginInit();
             this.panel7.SuspendLayout();
-            this.panel19.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -107,6 +107,23 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1175, 156);
             this.panel2.TabIndex = 7;
+            // 
+            // panel19
+            // 
+            this.panel19.Controls.Add(this.btnBaoCaoKhoa);
+            this.panel19.Location = new System.Drawing.Point(720, 58);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(167, 41);
+            this.panel19.TabIndex = 16;
+            // 
+            // btnBaoCaoKhoa
+            // 
+            this.btnBaoCaoKhoa.Location = new System.Drawing.Point(3, 4);
+            this.btnBaoCaoKhoa.Name = "btnBaoCaoKhoa";
+            this.btnBaoCaoKhoa.Size = new System.Drawing.Size(157, 32);
+            this.btnBaoCaoKhoa.TabIndex = 16;
+            this.btnBaoCaoKhoa.Text = "Báo Cáo & Thống Kê";
+            this.btnBaoCaoKhoa.UseVisualStyleBackColor = true;
             // 
             // panel18
             // 
@@ -200,20 +217,20 @@
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.txbNameKhoa);
+            this.panel6.Controls.Add(this.txbQLNameKhoa);
             this.panel6.Controls.Add(this.lblTenKhoa);
             this.panel6.Location = new System.Drawing.Point(228, 93);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(264, 50);
             this.panel6.TabIndex = 4;
             // 
-            // txbNameKhoa
+            // txbQLNameKhoa
             // 
-            this.txbNameKhoa.Enabled = false;
-            this.txbNameKhoa.Location = new System.Drawing.Point(96, 11);
-            this.txbNameKhoa.Name = "txbNameKhoa";
-            this.txbNameKhoa.Size = new System.Drawing.Size(151, 26);
-            this.txbNameKhoa.TabIndex = 2;
+            this.txbQLNameKhoa.Enabled = false;
+            this.txbQLNameKhoa.Location = new System.Drawing.Point(96, 11);
+            this.txbQLNameKhoa.Name = "txbQLNameKhoa";
+            this.txbQLNameKhoa.Size = new System.Drawing.Size(151, 26);
+            this.txbQLNameKhoa.TabIndex = 2;
             // 
             // lblTenKhoa
             // 
@@ -261,7 +278,7 @@
             // lblInfoKhoa
             // 
             this.lblInfoKhoa.AutoSize = true;
-            this.lblInfoKhoa.Location = new System.Drawing.Point(16, 0);
+            this.lblInfoKhoa.Location = new System.Drawing.Point(17, 4);
             this.lblInfoKhoa.Name = "lblInfoKhoa";
             this.lblInfoKhoa.Size = new System.Drawing.Size(124, 18);
             this.lblInfoKhoa.TabIndex = 0;
@@ -312,23 +329,6 @@
             this.btnShowALLKhoa.UseVisualStyleBackColor = true;
             this.btnShowALLKhoa.Click += new System.EventHandler(this.btnShowALLKhoa_Click);
             // 
-            // panel19
-            // 
-            this.panel19.Controls.Add(this.btnBaoCaoKhoa);
-            this.panel19.Location = new System.Drawing.Point(720, 58);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(167, 41);
-            this.panel19.TabIndex = 16;
-            // 
-            // btnBaoCaoKhoa
-            // 
-            this.btnBaoCaoKhoa.Location = new System.Drawing.Point(3, 4);
-            this.btnBaoCaoKhoa.Name = "btnBaoCaoKhoa";
-            this.btnBaoCaoKhoa.Size = new System.Drawing.Size(157, 32);
-            this.btnBaoCaoKhoa.TabIndex = 16;
-            this.btnBaoCaoKhoa.Text = "Báo Cáo & Thống Kê";
-            this.btnBaoCaoKhoa.UseVisualStyleBackColor = true;
-            // 
             // FQuanLyKhoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -345,6 +345,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel19.ResumeLayout(false);
             this.panel18.ResumeLayout(false);
             this.panel17.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
@@ -361,7 +362,6 @@
             this.panel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInKhoa)).EndInit();
             this.panel7.ResumeLayout(false);
-            this.panel19.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -395,7 +395,7 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.DataGridView dvgInKhoa;
         private System.Windows.Forms.DataGridView dgvInKhoa;
-        private System.Windows.Forms.TextBox txbNameKhoa;
+        private System.Windows.Forms.TextBox txbQLNameKhoa;
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Button btnBaoCaoKhoa;
     }

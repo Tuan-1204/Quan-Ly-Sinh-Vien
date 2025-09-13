@@ -83,6 +83,7 @@ namespace Quan_Ly_Sinh_Vien
         }
 
         // Hàm thêm/sửa/xóa (INSERT, UPDATE, DELETE)
+        // Hàm thêm/sửa/xóa (INSERT, UPDATE, DELETE)
         public static int ThaoTacCSDL(string query, object[] parameters = null)
         {
             int kq = 0;
@@ -95,11 +96,11 @@ namespace Quan_Ly_Sinh_Vien
                     {
                         if (parameters != null)
                         {
-                            string[] listPara = query.Split(' ');
+                            string[] listPara = query.Split(new char[] { ' ', ',', '(', ')', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
                             int i = 0;
                             foreach (string item in listPara)
                             {
-                                if (item.Contains("@"))
+                                if (item.StartsWith("@"))
                                 {
                                     command.Parameters.AddWithValue(item, parameters[i]);
                                     i++;
@@ -117,5 +118,6 @@ namespace Quan_Ly_Sinh_Vien
             }
             return kq;
         }
+
     }
 }

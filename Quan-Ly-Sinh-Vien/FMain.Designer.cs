@@ -389,6 +389,7 @@
             this.btnDsLop.TabIndex = 13;
             this.btnDsLop.Text = "DS Lớp";
             this.btnDsLop.UseVisualStyleBackColor = true;
+            this.btnDsLop.Click += new System.EventHandler(this.btnDsLop_Click);
             // 
             // panel19
             // 

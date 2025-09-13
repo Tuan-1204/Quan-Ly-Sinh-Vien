@@ -64,8 +64,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DangNhap.cs" />
+    <Compile Include="DAO %28DATA ACCESS OBJECT%29\DangNhapDAO.cs" />
+    <Compile Include="DAO %28DATA ACCESS OBJECT%29\KetQuaDAO.cs" />
+    <Compile Include="DAO %28DATA ACCESS OBJECT%29\KhoaDAO.cs" />
+    <Compile Include="DAO %28DATA ACCESS OBJECT%29\LopDAO.cs" />
+    <Compile Include="DAO %28DATA ACCESS OBJECT%29\MonHocDAO.cs" />
+    <Compile Include="DAO %28DATA ACCESS OBJECT%29\SinhVienDAO.cs" />
     <Compile Include="DataProvider.cs" />
+    <Compile Include="DTO%28 DATA TRANSFER OBJECT%29\Dangnhap.cs" />
+    <Compile Include="DTO%28 DATA TRANSFER OBJECT%29\KetQua.cs" />
+    <Compile Include="DTO%28 DATA TRANSFER OBJECT%29\Khoa.cs" />
+    <Compile Include="DTO%28 DATA TRANSFER OBJECT%29\Lop.cs" />
+    <Compile Include="DTO%28 DATA TRANSFER OBJECT%29\MonHoc.cs" />
+    <Compile Include="DTO%28 DATA TRANSFER OBJECT%29\SinhVien.cs" />
     <Compile Include="FDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +100,12 @@
     </Compile>
     <Compile Include="FQuanLyKhoa.Designer.cs">
       <DependentUpon>FQuanLyKhoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FQuanLyLop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FQuanLyLop.Designer.cs">
+      <DependentUpon>FQuanLyLop.cs</DependentUpon>
     </Compile>
     <Compile Include="FQuanLySinhVien.cs">
       <SubType>Form</SubType>
@@ -115,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FQuanLyKhoa.resx">
       <DependentUpon>FQuanLyKhoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FQuanLyLop.resx">
+      <DependentUpon>FQuanLyLop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FQuanLySinhVien.resx">
       <DependentUpon>FQuanLySinhVien.cs</DependentUpon>
@@ -168,5 +188,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
 ﻿
+using Quan_Ly_Sinh_Vien.DTO__DATA_TRANSFER_OBJECT_;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -223,7 +224,14 @@ namespace Quan_Ly_Sinh_Vien
 
         }
 
-       
+        private void btnDsLop_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FQuanLyLop f = new FQuanLyLop();
+            f.ShowDialog();
+            this.Show();
+
+        }
     }
 }
 
