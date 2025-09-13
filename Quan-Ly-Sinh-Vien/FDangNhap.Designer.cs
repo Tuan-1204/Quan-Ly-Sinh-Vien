@@ -64,9 +64,9 @@
             this.lblDangnhap.AutoSize = true;
             this.lblDangnhap.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDangnhap.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.lblDangnhap.Location = new System.Drawing.Point(30, 0);
+            this.lblDangnhap.Location = new System.Drawing.Point(65, 10);
             this.lblDangnhap.Name = "lblDangnhap";
-            this.lblDangnhap.Size = new System.Drawing.Size(336, 33);
+            this.lblDangnhap.Size = new System.Drawing.Size(268, 26);
             this.lblDangnhap.TabIndex = 0;
             this.lblDangnhap.Text = "ĐĂNG NHẬP HỆ THỐNG";
             // 
@@ -83,7 +83,7 @@
             // 
             this.txbPassWord.Location = new System.Drawing.Point(138, 11);
             this.txbPassWord.Name = "txbPassWord";
-            this.txbPassWord.Size = new System.Drawing.Size(228, 30);
+            this.txbPassWord.Size = new System.Drawing.Size(228, 26);
             this.txbPassWord.TabIndex = 2;
             this.txbPassWord.UseSystemPasswordChar = true;
             // 
@@ -92,7 +92,7 @@
             this.lblPassword.AutoSize = true;
             this.lblPassword.Location = new System.Drawing.Point(22, 11);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(112, 23);
+            this.lblPassword.Size = new System.Drawing.Size(86, 18);
             this.lblPassword.TabIndex = 0;
             this.lblPassword.Text = "Mật Khẩu : ";
             // 
@@ -109,7 +109,7 @@
             // 
             this.txbUserName.Location = new System.Drawing.Point(138, 11);
             this.txbUserName.Name = "txbUserName";
-            this.txbUserName.Size = new System.Drawing.Size(228, 30);
+            this.txbUserName.Size = new System.Drawing.Size(228, 26);
             this.txbUserName.TabIndex = 1;
             // 
             // lBLTenDangNhap
@@ -117,7 +117,7 @@
             this.lBLTenDangNhap.AutoSize = true;
             this.lBLTenDangNhap.Location = new System.Drawing.Point(22, 14);
             this.lBLTenDangNhap.Name = "lBLTenDangNhap";
-            this.lBLTenDangNhap.Size = new System.Drawing.Size(116, 23);
+            this.lBLTenDangNhap.Size = new System.Drawing.Size(91, 18);
             this.lBLTenDangNhap.TabIndex = 0;
             this.lBLTenDangNhap.Text = "Tài Khoản : ";
             // 
@@ -169,9 +169,9 @@
             // linkQuenPass
             // 
             this.linkQuenPass.AutoSize = true;
-            this.linkQuenPass.Location = new System.Drawing.Point(182, 11);
+            this.linkQuenPass.Location = new System.Drawing.Point(184, 7);
             this.linkQuenPass.Name = "linkQuenPass";
-            this.linkQuenPass.Size = new System.Drawing.Size(153, 23);
+            this.linkQuenPass.Size = new System.Drawing.Size(119, 18);
             this.linkQuenPass.TabIndex = 4;
             this.linkQuenPass.TabStop = true;
             this.linkQuenPass.Text = "Quên Mật Khẩu ";
@@ -180,9 +180,9 @@
             // chekShowPass
             // 
             this.chekShowPass.AutoSize = true;
-            this.chekShowPass.Location = new System.Drawing.Point(3, 11);
+            this.chekShowPass.Location = new System.Drawing.Point(3, 9);
             this.chekShowPass.Name = "chekShowPass";
-            this.chekShowPass.Size = new System.Drawing.Size(182, 27);
+            this.chekShowPass.Size = new System.Drawing.Size(146, 22);
             this.chekShowPass.TabIndex = 3;
             this.chekShowPass.Text = "Hiển thị mật khẩu";
             this.chekShowPass.UseVisualStyleBackColor = true;
@@ -190,7 +190,7 @@
             // 
             // FDangNhap
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 278);
             this.Controls.Add(this.panel4);

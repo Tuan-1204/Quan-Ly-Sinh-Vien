@@ -54,6 +54,8 @@
             this.dgvInKhoa = new System.Windows.Forms.DataGridView();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnShowALLKhoa = new System.Windows.Forms.Button();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.btnBaoCaoKhoa = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel18.SuspendLayout();
@@ -68,6 +70,7 @@
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInKhoa)).BeginInit();
             this.panel7.SuspendLayout();
+            this.panel19.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -91,6 +94,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.panel19);
             this.panel2.Controls.Add(this.panel18);
             this.panel2.Controls.Add(this.panel17);
             this.panel2.Controls.Add(this.panel16);
@@ -103,7 +107,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1175, 156);
             this.panel2.TabIndex = 7;
-          
             // 
             // panel18
             // 
@@ -309,6 +312,23 @@
             this.btnShowALLKhoa.UseVisualStyleBackColor = true;
             this.btnShowALLKhoa.Click += new System.EventHandler(this.btnShowALLKhoa_Click);
             // 
+            // panel19
+            // 
+            this.panel19.Controls.Add(this.btnBaoCaoKhoa);
+            this.panel19.Location = new System.Drawing.Point(720, 58);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(167, 41);
+            this.panel19.TabIndex = 16;
+            // 
+            // btnBaoCaoKhoa
+            // 
+            this.btnBaoCaoKhoa.Location = new System.Drawing.Point(3, 4);
+            this.btnBaoCaoKhoa.Name = "btnBaoCaoKhoa";
+            this.btnBaoCaoKhoa.Size = new System.Drawing.Size(157, 32);
+            this.btnBaoCaoKhoa.TabIndex = 16;
+            this.btnBaoCaoKhoa.Text = "Báo Cáo & Thống Kê";
+            this.btnBaoCaoKhoa.UseVisualStyleBackColor = true;
+            // 
             // FQuanLyKhoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -341,6 +361,7 @@
             this.panel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInKhoa)).EndInit();
             this.panel7.ResumeLayout(false);
+            this.panel19.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -375,5 +396,7 @@
         private System.Windows.Forms.DataGridView dvgInKhoa;
         private System.Windows.Forms.DataGridView dgvInKhoa;
         private System.Windows.Forms.TextBox txbNameKhoa;
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.Button btnBaoCaoKhoa;
     }
 }

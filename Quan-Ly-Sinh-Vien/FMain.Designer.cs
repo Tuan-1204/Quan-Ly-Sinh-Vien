@@ -58,7 +58,7 @@
             this.btnShowAll = new System.Windows.Forms.Button();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel19 = new System.Windows.Forms.Panel();
-            this.btnDiemTheoMon = new System.Windows.Forms.Button();
+            this.btnBaoCaoMh = new System.Windows.Forms.Button();
             this.panel18 = new System.Windows.Forms.Panel();
             this.btnXemKetQua = new System.Windows.Forms.Button();
             this.panel17 = new System.Windows.Forms.Panel();
@@ -162,7 +162,7 @@
             // 
             this.txbSearchTT.Location = new System.Drawing.Point(149, 11);
             this.txbSearchTT.Name = "txbSearchTT";
-            this.txbSearchTT.Size = new System.Drawing.Size(170, 30);
+            this.txbSearchTT.Size = new System.Drawing.Size(170, 26);
             this.txbSearchTT.TabIndex = 6;
             // 
             // label3
@@ -170,7 +170,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(3, 14);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(152, 23);
+            this.label3.Size = new System.Drawing.Size(119, 18);
             this.label3.TabIndex = 0;
             this.label3.Text = "Nhập Từ khóa : ";
             // 
@@ -189,7 +189,7 @@
             this.lblSearchTT.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblSearchTT.Location = new System.Drawing.Point(93, 8);
             this.lblSearchTT.Name = "lblSearchTT";
-            this.lblSearchTT.Size = new System.Drawing.Size(289, 33);
+            this.lblSearchTT.Size = new System.Drawing.Size(222, 26);
             this.lblSearchTT.TabIndex = 0;
             this.lblSearchTT.Text = "Tìm Kiếm Thông Tin";
             // 
@@ -207,7 +207,7 @@
             this.cbSearchMaMH.FormattingEnabled = true;
             this.cbSearchMaMH.Location = new System.Drawing.Point(22, 47);
             this.cbSearchMaMH.Name = "cbSearchMaMH";
-            this.cbSearchMaMH.Size = new System.Drawing.Size(250, 31);
+            this.cbSearchMaMH.Size = new System.Drawing.Size(250, 26);
             this.cbSearchMaMH.TabIndex = 4;
             this.cbSearchMaMH.Click += new System.EventHandler(this.cbSearchMaMH_Click);
             // 
@@ -216,7 +216,7 @@
             this.lblSearchMaMh.AutoSize = true;
             this.lblSearchMaMh.Location = new System.Drawing.Point(18, 11);
             this.lblSearchMaMh.Name = "lblSearchMaMh";
-            this.lblSearchMaMh.Size = new System.Drawing.Size(254, 23);
+            this.lblSearchMaMh.Size = new System.Drawing.Size(199, 18);
             this.lblSearchMaMh.TabIndex = 0;
             this.lblSearchMaMh.Text = "Chọn Mã Môn Học Cần Tìm";
             // 
@@ -234,7 +234,7 @@
             this.txbTinChi.Enabled = false;
             this.txbTinChi.Location = new System.Drawing.Point(138, 11);
             this.txbTinChi.Name = "txbTinChi";
-            this.txbTinChi.Size = new System.Drawing.Size(144, 30);
+            this.txbTinChi.Size = new System.Drawing.Size(144, 26);
             this.txbTinChi.TabIndex = 3;
             // 
             // lblTinChi
@@ -242,7 +242,7 @@
             this.lblTinChi.AutoSize = true;
             this.lblTinChi.Location = new System.Drawing.Point(3, 14);
             this.lblTinChi.Name = "lblTinChi";
-            this.lblTinChi.Size = new System.Drawing.Size(120, 23);
+            this.lblTinChi.Size = new System.Drawing.Size(92, 18);
             this.lblTinChi.TabIndex = 0;
             this.lblTinChi.Text = "Số Tín Chỉ : ";
             // 
@@ -260,7 +260,7 @@
             this.txbTenMH.Enabled = false;
             this.txbTenMH.Location = new System.Drawing.Point(138, 11);
             this.txbTenMH.Name = "txbTenMH";
-            this.txbTenMH.Size = new System.Drawing.Size(144, 30);
+            this.txbTenMH.Size = new System.Drawing.Size(144, 26);
             this.txbTenMH.TabIndex = 2;
             // 
             // lblTenMonHoc
@@ -268,7 +268,7 @@
             this.lblTenMonHoc.AutoSize = true;
             this.lblTenMonHoc.Location = new System.Drawing.Point(3, 14);
             this.lblTenMonHoc.Name = "lblTenMonHoc";
-            this.lblTenMonHoc.Size = new System.Drawing.Size(139, 23);
+            this.lblTenMonHoc.Size = new System.Drawing.Size(108, 18);
             this.lblTenMonHoc.TabIndex = 0;
             this.lblTenMonHoc.Text = "Tên Môn Học :";
             // 
@@ -286,7 +286,7 @@
             this.txbMaMH.Enabled = false;
             this.txbMaMH.Location = new System.Drawing.Point(138, 11);
             this.txbMaMH.Name = "txbMaMH";
-            this.txbMaMH.Size = new System.Drawing.Size(144, 30);
+            this.txbMaMH.Size = new System.Drawing.Size(144, 26);
             this.txbMaMH.TabIndex = 1;
             // 
             // lblMaMH
@@ -294,7 +294,7 @@
             this.lblMaMH.AutoSize = true;
             this.lblMaMH.Location = new System.Drawing.Point(3, 14);
             this.lblMaMH.Name = "lblMaMH";
-            this.lblMaMH.Size = new System.Drawing.Size(140, 23);
+            this.lblMaMH.Size = new System.Drawing.Size(108, 18);
             this.lblMaMH.TabIndex = 0;
             this.lblMaMH.Text = "Mã Môn Học : ";
             // 
@@ -371,28 +371,28 @@
             // 
             // panel19
             // 
-            this.panel19.Controls.Add(this.btnDiemTheoMon);
-            this.panel19.Location = new System.Drawing.Point(934, 12);
+            this.panel19.Controls.Add(this.btnBaoCaoMh);
+            this.panel19.Location = new System.Drawing.Point(987, 13);
             this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(217, 41);
+            this.panel19.Size = new System.Drawing.Size(167, 41);
             this.panel19.TabIndex = 15;
             // 
-            // btnDiemTheoMon
+            // btnBaoCaoMh
             // 
-            this.btnDiemTheoMon.Location = new System.Drawing.Point(0, 5);
-            this.btnDiemTheoMon.Name = "btnDiemTheoMon";
-            this.btnDiemTheoMon.Size = new System.Drawing.Size(211, 32);
-            this.btnDiemTheoMon.TabIndex = 16;
-            this.btnDiemTheoMon.Text = "Xem Điểm Theo Môn";
-            this.btnDiemTheoMon.UseVisualStyleBackColor = true;
-            this.btnDiemTheoMon.Click += new System.EventHandler(this.btnDiemTheoMon_Click);
+            this.btnBaoCaoMh.Location = new System.Drawing.Point(3, 7);
+            this.btnBaoCaoMh.Name = "btnBaoCaoMh";
+            this.btnBaoCaoMh.Size = new System.Drawing.Size(157, 32);
+            this.btnBaoCaoMh.TabIndex = 16;
+            this.btnBaoCaoMh.Text = "Báo Cáo & Thống Kê";
+            this.btnBaoCaoMh.UseVisualStyleBackColor = true;
+            this.btnBaoCaoMh.Click += new System.EventHandler(this.btnDiemTheoMon_Click);
             // 
             // panel18
             // 
             this.panel18.Controls.Add(this.btnXemKetQua);
-            this.panel18.Location = new System.Drawing.Point(779, 12);
+            this.panel18.Location = new System.Drawing.Point(832, 13);
             this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(157, 41);
+            this.panel18.Size = new System.Drawing.Size(149, 41);
             this.panel18.TabIndex = 14;
             // 
             // btnXemKetQua
@@ -408,7 +408,7 @@
             // panel17
             // 
             this.panel17.Controls.Add(this.btnCategorySinhVienKhoa);
-            this.panel17.Location = new System.Drawing.Point(541, 13);
+            this.panel17.Location = new System.Drawing.Point(594, 13);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(232, 41);
             this.panel17.TabIndex = 13;
@@ -426,7 +426,7 @@
             // panel16
             // 
             this.panel16.Controls.Add(this.btnCategorySinhVien);
-            this.panel16.Location = new System.Drawing.Point(401, 13);
+            this.panel16.Location = new System.Drawing.Point(454, 15);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(134, 39);
             this.panel16.TabIndex = 12;
@@ -516,7 +516,7 @@
             // 
             // FMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 653);
             this.Controls.Add(this.panel12);
@@ -594,7 +594,7 @@
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Panel panel19;
-        private System.Windows.Forms.Button btnDiemTheoMon;
+        private System.Windows.Forms.Button btnBaoCaoMh;
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Button btnXemKetQua;
         private System.Windows.Forms.Panel panel17;
