@@ -18,7 +18,7 @@ namespace Quan_Ly_Sinh_Vien
         }
 
         //Khoi tao ham control
-                private void EnabledControls(List<Control> controls)
+        private void EnabledControls(List<Control> controls)
         {
             foreach (var control in controls)
             {
@@ -55,7 +55,7 @@ namespace Quan_Ly_Sinh_Vien
         //nút thêm mới sinh viên
         private void btnAddSinhvien_Click(object sender, EventArgs e)
         {
-            EnabledControls(new List<Control> {txbIDSinhvien, txbNameSv,dateSinhVien,chekMen,chekWomen,txbPhone,txbAdress,txbNameClass,btnSaveSinhvien  });
+            EnabledControls(new List<Control> { txbIDSinhvien, txbNameSv, dateSinhVien, chekMen, chekWomen, txbPhone, txbAdress, txbNameClass, btnSaveSinhvien });
             UnEnabledControls(new List<Control> { btnEditSinhVien, btnDeleteSinhVien });
             ResetText(new List<Control> { txbIDSinhvien, txbNameSv, dateSinhVien, txbPhone, txbAdress, txbNameClass });
             txbIDSinhvien.Focus();
@@ -130,6 +130,10 @@ namespace Quan_Ly_Sinh_Vien
         //nút tìm kiếm  lớp của sinh viên
         private void cbSelectionClass_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string selectedClass = cbSelectionClass.SelectedItem.ToString();
+            string query = $"select * from SinhVien where TenLop=N'{selectedClass}'";
+            DataTable dt = DataProvider.LoadCSDL(query);
+            dvgInfoSinhVien.DataSource = dt;
 
         }
 
@@ -138,10 +142,35 @@ namespace Quan_Ly_Sinh_Vien
         {
             LoadTableSinhVien();
         }
-
+        //hiển thị thông tin sinh viên khi chọn vào datagridview
         private void dvgInfoSinhVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dvgInfoSinhVien.Rows[e.RowIndex];
+                txbIDSinhvien.Text = row.Cells["MaSV"].Value.ToString();
+                txbNameSv.Text = row.Cells["TenSV"].Value.ToString();
+                dateSinhVien.Value = Convert.ToDateTime(row.Cells["NgaySinh"].Value);
+                string gioiTinh = row.Cells["GioiTinh"].Value.ToString();
+                if (gioiTinh == "Nam")
+                {
+                    chekMen.Checked = true;
+                    chekWomen.Checked = false;
+                }
+                else
+                {
+                    chekMen.Checked = false;
+                    chekWomen.Checked = true;
+                }
+                txbPhone.Text = row.Cells["SDT"].Value.ToString();
+                txbAdress.Text = row.Cells["DiaChi"].Value.ToString();
+                txbNameClass.Text = row.Cells["TenLop"].Value.ToString();
+                EnabledControls(new List<Control> { btnEditSinhVien, btnDeleteSinhVien });
+                UnEnabledControls(new List<Control> { btnSaveSinhvien, txbIDSinhvien });
 
+            }
         }
     }
 }
+    
+    

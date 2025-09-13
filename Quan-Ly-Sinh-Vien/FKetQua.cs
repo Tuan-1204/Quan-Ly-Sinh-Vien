@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,13 +17,44 @@ namespace Quan_Ly_Sinh_Vien
         {
             InitializeComponent();
         }
-        //tìm kiếm kết quả theo lớp
 
+
+        private void LoadTableKetQua()
+        {
+            string query = "select * from KetQua";
+            DataTable dt = DataProvider.LoadCSDL(query);
+            dgvDanhmucketqua.DataSource = dt;
+
+        }
+        //tìm kiếm kết quả theo lớp
+        private void FKetQua_Load(object sender, EventArgs e)
+        {
+            string query = "SELECT MaLop FROM Lop";
+            DataTable dt = DataProvider.LoadCSDL(query);
+            cbSearchMaMH.DataSource = dt;
+            cbSearchMaMH.DisplayMember = "MaLop";
+            cbSearchMaMH.ValueMember = "MaLop";
+            cbSearchMaMH.SelectedIndex = -1; // Không chọn mục nào ban đầu
+        }
+
+
+        // cau lệnh query -> lấy dữ liệu từ database ->  table ->hiển thị lên datagridview
 
         private void cbSearchMaMH_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string malop = cbSearchMaMH.SelectedItem.ToString();
+            string query = $"SELECT sv.MaSV, sv.HoTen, sv.GioiTinh, sv.NgaySinh, k.TenKhoa, l.TenLop, mh.TenMH, dk.DiemGK, dk.DiemCK, dk.DiemKhac, dk.DiemTong " +
+                           $"FROM SinhVien sv " +
+                           $"JOIN Lop l ON sv.MaLop = l.MaLop " +
+                           $"JOIN Khoa k ON l.MaKhoa = k.MaKhoa " +
+                           $"JOIN DangKyMonHoc dk ON sv.MaSV = dk.MaSV " +
+                           $"JOIN MonHoc mh ON dk.MaMH = mh.MaMH " +
+                           $"WHERE l.MaLop = '{malop}'";
+            DataTable dt = DataProvider.LoadCSDL(query);
+            dgvDiemSinhVien.DataSource = dt;
 
         }
+
         //hiển thị kết quả điểm sinh viên
         private void dgvDiemSinhVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
