@@ -41,8 +41,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.chekShowPass = new System.Windows.Forms.CheckBox();
             this.linkQuenPass = new System.Windows.Forms.LinkLabel();
+            this.chekShowPass = new System.Windows.Forms.CheckBox();
             this.panel6.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -64,9 +64,9 @@
             this.lblDangnhap.AutoSize = true;
             this.lblDangnhap.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDangnhap.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.lblDangnhap.Location = new System.Drawing.Point(66, 14);
+            this.lblDangnhap.Location = new System.Drawing.Point(30, 0);
             this.lblDangnhap.Name = "lblDangnhap";
-            this.lblDangnhap.Size = new System.Drawing.Size(268, 26);
+            this.lblDangnhap.Size = new System.Drawing.Size(336, 33);
             this.lblDangnhap.TabIndex = 0;
             this.lblDangnhap.Text = "ĐĂNG NHẬP HỆ THỐNG";
             // 
@@ -81,11 +81,9 @@
             // 
             // txbPassWord
             // 
-            this.txbPassWord.Enabled = true;       // bật nhập
-            this.txbPassWord.ReadOnly = false;     // cho phép gõ
             this.txbPassWord.Location = new System.Drawing.Point(138, 11);
             this.txbPassWord.Name = "txbPassWord";
-            this.txbPassWord.Size = new System.Drawing.Size(228, 26);
+            this.txbPassWord.Size = new System.Drawing.Size(228, 30);
             this.txbPassWord.TabIndex = 2;
             this.txbPassWord.UseSystemPasswordChar = true;
             // 
@@ -94,7 +92,7 @@
             this.lblPassword.AutoSize = true;
             this.lblPassword.Location = new System.Drawing.Point(22, 11);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(86, 18);
+            this.lblPassword.Size = new System.Drawing.Size(112, 23);
             this.lblPassword.TabIndex = 0;
             this.lblPassword.Text = "Mật Khẩu : ";
             // 
@@ -109,11 +107,9 @@
             // 
             // txbUserName
             // 
-            this.txbUserName.Enabled = true;       // bật nhập
-            this.txbUserName.ReadOnly = false;     // thêm dòng này nếu cần
             this.txbUserName.Location = new System.Drawing.Point(138, 11);
             this.txbUserName.Name = "txbUserName";
-            this.txbUserName.Size = new System.Drawing.Size(228, 26);
+            this.txbUserName.Size = new System.Drawing.Size(228, 30);
             this.txbUserName.TabIndex = 1;
             // 
             // lBLTenDangNhap
@@ -121,7 +117,7 @@
             this.lBLTenDangNhap.AutoSize = true;
             this.lBLTenDangNhap.Location = new System.Drawing.Point(22, 14);
             this.lBLTenDangNhap.Name = "lBLTenDangNhap";
-            this.lBLTenDangNhap.Size = new System.Drawing.Size(91, 18);
+            this.lBLTenDangNhap.Size = new System.Drawing.Size(116, 23);
             this.lBLTenDangNhap.TabIndex = 0;
             this.lBLTenDangNhap.Text = "Tài Khoản : ";
             // 
@@ -165,36 +161,36 @@
             // 
             this.panel4.Controls.Add(this.linkQuenPass);
             this.panel4.Controls.Add(this.chekShowPass);
-            this.panel4.Location = new System.Drawing.Point(190, 180);
+            this.panel4.Location = new System.Drawing.Point(140, 180);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(288, 34);
+            this.panel4.Size = new System.Drawing.Size(338, 34);
             this.panel4.TabIndex = 9;
+            // 
+            // linkQuenPass
+            // 
+            this.linkQuenPass.AutoSize = true;
+            this.linkQuenPass.Location = new System.Drawing.Point(182, 11);
+            this.linkQuenPass.Name = "linkQuenPass";
+            this.linkQuenPass.Size = new System.Drawing.Size(153, 23);
+            this.linkQuenPass.TabIndex = 4;
+            this.linkQuenPass.TabStop = true;
+            this.linkQuenPass.Text = "Quên Mật Khẩu ";
+            this.linkQuenPass.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkQuenPass_LinkClicked);
             // 
             // chekShowPass
             // 
             this.chekShowPass.AutoSize = true;
             this.chekShowPass.Location = new System.Drawing.Point(3, 11);
             this.chekShowPass.Name = "chekShowPass";
-            this.chekShowPass.Size = new System.Drawing.Size(146, 22);
+            this.chekShowPass.Size = new System.Drawing.Size(182, 27);
             this.chekShowPass.TabIndex = 3;
             this.chekShowPass.Text = "Hiển thị mật khẩu";
             this.chekShowPass.UseVisualStyleBackColor = true;
             this.chekShowPass.CheckedChanged += new System.EventHandler(this.chekShowPass_CheckedChanged);
             // 
-            // linkQuenPass
-            // 
-            this.linkQuenPass.AutoSize = true;
-            this.linkQuenPass.Location = new System.Drawing.Point(155, 12);
-            this.linkQuenPass.Name = "linkQuenPass";
-            this.linkQuenPass.Size = new System.Drawing.Size(119, 18);
-            this.linkQuenPass.TabIndex = 4;
-            this.linkQuenPass.TabStop = true;
-            this.linkQuenPass.Text = "Quên Mật Khẩu ";
-            this.linkQuenPass.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkQuenPass_LinkClicked);
-            // 
             // FDangNhap
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 278);
             this.Controls.Add(this.panel4);
@@ -204,7 +200,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel6);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FDangNhap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng Nhập Hệ Thống";

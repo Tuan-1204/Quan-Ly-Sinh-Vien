@@ -214,8 +214,12 @@ namespace Quan_Ly_Sinh_Vien
         {
             string maKhoa = txbIdKhoa.Text;
             string tenKhoa = txbNameKhoa.Text;
-        }
+            string query = $"select * from Khoa where MaKhoa='{maKhoa}' or TenKhoa=N'{tenKhoa}'";
+            DataTable dt = DataProvider.LoadCSDL(query);
+            dvgInKhoa.DataSource = dt;
 
+        }
+       
         
     }
 }

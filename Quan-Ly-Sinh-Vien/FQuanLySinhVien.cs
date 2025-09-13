@@ -51,7 +51,7 @@ namespace Quan_Ly_Sinh_Vien
             DataTable dt = DataProvider.LoadCSDL(query);
             dvgInfoSinhVien.DataSource = dt;
         }
-
+        
         //nút thêm mới sinh viên
         private void btnAddSinhvien_Click(object sender, EventArgs e)
         {
