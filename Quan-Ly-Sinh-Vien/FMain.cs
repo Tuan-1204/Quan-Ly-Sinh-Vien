@@ -1,4 +1,5 @@
 ﻿
+using ClosedXML.Excel;
 using Quan_Ly_Sinh_Vien.DTO__DATA_TRANSFER_OBJECT_;
 using System;
 using System.Collections.Generic;
@@ -229,8 +230,82 @@ namespace Quan_Ly_Sinh_Vien
         }
 
        
+            private void bbtnXuatExelMH_Click(object sender, EventArgs e)
+        {
+            if (dvgShowMh.Rows.Count > 0)
+            {
+                using (SaveFileDialog sfd = new SaveFileDialog()
+                {
+                    Filter = "Excel Workbook|*.xlsx",
+                    ValidateNames = true,
+                    FileName = $"DanhSachMonHoc_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx"
+                })
+                {
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        try
+                        {
+                            using (XLWorkbook wb = new XLWorkbook())
+                            {
+                                var ws = wb.Worksheets.Add("DanhSachMonHoc");
+
+                                // Ghi tiêu đề
+                                ws.Cell(1, 1).Value = "DANH SÁCH MÔN HỌC";
+                                ws.Range(1, 1, 1, dvgShowMh.Columns.Count).Merge().Style.Font.Bold = true;
+                                ws.Range(1, 1, 1, dvgShowMh.Columns.Count).Style.Font.FontSize = 16;
+                                ws.Range(1, 1, 1, dvgShowMh.Columns.Count).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+
+                                // Ghi header
+                                for (int i = 0; i < dvgShowMh.Columns.Count; i++)
+                                {
+                                    ws.Cell(3, i + 1).Value = dvgShowMh.Columns[i].HeaderText;
+                                    ws.Cell(3, i + 1).Style.Font.Bold = true;
+                                    ws.Cell(3, i + 1).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                                    ws.Cell(3, i + 1).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
+                                }
+
+                                // Ghi dữ liệu
+                                for (int i = 0; i < dvgShowMh.Rows.Count; i++)
+                                {
+                                    for (int j = 0; j < dvgShowMh.Columns.Count; j++)
+                                    {
+                                        ws.Cell(i + 4, j + 1).Value = dvgShowMh.Rows[i].Cells[j].Value?.ToString() ?? "";
+                                        ws.Cell(i + 4, j + 1).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                                        ws.Cell(i + 4, j + 1).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
+                                    }
+                                }
+
+                                // Thêm border
+                                var tableRange = ws.Range(3, 1, dvgShowMh.Rows.Count + 3, dvgShowMh.Columns.Count);
+                                tableRange.Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
+                                tableRange.Style.Border.InsideBorder = XLBorderStyleValues.Thin;
+
+                                // Tự động co giãn cột
+                                ws.Columns().AdjustToContents();
+
+                                // Lưu file
+                                wb.SaveAs(sfd.FileName);
+                            }
+
+                            MessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Xuất Excel thất bại: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Không có dữ liệu để xuất.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
-    } 
+
+
+    }
+}
+    
 
 
 

@@ -407,7 +407,7 @@
             this.btnXuatExelMH.TabIndex = 16;
             this.btnXuatExelMH.Text = "Xuất Exel";
             this.btnXuatExelMH.UseVisualStyleBackColor = true;
-         
+           
             // 
             // panel18
             // 
