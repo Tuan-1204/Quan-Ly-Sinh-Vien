@@ -204,33 +204,52 @@ namespace Quan_Ly_Sinh_Vien
         //nút thêm điểm từ excel
         private void btnADDtoEXEL_Click(object sender, EventArgs e)
         {
-            string filePath = string.Empty;
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm";
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    filePath = openFileDialog.FileName;
-                    // Thực hiện các thao tác với file Excel tại đây
+                    string filePath = openFileDialog.FileName;
+
+                    try
+                    {
+                        using (var workbook = new ClosedXML.Excel.XLWorkbook(filePath))
+                        {
+                            var ws = workbook.Worksheet(1); // Lấy sheet đầu tiên
+                            var rows = ws.RangeUsed().RowsUsed().Skip(1); // Bỏ header
+
+                            foreach (var row in rows)
+                            {
+                                string masv = row.Cell(1).GetValue<string>();
+                                string mamh = row.Cell(2).GetValue<string>();
+                                float diemLan1 = row.Cell(3).GetValue<float>();
+                                float diemThiLai = row.Cell(4).GetValue<float>();
+
+                                // Kiểm tra đã tồn tại chưa
+                                string checkQuery = $"SELECT COUNT(*) FROM KetQua WHERE MaSV = '{masv}' AND MaMH = '{mamh}'";
+                                int count = (int)DataProvider.LoadCSDL(checkQuery).Rows[0][0];
+
+                                string query = count > 0
+                                    ? $"UPDATE KetQua SET DiemLan1 = {diemLan1}, DiemThiLai = {diemThiLai} WHERE MaSV = '{masv}' AND MaMH = '{mamh}'"
+                                    : $"INSERT INTO KetQua(MaSV, MaMH, DiemLan1, DiemThiLai) VALUES('{masv}', '{mamh}', {diemLan1}, {diemThiLai})";
+
+                                DataProvider.ThaoTacCSDL(query);
+                            }
+                        }
+
+                        MessageBox.Show("Nhập điểm từ Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadTableKetQua();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Nhập Excel thất bại: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
-
         }
-        //nút in điểm ra excel
-        private void btnPrintToExel_Click(object sender, EventArgs e)
-        {
-            string filePath = string.Empty;
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
-            {
-                saveFileDialog.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm";
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    filePath = saveFileDialog.FileName;
-                    // Thực hiện các thao tác lưu dữ liệu ra file Excel tại đây
-                }
-            }
 
-        }
+
+
         //tìm kiếm lớp
         private void cbSearchLop_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -251,10 +270,68 @@ namespace Quan_Ly_Sinh_Vien
             dgvDiemSinhVien.DataSource = dt;
 
         }
+        //xuất exel
 
         private void btnBaoCaoKetqua_Click(object sender, EventArgs e)
         {
-           
+            if (dgvDiemSinhVien.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu để xuất.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (SaveFileDialog sfd = new SaveFileDialog()
+            {
+                Filter = "Excel Workbook|*.xlsx",
+                ValidateNames = true,
+                FileName = "KetQua.xlsx"
+            })
+            {
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        using (var wb = new ClosedXML.Excel.XLWorkbook())
+                        {
+                            var ws = wb.Worksheets.Add("KetQua");
+
+                            // Header in đậm và căn giữa
+                            for (int i = 1; i <= dgvDiemSinhVien.Columns.Count; i++)
+                            {
+                                ws.Cell(1, i).Value = dgvDiemSinhVien.Columns[i - 1].HeaderText;
+                                ws.Cell(1, i).Style.Font.Bold = true;
+                                ws.Cell(1, i).Style.Alignment.Horizontal = ClosedXML.Excel.XLAlignmentHorizontalValues.Center;
+                                ws.Cell(1, i).Style.Alignment.Vertical = ClosedXML.Excel.XLAlignmentVerticalValues.Center;
+                            }
+
+                            // Dữ liệu
+                            for (int i = 0; i < dgvDiemSinhVien.Rows.Count; i++)
+                            {
+                                for (int j = 0; j < dgvDiemSinhVien.Columns.Count; j++)
+                                {
+                                    ws.Cell(i + 2, j + 1).Value = dgvDiemSinhVien.Rows[i].Cells[j].Value?.ToString() ?? "";
+                                    ws.Cell(i + 2, j + 1).Style.Alignment.Horizontal = ClosedXML.Excel.XLAlignmentHorizontalValues.Center;
+                                    ws.Cell(i + 2, j + 1).Style.Alignment.Vertical = ClosedXML.Excel.XLAlignmentVerticalValues.Center;
+                                }
+                            }
+
+                            // Thêm border và tự động co giãn cột
+                            var tableRange = ws.Range(1, 1, dgvDiemSinhVien.Rows.Count + 1, dgvDiemSinhVien.Columns.Count);
+                            tableRange.Style.Border.OutsideBorder = ClosedXML.Excel.XLBorderStyleValues.Thin;
+                            tableRange.Style.Border.InsideBorder = ClosedXML.Excel.XLBorderStyleValues.Thin;
+                            ws.Columns().AdjustToContents();
+
+                            wb.SaveAs(sfd.FileName);
+                        }
+
+                        MessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Xuất Excel thất bại: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
 
         }
     }
