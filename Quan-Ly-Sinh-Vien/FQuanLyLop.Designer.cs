@@ -158,7 +158,6 @@
             this.btnBaoCaoLop.TabIndex = 16;
             this.btnBaoCaoLop.Text = "Báo Cáo & Thống Kê";
             this.btnBaoCaoLop.UseVisualStyleBackColor = true;
-            this.btnBaoCaoLop.Click += new System.EventHandler(this.btnBaoCaoLop_Click);
             // 
             // panel18
             // 

@@ -228,17 +228,7 @@ namespace Quan_Ly_Sinh_Vien
 
         }
 
-        private void btnBaoCaoMh_Click(object sender, EventArgs e)
-        {
-            if (dvgShowMh.Rows.Count > 0)
-            {
-
-            }
-            else
-            {
-                MessageBox.Show("Không có dữ liệu để in báo cáo");
-            }
-            }
+       
         }
     } 
 

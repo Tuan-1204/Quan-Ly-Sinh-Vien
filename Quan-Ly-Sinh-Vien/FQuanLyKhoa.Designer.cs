@@ -32,7 +32,7 @@
             this.lblInffoKhoa = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel19 = new System.Windows.Forms.Panel();
-            this.btnBaoCaoKhoa = new System.Windows.Forms.Button();
+            this.btnExelKhoa = new System.Windows.Forms.Button();
             this.panel18 = new System.Windows.Forms.Panel();
             this.btnDeleteInfoKhoa = new System.Windows.Forms.Button();
             this.panel17 = new System.Windows.Forms.Panel();
@@ -110,21 +110,21 @@
             // 
             // panel19
             // 
-            this.panel19.Controls.Add(this.btnBaoCaoKhoa);
+            this.panel19.Controls.Add(this.btnExelKhoa);
             this.panel19.Location = new System.Drawing.Point(720, 58);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(167, 41);
             this.panel19.TabIndex = 16;
             // 
-            // btnBaoCaoKhoa
+            // btnExelKhoa
             // 
-            this.btnBaoCaoKhoa.Location = new System.Drawing.Point(3, 4);
-            this.btnBaoCaoKhoa.Name = "btnBaoCaoKhoa";
-            this.btnBaoCaoKhoa.Size = new System.Drawing.Size(157, 32);
-            this.btnBaoCaoKhoa.TabIndex = 16;
-            this.btnBaoCaoKhoa.Text = "Báo Cáo & Thống Kê";
-            this.btnBaoCaoKhoa.UseVisualStyleBackColor = true;
-            this.btnBaoCaoKhoa.Click += new System.EventHandler(this.btnBaoCaoKhoa_Click);
+            this.btnExelKhoa.Location = new System.Drawing.Point(3, 4);
+            this.btnExelKhoa.Name = "btnExelKhoa";
+            this.btnExelKhoa.Size = new System.Drawing.Size(157, 32);
+            this.btnExelKhoa.TabIndex = 16;
+            this.btnExelKhoa.Text = "Xuất Exel";
+            this.btnExelKhoa.UseVisualStyleBackColor = true;
+            this.btnExelKhoa.Click += new System.EventHandler(this.btnExelKhoa_Click);
             // 
             // panel18
             // 
@@ -398,6 +398,6 @@
         private System.Windows.Forms.DataGridView dgvInKhoa;
         private System.Windows.Forms.TextBox txbQLNameKhoa;
         private System.Windows.Forms.Panel panel19;
-        private System.Windows.Forms.Button btnBaoCaoKhoa;
+        private System.Windows.Forms.Button btnExelKhoa;
     }
 }

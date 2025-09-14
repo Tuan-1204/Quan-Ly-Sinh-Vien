@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClosedXML.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -189,14 +190,79 @@ namespace Quan_Ly_Sinh_Vien
                 UnEnableControls(new List<Control> { btnSaveInfoKhoa });
             }
         }
-
-
-        //nút báo cáo khoa để mở report báo cáo
-        private void btnBaoCaoKhoa_Click(object sender, EventArgs e)
+        // nút xuất excel danh sách khoa
+        private void btnExelKhoa_Click(object sender, EventArgs e)
         {
-          
+            if (dgvInKhoa.Rows.Count > 0) // kiểm tra có dữ liệu
+            {
+                using (SaveFileDialog sfd = new SaveFileDialog()
+                {
+                    Filter = "Excel Workbook|*.xlsx",
+                    ValidateNames = true,
+                    FileName = "DanhSachKhoa.xlsx"
+                })
+                {
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        try
+                        {
+                            using (XLWorkbook wb = new XLWorkbook())
+                            {
+                                var ws = wb.Worksheets.Add("DanhSachKhoa");
+
+                                // Ghi header và in đậm
+                                for (int i = 1; i <= dgvInKhoa.Columns.Count; i++)
+                                {
+                                    ws.Cell(1, i).Value = dgvInKhoa.Columns[i - 1].HeaderText;
+                                    ws.Cell(1, i).Style.Font.Bold = true;
+                                    ws.Cell(1, i).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                                    ws.Cell(1, i).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
+                                }
+
+                                // Ghi dữ liệu
+                                for (int i = 0; i < dgvInKhoa.Rows.Count; i++)
+                                {
+                                    for (int j = 0; j < dgvInKhoa.Columns.Count; j++)
+                                    {
+                                        ws.Cell(i + 2, j + 1).Value = dgvInKhoa.Rows[i].Cells[j].Value?.ToString() ?? "";
+                                        ws.Cell(i + 2, j + 1).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                                        ws.Cell(i + 2, j + 1).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
+                                    }
+                                }
+
+                                // Thêm border cho toàn bảng
+                                var tableRange = ws.Range(1, 1, dgvInKhoa.Rows.Count + 1, dgvInKhoa.Columns.Count);
+                                tableRange.Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
+                                tableRange.Style.Border.InsideBorder = XLBorderStyleValues.Thin;
+
+                                // Tự động co giãn cột
+                                ws.Columns().AdjustToContents();
+
+                                // Lưu file
+                                wb.SaveAs(sfd.FileName);
+                            }
+
+                            MessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Xuất Excel thất bại: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Không có dữ liệu để xuất.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
+
+
     }
+
+
+
 }
+
       
 

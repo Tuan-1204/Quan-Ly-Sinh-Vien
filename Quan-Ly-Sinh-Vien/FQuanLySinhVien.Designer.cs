@@ -153,7 +153,6 @@
             this.btnBaoCaoSinhVien.TabIndex = 16;
             this.btnBaoCaoSinhVien.Text = "Báo Cáo & Thống Kê";
             this.btnBaoCaoSinhVien.UseVisualStyleBackColor = true;
-            this.btnBaoCaoSinhVien.Click += new System.EventHandler(this.btnBaoCaoSinhVien_Click);
             // 
             // panel16
             // 

@@ -45,7 +45,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel22 = new System.Windows.Forms.Panel();
-            this.btnBaoCaoKetqua = new System.Windows.Forms.Button();
+            this.btnExelKetqua = new System.Windows.Forms.Button();
             this.panel20 = new System.Windows.Forms.Panel();
             this.btnADDtoEXEL = new System.Windows.Forms.Button();
             this.panel19 = new System.Windows.Forms.Panel();
@@ -253,21 +253,21 @@
             // 
             // panel22
             // 
-            this.panel22.Controls.Add(this.btnBaoCaoKetqua);
+            this.panel22.Controls.Add(this.btnExelKetqua);
             this.panel22.Location = new System.Drawing.Point(10, 429);
             this.panel22.Name = "panel22";
             this.panel22.Size = new System.Drawing.Size(167, 41);
             this.panel22.TabIndex = 19;
             // 
-            // btnBaoCaoKetqua
+            // btnExelKetqua
             // 
-            this.btnBaoCaoKetqua.Location = new System.Drawing.Point(3, 4);
-            this.btnBaoCaoKetqua.Name = "btnBaoCaoKetqua";
-            this.btnBaoCaoKetqua.Size = new System.Drawing.Size(157, 32);
-            this.btnBaoCaoKetqua.TabIndex = 16;
-            this.btnBaoCaoKetqua.Text = "Báo Cáo & Thống Kê";
-            this.btnBaoCaoKetqua.UseVisualStyleBackColor = true;
-            this.btnBaoCaoKetqua.Click += new System.EventHandler(this.btnBaoCaoKetqua_Click);
+            this.btnExelKetqua.Location = new System.Drawing.Point(3, 4);
+            this.btnExelKetqua.Name = "btnExelKetqua";
+            this.btnExelKetqua.Size = new System.Drawing.Size(157, 32);
+            this.btnExelKetqua.TabIndex = 16;
+            this.btnExelKetqua.Text = "Xuất Exel";
+            this.btnExelKetqua.UseVisualStyleBackColor = true;
+            this.btnExelKetqua.Click += new System.EventHandler(this.btnBaoCaoKetqua_Click);
             // 
             // panel20
             // 
@@ -600,6 +600,6 @@
         private System.Windows.Forms.Panel panel20;
         private System.Windows.Forms.Button btnADDtoEXEL;
         private System.Windows.Forms.Panel panel22;
-        private System.Windows.Forms.Button btnBaoCaoKetqua;
+        private System.Windows.Forms.Button btnExelKetqua;
     }
 }

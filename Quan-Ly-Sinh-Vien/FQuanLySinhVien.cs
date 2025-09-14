@@ -1,73 +1,66 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Quan_Ly_Sinh_Vien
 {
     public partial class FQuanLySinhVien : Form
     {
+        DataTable dt = new DataTable();
+
         public FQuanLySinhVien()
         {
             InitializeComponent();
         }
 
-        //Khoi tao ham control
-        private void EnabledControls(List<Control> controls)
+        // bật control
+        private void EnableControls(List<Control> controls)
         {
-            foreach (var control in controls)
-            {
-                control.Enabled = true;
-            }
+            foreach (var c in controls) c.Enabled = true;
         }
 
-
-        //hàm vô hiệu hóa control
-        private void UnEnabledControls(List<Control> controls)
+        // tắt control
+        private void UnEnableControls(List<Control> controls)
         {
-            foreach (var control in controls)
-            {
-                control.Enabled = false;
-            }
+            foreach (var c in controls) c.Enabled = false;
         }
 
-        //hàm reset control
+        // reset control
         private void ResetText(List<Control> controls)
         {
-            foreach (var control in controls)
-            {
-                control.ResetText();
-            }
+            foreach (var c in controls) c.ResetText();
         }
 
-        // Load dữ liệu SinhVien
+        // Load toàn bộ sinh viên
         private void LoadTableSinhVien()
         {
             string query = @"
-        SELECT sv.MaSV, sv.HoTen, sv.NgaySinh, sv.GioiTinh, sv.SDT, sv.DiaChi, l.TenLop
-        FROM SinhVien sv
-        LEFT JOIN Lop l ON sv.Lop = l.MaLop";
-            DataTable dt = DataProvider.LoadCSDL(query);
+                SELECT sv.MaSV, sv.HoTen, sv.NgaySinh, sv.GioiTinh, sv.SDT, sv.DiaChi, l.TenLop
+                FROM SinhVien sv
+                LEFT JOIN Lop l ON sv.Lop = l.MaLop";
+
+            dt = DataProvider.LoadCSDL(query);
             dvgInfoSinhVien.DataSource = dt;
+
+            // căn chỉnh DataGridView
+            dvgInfoSinhVien.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dvgInfoSinhVien.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dvgInfoSinhVien.MultiSelect = false;
+            dvgInfoSinhVien.RowHeadersVisible = false;
         }
 
-        //nút thêm mới sinh viên
+        // thêm mới
         private void btnAddSinhvien_Click(object sender, EventArgs e)
         {
-            EnabledControls(new List<Control> { txbIDSinhvien, txbNameSv, dateSinhVien, chekMen, chekWomen, txbPhone, txbAdress, btnSaveSinhvien });
-            UnEnabledControls(new List<Control> { btnEditSinhVien, btnDeleteSinhVien });
-            ResetText(new List<Control> { txbIDSinhvien, txbNameSv, dateSinhVien, txbPhone, txbAdress });
+            EnableControls(new List<Control> { txbIDSinhvien, txbNameSv, dateSinhVien, chekMen, chekWomen, txbPhone, txbAdress, cbLop, btnSaveSinhvien });
+            UnEnableControls(new List<Control> { btnEditSinhVien, btnDeleteSinhVien });
+            ResetText(new List<Control> { txbIDSinhvien, txbNameSv, txbPhone, txbAdress });
             txbIDSinhvien.Focus();
         }
 
-
-        //nút lưu thông tin sinh viên
+        // lưu mới
         private void btnSaveSinhvien_Click(object sender, EventArgs e)
         {
             string idSv = txbIDSinhvien.Text.Trim();
@@ -76,35 +69,46 @@ namespace Quan_Ly_Sinh_Vien
             string phoneSv = txbPhone.Text.Trim();
             string adressSv = txbAdress.Text.Trim();
             string gioiTinh = chekMen.Checked ? "Nam" : "Nữ";
-            string lop = cbLop.SelectedValue?.ToString();   // lấy MaLop từ combobox
-
-            if (string.IsNullOrWhiteSpace(lop))
-            {
-                MessageBox.Show("Vui lòng chọn lớp cho sinh viên!");
-                return;
-            }
+            string lop = cbLop.SelectedValue?.ToString();
 
             string query = $@"
-        INSERT INTO SinhVien(MaSV, HoTen, NgaySinh, GioiTinh, SDT, DiaChi, Lop)
-        VALUES ('{idSv}', N'{nameSv}', '{dateSv:yyyy-MM-dd}', N'{gioiTinh}', '{phoneSv}', N'{adressSv}', '{lop}')";
+                INSERT INTO SinhVien(MaSV, HoTen, NgaySinh, GioiTinh, SDT, DiaChi, Lop)
+                VALUES ('{idSv}', N'{nameSv}', '{dateSv:yyyy-MM-dd}', N'{gioiTinh}', '{phoneSv}', N'{adressSv}', '{lop}')";
 
             int kq = DataProvider.ThaoTacCSDL(query);
             if (kq > 0)
             {
                 MessageBox.Show("Thêm mới sinh viên thành công");
                 LoadTableSinhVien();
-                UnEnabledControls(new List<Control> { txbIDSinhvien, txbNameSv, dateSinhVien, txbPhone, txbAdress, cbLop, btnSaveSinhvien });
-                ResetText(new List<Control> { txbIDSinhvien, txbNameSv, dateSinhVien, txbPhone, txbAdress });
-            }
-            else
-            {
-                MessageBox.Show("Thêm mới sinh viên thất bại. Vui lòng xem lại!");
+                UnEnableControls(new List<Control> { txbIDSinhvien, txbNameSv, dateSinhVien, txbPhone, txbAdress, cbLop, btnSaveSinhvien });
+                ResetText(new List<Control> { txbIDSinhvien, txbNameSv, txbPhone, txbAdress });
             }
         }
 
+        // hiển thị lên textbox khi chọn dòng
+        private void dvgInfoSinhVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dvgInfoSinhVien.SelectedRows.Count > 0)
+            {
+                var row = dvgInfoSinhVien.SelectedRows[0];
+                txbIDSinhvien.Text = row.Cells["MaSV"].Value.ToString();
+                txbNameSv.Text = row.Cells["HoTen"].Value.ToString();
+                dateSinhVien.Value = Convert.ToDateTime(row.Cells["NgaySinh"].Value);
 
+                string gioiTinh = row.Cells["GioiTinh"].Value.ToString();
+                chekMen.Checked = gioiTinh == "Nam";
+                chekWomen.Checked = gioiTinh == "Nữ";
 
-        //nút sửa thông tin sinh viên
+                txbPhone.Text = row.Cells["SDT"].Value.ToString();
+                txbAdress.Text = row.Cells["DiaChi"].Value.ToString();
+                cbLop.Text = row.Cells["TenLop"].Value.ToString();
+
+                EnableControls(new List<Control> { txbNameSv, dateSinhVien, txbPhone, txbAdress, cbLop, btnEditSinhVien, btnDeleteSinhVien });
+                txbIDSinhvien.Enabled = false; // không cho sửa mã
+            }
+        }
+
+        // sửa
         private void btnEditSinhVien_Click(object sender, EventArgs e)
         {
             string idSv = txbIDSinhvien.Text.Trim();
@@ -116,118 +120,56 @@ namespace Quan_Ly_Sinh_Vien
             string lop = cbLop.SelectedValue?.ToString();
 
             string query = $@"
-        UPDATE SinhVien
-        SET HoTen = N'{nameSv}',
-            NgaySinh = '{dateSv:yyyy-MM-dd}',
-            GioiTinh = N'{gioiTinh}',
-            SDT = '{phoneSv}',
-            DiaChi = N'{adressSv}',
-            Lop = '{lop}'
-        WHERE MaSV = '{idSv}'";
+                UPDATE SinhVien
+                SET HoTen = N'{nameSv}',
+                    NgaySinh = '{dateSv:yyyy-MM-dd}',
+                    GioiTinh = N'{gioiTinh}',
+                    SDT = '{phoneSv}',
+                    DiaChi = N'{adressSv}',
+                    Lop = '{lop}'
+                WHERE MaSV = '{idSv}'";
 
             int kq = DataProvider.ThaoTacCSDL(query);
             if (kq > 0)
             {
-                MessageBox.Show("Cập nhật thông tin sinh viên thành công");
+                MessageBox.Show("Cập nhật sinh viên thành công");
                 LoadTableSinhVien();
-                UnEnabledControls(new List<Control> { txbIDSinhvien, txbNameSv, dateSinhVien, txbPhone, txbAdress, cbLop, btnEditSinhVien, btnDeleteSinhVien });
-                ResetText(new List<Control> { txbIDSinhvien, txbNameSv, dateSinhVien, txbPhone, txbAdress });
-            }
-            else
-            {
-                MessageBox.Show("Cập nhật thông tin sinh viên thất bại. Vui lòng xem lại!");
             }
         }
 
-
-        //nút xóa thông tin sinh viên
+        // xóa
         private void btnDeleteSinhVien_Click(object sender, EventArgs e)
         {
             string idSv = txbIDSinhvien.Text;
-
-            if (string.IsNullOrWhiteSpace(idSv))
+            if (MessageBox.Show("Bạn có chắc chắn muốn xóa sinh viên này?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                MessageBox.Show("Vui lòng chọn sinh viên cần xóa!");
-                return;
-            }
-
-            // Hỏi lại trước khi xoá
-            DialogResult dr = MessageBox.Show(
-                $"Bạn có chắc muốn xoá sinh viên {idSv} không?",
-                "Xác nhận xoá",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning);
-
-            if (dr == DialogResult.No) return;
-
-            // Truy vấn xoá 
-            string query = $"DELETE FROM SinhVien WHERE MaSV = '{idSv}'";
-            int kq = DataProvider.ThaoTacCSDL(query);
-
-            if (kq > 0)
-            {
-                MessageBox.Show("Xóa thông tin sinh viên thành công");
-                LoadTableSinhVien();
-                UnEnabledControls(new List<Control> { txbIDSinhvien, txbNameSv, dateSinhVien, txbPhone, txbAdress,  btnEditSinhVien, btnDeleteSinhVien });
-                ResetText(new List<Control> { txbIDSinhvien, txbNameSv, dateSinhVien, txbPhone, txbAdress });
-            }
-            else
-            {
-                MessageBox.Show("Xóa thông tin sinh viên thất bại.");
+                string query = $"DELETE FROM SinhVien WHERE MaSV = '{idSv}'";
+                int kq = DataProvider.ThaoTacCSDL(query);
+                if (kq > 0)
+                {
+                    MessageBox.Show("Xóa sinh viên thành công");
+                    LoadTableSinhVien();
+                }
             }
         }
-      
-        
 
-        //nust hi tất cả thông tin sinh viên
+    
+     
+
+     
+
         private void btnShowAllInfoSv_Click(object sender, EventArgs e)
         {
-            LoadTableSinhVien();
-        }
 
-        //hiển thị thông tin sinh viên khi chọn vào datagridview
-        private void dvgInfoSinhVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
+            try
             {
-                DataGridViewRow row = dvgInfoSinhVien.Rows[e.RowIndex];
-                txbIDSinhvien.Text = row.Cells["MaSV"].Value.ToString();
-                txbNameSv.Text = row.Cells["HoTen"].Value.ToString();
-                dateSinhVien.Value = Convert.ToDateTime(row.Cells["NgaySinh"].Value);
-
-                string gioiTinh = row.Cells["GioiTinh"].Value.ToString();
-                chekMen.Checked = gioiTinh == "Nam";
-                chekWomen.Checked = gioiTinh == "Nữ";
-
-                txbPhone.Text = row.Cells["SDT"].Value.ToString();
-                txbAdress.Text = row.Cells["DiaChi"].Value.ToString();
-
-                // Gán lớp
-                cbLop.Text = row.Cells["TenLop"].Value.ToString();
-
-                EnabledControls(new List<Control> { btnEditSinhVien, btnDeleteSinhVien });
-                UnEnabledControls(new List<Control> { btnSaveSinhvien, txbIDSinhvien });
+                LoadTableSinhVien();  // gọi hàm load dữ liệu
+                MessageBox.Show("Đã tải danh sách sinh viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải dữ liệu sinh viên: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-       
-        
-            // Load danh sách lớp cho ComboBox
-private void LoadComboBoxLop()
-        {
-            string query = "SELECT MaLop, TenLop FROM Lop";
-            DataTable dt = DataProvider.LoadCSDL(query);
-            cbLop.DataSource = dt;
-            cbLop.DisplayMember = "TenLop";
-            cbLop.ValueMember = "MaLop";
-        }
-
-        private void btnBaoCaoSinhVien_Click(object sender, EventArgs e)
-        {
-         
-        }
     }
-    
 }
-    
-    

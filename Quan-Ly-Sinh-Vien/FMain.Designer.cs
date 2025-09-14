@@ -60,7 +60,7 @@
             this.panel22 = new System.Windows.Forms.Panel();
             this.btnDsLop = new System.Windows.Forms.Button();
             this.panel19 = new System.Windows.Forms.Panel();
-            this.btnBaoCaoMh = new System.Windows.Forms.Button();
+            this.btnXuatExelMH = new System.Windows.Forms.Button();
             this.panel18 = new System.Windows.Forms.Panel();
             this.btnXemKetQua = new System.Windows.Forms.Button();
             this.panel17 = new System.Windows.Forms.Panel();
@@ -393,21 +393,21 @@
             // 
             // panel19
             // 
-            this.panel19.Controls.Add(this.btnBaoCaoMh);
+            this.panel19.Controls.Add(this.btnXuatExelMH);
             this.panel19.Location = new System.Drawing.Point(987, 13);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(167, 41);
             this.panel19.TabIndex = 15;
             // 
-            // btnBaoCaoMh
+            // btnXuatExelMH
             // 
-            this.btnBaoCaoMh.Location = new System.Drawing.Point(3, 3);
-            this.btnBaoCaoMh.Name = "btnBaoCaoMh";
-            this.btnBaoCaoMh.Size = new System.Drawing.Size(157, 32);
-            this.btnBaoCaoMh.TabIndex = 16;
-            this.btnBaoCaoMh.Text = "Báo Cáo & Thống Kê";
-            this.btnBaoCaoMh.UseVisualStyleBackColor = true;
-            this.btnBaoCaoMh.Click += new System.EventHandler(this.btnBaoCaoMh_Click);
+            this.btnXuatExelMH.Location = new System.Drawing.Point(3, 3);
+            this.btnXuatExelMH.Name = "btnXuatExelMH";
+            this.btnXuatExelMH.Size = new System.Drawing.Size(157, 32);
+            this.btnXuatExelMH.TabIndex = 16;
+            this.btnXuatExelMH.Text = "Xuất Exel";
+            this.btnXuatExelMH.UseVisualStyleBackColor = true;
+         
             // 
             // panel18
             // 
@@ -617,7 +617,7 @@
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Panel panel19;
-        private System.Windows.Forms.Button btnBaoCaoMh;
+        private System.Windows.Forms.Button btnXuatExelMH;
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Button btnXemKetQua;
         private System.Windows.Forms.Panel panel17;
