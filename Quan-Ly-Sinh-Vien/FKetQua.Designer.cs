@@ -133,7 +133,7 @@
             this.cbSearchLop.Name = "cbSearchLop";
             this.cbSearchLop.Size = new System.Drawing.Size(250, 26);
             this.cbSearchLop.TabIndex = 4;
-            this.cbSearchLop.SelectedIndexChanged += new System.EventHandler(this.cbSearchLop_SelectedIndexChanged);
+           
             // 
             // lblSearchClass
             // 
@@ -169,7 +169,7 @@
             this.dgvDiemSinhVien.Name = "dgvDiemSinhVien";
             this.dgvDiemSinhVien.Size = new System.Drawing.Size(768, 219);
             this.dgvDiemSinhVien.TabIndex = 0;
-            this.dgvDiemSinhVien.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDiemSinhVien_CellContentClick);
+       
             // 
             // panel3
             // 
@@ -213,7 +213,7 @@
             this.dgvDanhmucketqua.Name = "dgvDanhmucketqua";
             this.dgvDanhmucketqua.Size = new System.Drawing.Size(768, 227);
             this.dgvDanhmucketqua.TabIndex = 0;
-            this.dgvDanhmucketqua.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhmucketqua_CellContentClick);
+         
             // 
             // panel8
             // 
@@ -285,7 +285,7 @@
             this.btnADDtoEXEL.TabIndex = 9;
             this.btnADDtoEXEL.Text = "Thêm Mới Điểm Từ EXEL";
             this.btnADDtoEXEL.UseVisualStyleBackColor = true;
-            this.btnADDtoEXEL.Click += new System.EventHandler(this.btnADDtoEXEL_Click);
+          
             // 
             // panel19
             // 
@@ -340,7 +340,7 @@
             this.btnSaveDiem.TabIndex = 10;
             this.btnSaveDiem.Text = "Lưu";
             this.btnSaveDiem.UseVisualStyleBackColor = true;
-            this.btnSaveDiem.Click += new System.EventHandler(this.btnSaveDiem_Click);
+           
             // 
             // panel16
             // 

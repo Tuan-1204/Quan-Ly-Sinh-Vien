@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClosedXML.Excel;
 
 namespace Quan_Ly_Sinh_Vien
 {
@@ -18,272 +13,157 @@ namespace Quan_Ly_Sinh_Vien
             InitializeComponent();
         }
 
-
-        //tạo control
+        // Bật control
         private void EnableControls(List<Control> controls)
         {
-            foreach (var control in controls)
-            {
-                control.Enabled = true;
-            }
+            foreach (var control in controls) control.Enabled = true;
         }
-        //hàm vô hiệu hóa control
+
+        // Tắt control
         private void UnEnableControls(List<Control> controls)
         {
-            foreach (var control in controls)
-            {
-                control.Enabled = false;
-            }
+            foreach (var control in controls) control.Enabled = false;
         }
-        //hàm xóa trắng control
+
+        // Reset text
         private void ResetText(List<Control> controls)
         {
-            foreach (var control in controls)
-            {
-                control.Text = string.Empty;
-            }
+            foreach (var control in controls) control.Text = string.Empty;
         }
 
-
-        private void LoadTableKetQua()
-        {
-            string query = "select * from KetQua";
-            DataTable dt = DataProvider.LoadCSDL(query);
-            dgvDanhmucketqua.DataSource = dt;
-
-        }
-        //tìm kiếm kết quả theo lớp
         private void FKetQua_Load(object sender, EventArgs e)
         {
+            LoadTableKetQua();
+
+            // Load combobox lớp
             string query = "SELECT MaLop FROM Lop";
             DataTable dt = DataProvider.LoadCSDL(query);
             cbSearchLop.DataSource = dt;
             cbSearchLop.DisplayMember = "MaLop";
             cbSearchLop.ValueMember = "MaLop";
-            cbSearchLop.SelectedIndex = -1; // Không chọn mục nào ban đầu
+            cbSearchLop.SelectedIndex = -1;
         }
 
-
-        // cau lệnh query -> lấy dữ liệu từ database ->  table ->hiển thị lên datagridview
-
-       
-       
-        //hiển thị kết quả điểm sinh viên
-        private void dgvDiemSinhVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void LoadTableKetQua()
         {
-            string masv = dgvDiemSinhVien.CurrentRow.Cells["MaSV"].Value.ToString();
-
-            string query = $"SELECT sv.MaSV, sv.HoTen, sv.GioiTinh, sv.NgaySinh, " +
-                           $"       k.TenKhoa, l.TenLop, mh.TenMH, " +
-                           $"       kq.DiemLan1, kq.DiemThiLai, " +
-                           $"       ISNULL(kq.DiemLan1, 0) + ISNULL(kq.DiemThiLai, 0) AS DiemTong " +
-                           $"FROM SinhVien sv " +
-                           $"JOIN Lop l ON sv.MaLop = l.MaLop " +
-                           $"JOIN Khoa k ON l.MaKhoa = k.MaKhoa " +
-                           $"JOIN KetQua kq ON sv.MaSV = kq.MaSV " +
-                           $"JOIN MonHoc mh ON kq.MaMH = mh.MaMH " +
-                           $"WHERE sv.MaSV = '{masv}'";
-
-            DataTable dt = DataProvider.LoadCSDL(query);
-            dgvDiemSinhVien.DataSource = dt;
-        }
-        //hiển thị kết quả môn học
-        private void dgvDanhmucketqua_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            string mamh = dgvDanhmucketqua.CurrentRow.Cells["MaMH"].Value.ToString();
-
-            string query = $"SELECT sv.MaSV, sv.HoTen, sv.GioiTinh, sv.NgaySinh, " +
-                           $"       k.TenKhoa, l.TenLop, mh.TenMH, " +
-                           $"       kq.DiemLan1, kq.DiemThiLai " +
-                           $"FROM SinhVien sv " +
-                           $"JOIN Lop l ON sv.MaLop = l.MaLop " +
-                           $"JOIN Khoa k ON l.MaKhoa = k.MaKhoa " +
-                           $"JOIN KetQua kq ON sv.MaSV = kq.MaSV " +
-                           $"JOIN MonHoc mh ON kq.MaMH = mh.MaMH " +
-                           $"WHERE mh.MaMH = '{mamh}'";
-
+            string query = "SELECT * FROM KetQua";
             DataTable dt = DataProvider.LoadCSDL(query);
             dgvDanhmucketqua.DataSource = dt;
-
         }
 
-        //thêm điểm
+        // Hiển thị dữ liệu khi chọn kết quả
+        private void dgvDanhmucketqua_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var row = dgvDanhmucketqua.Rows[e.RowIndex];
+                txbIdDiemSINHVIEN.Text = row.Cells["MaSV"].Value?.ToString() ?? "";
+                txbNamekqMH.Text = row.Cells["MaMH"].Value?.ToString() ?? "";
+                txbDiemlan1.Text = row.Cells["DiemLan1"].Value == DBNull.Value ? "" : row.Cells["DiemLan1"].Value.ToString();
+                txbDiemThiLai.Text = row.Cells["DiemThiLai"].Value == DBNull.Value ? "" : row.Cells["DiemThiLai"].Value.ToString();
+            }
+        }
+
+        // Thêm điểm
         private void btnAddDiem_Click(object sender, EventArgs e)
         {
-            string masv = txbIdDiemSINHVIEN.Text;
-            string monhoc = txbNamekqMH.Text;
-            float diemlan1 = float.Parse(txbDiemlan1.Text);
-            float diemthilai = float.Parse(txbDiemThiLai.Text);
+            string masv = txbIdDiemSINHVIEN.Text.Trim();
+            string mamh = txbNamekqMH.Text.Trim();
 
-
-            string query = $"INSERT INTO KetQua (MaSV, MaMH, DiemLan1, DiemThiLai) values ('{masv}', '{monhoc}', '{diemlan1}', '{diemthilai})";
-            int kq = DataProvider.ThaoTacCSDL(query);
-            if (kq > 0)
-            
+            if (!float.TryParse(txbDiemlan1.Text, out float diemlan1) ||
+                !float.TryParse(txbDiemThiLai.Text, out float diemthilai))
             {
-                MessageBox.Show("Thêm mới điểm thành công");
-                LoadTableKetQua();
-                ResetText(new List<Control> { txbIdDiemSINHVIEN, txbNamekqMH, txbDiemlan1, txbDiemThiLai, btnAddDiem });
-            }
-            else
-            {
-                MessageBox.Show("Thêm mới điểm thất bại");
+                MessageBox.Show("Điểm nhập không hợp lệ!");
+                return;
             }
 
-
-        }
-        //lưu điểm
-        private void btnSaveDiem_Click(object sender, EventArgs e)
-        {
-            string masv = txbIdDiemSINHVIEN.Text;   // Mã sinh viên
-            string mamh = txbNamekqMH.Text;         // Mã môn học
-            float diemlan1 = float.Parse(txbDiemlan1.Text);   // Điểm lần 1
-            float diemthilai = float.Parse(txbDiemThiLai.Text); // Điểm thi lại
-
-            // Lệnh UPDATE vào bảng KetQua
-            string query = $"UPDATE KetQua " +
-                           $"SET DiemLan1 = {diemlan1}, DiemThiLai = {diemthilai} " +
-                           $"WHERE MaSV = '{masv}' AND MaMH = '{mamh}'";
-
+            string query = $"INSERT INTO KetQua (MaSV, MaMH, DiemLan1, DiemThiLai) " +
+                           $"VALUES ('{masv}', '{mamh}', {diemlan1}, {diemthilai})";
             int kq = DataProvider.ThaoTacCSDL(query);
+
             if (kq > 0)
             {
-                MessageBox.Show("Lưu điểm thành công");
+                MessageBox.Show("Thêm điểm thành công!");
                 LoadTableKetQua();
                 ResetText(new List<Control> { txbIdDiemSINHVIEN, txbNamekqMH, txbDiemlan1, txbDiemThiLai });
             }
-            else
-            {
-                MessageBox.Show("Lưu điểm thất bại");
-            }
+            else MessageBox.Show("Thêm điểm thất bại!");
         }
-        //sửa điểm
+
+        // Sửa điểm
         private void btnEditDiem_Click(object sender, EventArgs e)
         {
-            string masv = txbIdDiemSINHVIEN.Text;
-            string mamh = txbNamekqMH.Text;
-            float diemgk = float.Parse(txbDiemlan1.Text);
-            float diemck = float.Parse(txbDiemThiLai.Text);
-            float diemkhac = float.Parse(btnAddDiem.Text);
+            string masv = txbIdDiemSINHVIEN.Text.Trim();
+            string mamh = txbNamekqMH.Text.Trim();
 
-            string query = "UPDATE KetQua " +
-                   "SET DiemLan1 = @DiemLan1, DiemThiLai = @DiemThiLai " +
-                   "WHERE MaSV = @MaSV AND MaMH = @MaMH";
+            if (!float.TryParse(txbDiemlan1.Text, out float diemlan1) ||
+                !float.TryParse(txbDiemThiLai.Text, out float diemthilai))
+            {
+                MessageBox.Show("Điểm nhập không hợp lệ!");
+                return;
+            }
+
+            string query = $"UPDATE KetQua SET DiemLan1 = {diemlan1}, DiemThiLai = {diemthilai} " +
+                           $"WHERE MaSV = '{masv}' AND MaMH = '{mamh}'";
             int kq = DataProvider.ThaoTacCSDL(query);
+
             if (kq > 0)
             {
-                MessageBox.Show("Sửa điểm thành công");
+                MessageBox.Show("Cập nhật điểm thành công!");
                 LoadTableKetQua();
-                ResetText(new List<Control> { txbIdDiemSINHVIEN, txbNamekqMH, txbDiemlan1, txbDiemThiLai, btnAddDiem });
             }
-            else
-            {
-                MessageBox.Show("Sửa điểm thất bại");
-            }
-
+            else MessageBox.Show("Cập nhật thất bại!");
         }
-        //xóa điểm
+
+        // Xóa điểm
         private void btnDeleteDiem_Click(object sender, EventArgs e)
         {
-            string masv = txbIdDiemSINHVIEN.Text;
-            string mamh = txbNamekqMH.Text;
-            string query = $"DELETE FROM DangKyMonHoc WHERE MaSV = '{masv}' AND MaMH = '{mamh}'";
+            string masv = txbIdDiemSINHVIEN.Text.Trim();
+            string mamh = txbNamekqMH.Text.Trim();
+
+            if (MessageBox.Show("Bạn có chắc muốn xóa điểm này?", "Xác nhận",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
+
+            string query = $"DELETE FROM KetQua WHERE MaSV = '{masv}' AND MaMH = '{mamh}'";
             int kq = DataProvider.ThaoTacCSDL(query);
+
             if (kq > 0)
             {
-                MessageBox.Show("Xóa điểm thành công");
+                MessageBox.Show("Xóa điểm thành công!");
                 LoadTableKetQua();
-                ResetText(new List<Control> { txbIdDiemSINHVIEN, txbNamekqMH, txbDiemlan1, txbDiemThiLai, btnAddDiem });
+                ResetText(new List<Control> { txbIdDiemSINHVIEN, txbNamekqMH, txbDiemlan1, txbDiemThiLai });
             }
-            else
-            {
-                MessageBox.Show("Xóa điểm thất bại");
-            }
-
-           }
-        //nút thêm điểm từ excel
-        private void btnADDtoEXEL_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                openFileDialog.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm";
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string filePath = openFileDialog.FileName;
-
-                    try
-                    {
-                        using (var workbook = new ClosedXML.Excel.XLWorkbook(filePath))
-                        {
-                            var ws = workbook.Worksheet(1); // Lấy sheet đầu tiên
-                            var rows = ws.RangeUsed().RowsUsed().Skip(1); // Bỏ header
-
-                            foreach (var row in rows)
-                            {
-                                string masv = row.Cell(1).GetValue<string>();
-                                string mamh = row.Cell(2).GetValue<string>();
-                                float diemLan1 = row.Cell(3).GetValue<float>();
-                                float diemThiLai = row.Cell(4).GetValue<float>();
-
-                                // Kiểm tra đã tồn tại chưa
-                                string checkQuery = $"SELECT COUNT(*) FROM KetQua WHERE MaSV = '{masv}' AND MaMH = '{mamh}'";
-                                int count = (int)DataProvider.LoadCSDL(checkQuery).Rows[0][0];
-
-                                string query = count > 0
-                                    ? $"UPDATE KetQua SET DiemLan1 = {diemLan1}, DiemThiLai = {diemThiLai} WHERE MaSV = '{masv}' AND MaMH = '{mamh}'"
-                                    : $"INSERT INTO KetQua(MaSV, MaMH, DiemLan1, DiemThiLai) VALUES('{masv}', '{mamh}', {diemLan1}, {diemThiLai})";
-
-                                DataProvider.ThaoTacCSDL(query);
-                            }
-                        }
-
-                        MessageBox.Show("Nhập điểm từ Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadTableKetQua();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Nhập Excel thất bại: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
+            else MessageBox.Show("Xóa thất bại!");
         }
 
-
-
-        //tìm kiếm lớp
+        // Tìm kiếm lớp
         private void cbSearchLop_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string malop = cbSearchLop.SelectedItem.ToString();
+            if (cbSearchLop.SelectedIndex < 0) return;
+            string malop = cbSearchLop.SelectedValue.ToString();
 
-            string query = $"SELECT sv.MaSV, sv.HoTen, sv.GioiTinh, sv.NgaySinh, " +
-                           $"       k.TenKhoa, l.TenLop, mh.TenMH, " +
-                           $"       kq.DiemLan1, kq.DiemThiLai, " +
-                           $"       ISNULL(kq.DiemLan1, 0) + ISNULL(kq.DiemThiLai, 0) AS DiemTong " +
+            string query = $"SELECT sv.MaSV, sv.HoTen, l.TenLop, mh.TenMH, kq.DiemLan1, kq.DiemThiLai " +
                            $"FROM SinhVien sv " +
                            $"JOIN Lop l ON sv.MaLop = l.MaLop " +
-                           $"JOIN Khoa k ON l.MaKhoa = k.MaKhoa " +
                            $"JOIN KetQua kq ON sv.MaSV = kq.MaSV " +
                            $"JOIN MonHoc mh ON kq.MaMH = mh.MaMH " +
                            $"WHERE l.MaLop = '{malop}'";
-
             DataTable dt = DataProvider.LoadCSDL(query);
             dgvDiemSinhVien.DataSource = dt;
-
         }
-        //xuất exel
 
+        // Xuất Excel
         private void btnBaoCaoKetqua_Click(object sender, EventArgs e)
         {
             if (dgvDiemSinhVien.Rows.Count == 0)
             {
-                MessageBox.Show("Không có dữ liệu để xuất.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Không có dữ liệu để xuất.");
                 return;
             }
 
             using (SaveFileDialog sfd = new SaveFileDialog()
             {
                 Filter = "Excel Workbook|*.xlsx",
-                ValidateNames = true,
                 FileName = "KetQua.xlsx"
             })
             {
@@ -291,48 +171,39 @@ namespace Quan_Ly_Sinh_Vien
                 {
                     try
                     {
-                        using (var wb = new ClosedXML.Excel.XLWorkbook())
+                        using (var wb = new XLWorkbook())
                         {
                             var ws = wb.Worksheets.Add("KetQua");
 
-                            // Header in đậm và căn giữa
+                            // Header
                             for (int i = 1; i <= dgvDiemSinhVien.Columns.Count; i++)
                             {
                                 ws.Cell(1, i).Value = dgvDiemSinhVien.Columns[i - 1].HeaderText;
                                 ws.Cell(1, i).Style.Font.Bold = true;
-                                ws.Cell(1, i).Style.Alignment.Horizontal = ClosedXML.Excel.XLAlignmentHorizontalValues.Center;
-                                ws.Cell(1, i).Style.Alignment.Vertical = ClosedXML.Excel.XLAlignmentVerticalValues.Center;
                             }
 
-                            // Dữ liệu
+                            // Data
                             for (int i = 0; i < dgvDiemSinhVien.Rows.Count; i++)
                             {
                                 for (int j = 0; j < dgvDiemSinhVien.Columns.Count; j++)
                                 {
-                                    ws.Cell(i + 2, j + 1).Value = dgvDiemSinhVien.Rows[i].Cells[j].Value?.ToString() ?? "";
-                                    ws.Cell(i + 2, j + 1).Style.Alignment.Horizontal = ClosedXML.Excel.XLAlignmentHorizontalValues.Center;
-                                    ws.Cell(i + 2, j + 1).Style.Alignment.Vertical = ClosedXML.Excel.XLAlignmentVerticalValues.Center;
+                                    ws.Cell(i + 2, j + 1).Value =
+                                        dgvDiemSinhVien.Rows[i].Cells[j].Value?.ToString() ?? "";
                                 }
                             }
 
-                            // Thêm border và tự động co giãn cột
-                            var tableRange = ws.Range(1, 1, dgvDiemSinhVien.Rows.Count + 1, dgvDiemSinhVien.Columns.Count);
-                            tableRange.Style.Border.OutsideBorder = ClosedXML.Excel.XLBorderStyleValues.Thin;
-                            tableRange.Style.Border.InsideBorder = ClosedXML.Excel.XLBorderStyleValues.Thin;
                             ws.Columns().AdjustToContents();
-
                             wb.SaveAs(sfd.FileName);
                         }
 
-                        MessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Xuất Excel thành công!");
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Xuất Excel thất bại: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Lỗi xuất Excel: " + ex.Message);
                     }
                 }
             }
-
         }
     }
 }
