@@ -35,7 +35,7 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.btnShowAllLop = new System.Windows.Forms.Button();
             this.panel19 = new System.Windows.Forms.Panel();
-            this.btnBaoCaoLop = new System.Windows.Forms.Button();
+            this.btnExportLop = new System.Windows.Forms.Button();
             this.panel18 = new System.Windows.Forms.Panel();
             this.btnDeleteLop = new System.Windows.Forms.Button();
             this.panel17 = new System.Windows.Forms.Panel();
@@ -144,20 +144,20 @@
             // 
             // panel19
             // 
-            this.panel19.Controls.Add(this.btnBaoCaoLop);
+            this.panel19.Controls.Add(this.btnExportLop);
             this.panel19.Location = new System.Drawing.Point(565, 79);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(167, 41);
             this.panel19.TabIndex = 22;
             // 
-            // btnBaoCaoLop
+            // btnExportLop
             // 
-            this.btnBaoCaoLop.Location = new System.Drawing.Point(3, 4);
-            this.btnBaoCaoLop.Name = "btnBaoCaoLop";
-            this.btnBaoCaoLop.Size = new System.Drawing.Size(157, 32);
-            this.btnBaoCaoLop.TabIndex = 16;
-            this.btnBaoCaoLop.Text = "Báo Cáo & Thống Kê";
-            this.btnBaoCaoLop.UseVisualStyleBackColor = true;
+            this.btnExportLop.Location = new System.Drawing.Point(3, 4);
+            this.btnExportLop.Name = "btnExportLop";
+            this.btnExportLop.Size = new System.Drawing.Size(157, 32);
+            this.btnExportLop.TabIndex = 16;
+            this.btnExportLop.Text = "Xuất Exel";
+            this.btnExportLop.UseVisualStyleBackColor = true;
             // 
             // panel18
             // 
@@ -420,7 +420,7 @@
         private System.Windows.Forms.ComboBox cbKhoa;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel19;
-        private System.Windows.Forms.Button btnBaoCaoLop;
+        private System.Windows.Forms.Button btnExportLop;
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Button btnDeleteLop;
         private System.Windows.Forms.Panel panel17;
