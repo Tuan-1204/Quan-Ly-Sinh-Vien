@@ -46,9 +46,6 @@
             this.btnAddLop = new System.Windows.Forms.Button();
             this.panel14 = new System.Windows.Forms.Panel();
             this.lblExtension = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.cbKhoa = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.txbTenLop = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -70,7 +67,6 @@
             this.panel16.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel14.SuspendLayout();
-            this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -115,7 +111,6 @@
             this.panel3.Controls.Add(this.panel16);
             this.panel3.Controls.Add(this.panel15);
             this.panel3.Controls.Add(this.panel14);
-            this.panel3.Controls.Add(this.panel7);
             this.panel3.Controls.Add(this.panel6);
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.panel4);
@@ -249,33 +244,6 @@
             this.lblExtension.TabIndex = 0;
             this.lblExtension.Text = "Chức Năng: ";
             // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.cbKhoa);
-            this.panel7.Controls.Add(this.label2);
-            this.panel7.Location = new System.Drawing.Point(160, 147);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(264, 50);
-            this.panel7.TabIndex = 5;
-            // 
-            // cbKhoa
-            // 
-            this.cbKhoa.FormattingEnabled = true;
-            this.cbKhoa.Location = new System.Drawing.Point(96, 11);
-            this.cbKhoa.Name = "cbKhoa";
-            this.cbKhoa.Size = new System.Drawing.Size(151, 26);
-            this.cbKhoa.TabIndex = 1;
-            this.cbKhoa.SelectedIndexChanged += new System.EventHandler(this.cbKhoa_SelectedIndexChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 18);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Khoa  : ";
-            // 
             // panel6
             // 
             this.panel6.Controls.Add(this.txbTenLop);
@@ -387,8 +355,6 @@
             this.panel15.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -415,9 +381,6 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.TextBox txbTenLop;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cbKhoa;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Button btnExportLop;

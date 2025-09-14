@@ -1,7 +1,9 @@
 ﻿using ClosedXML.Excel;
+using Quan_Ly_Sinh_Vien.DTO__DATA_TRANSFER_OBJECT_;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Quan_Ly_Sinh_Vien
@@ -17,178 +19,218 @@ namespace Quan_Ly_Sinh_Vien
         // Load form
         private void FQuanLyLop_Load(object sender, EventArgs e)
         {
-            LoadKhoa();
-            LoadLop();
+          
+            LoadTableLop();
 
-            UnEnableControls(new List<Control> { txbMalop, txbTenLop, cbKhoa, btnSaveLop, btnEditLop, btnDeleteLop });
-            EnableControls(new List<Control> { btnAddLop, btnShowAllLop, btnExportLop });
+            // Disable tất cả controls khi load form
+            UnEnableControls(new List<Control> { txbMalop, txbTenLop,  btnSaveLop, btnEditLop, btnDeleteLop });
         }
-        // Hàm hỗ trợ
-        private void EnableControls(List<Control> controls)
+
+        // Load dữ liệu lớp vào DataGridView 
+        private void LoadTableLop()
         {
-            foreach (var control in controls)
-                control.Enabled = true;
-        }
-        // Hàm hỗ trợ
-        private void UnEnableControls(List<Control> controls)
-        {
-            foreach (var control in controls)
-                control.Enabled = false;
-        }
-        // Hàm hỗ trợ
-        private void ResetText(List<Control> controls)
-        {
-            foreach (var control in controls)
-                control.Text = string.Empty;
-        }
-        // Load dữ liệu lớp vào DataGridView
-        private void LoadLop()
-        {
-            string query = "SELECT MaLop, TenLop, MaKhoa FROM Lop";
+            string query = @"SELECT * from Lop";
             dt = DataProvider.LoadCSDL(query);
             dvgInfoLop.DataSource = dt;
 
-            // Căn chỉnh hiển thị
+            // Cấu hình DataGridView
             dvgInfoLop.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dvgInfoLop.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dvgInfoLop.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dvgInfoLop.MultiSelect = false;
             dvgInfoLop.AllowUserToAddRows = false;
             dvgInfoLop.ReadOnly = true;
             dvgInfoLop.RowHeadersVisible = false;
         }
-        // Load dữ liệu khoa vào ComboBox
-        private void LoadKhoa()
-        {
-            string query = "SELECT MaKhoa, TenKhoa FROM Khoa";
-            DataTable dtKhoa = DataProvider.LoadCSDL(query);
 
-            // Thêm dòng mặc định
-            DataRow dr = dtKhoa.NewRow();
-            dr["MaKhoa"] = "";
-            dr["TenKhoa"] = "-- Chọn Khoa --";
-            dtKhoa.Rows.InsertAt(dr, 0);
+     
 
-            cbKhoa.DataSource = dtKhoa;
-            cbKhoa.DisplayMember = "TenKhoa";
-            cbKhoa.ValueMember = "MaKhoa";
-
-            // Kiểm tra trước khi set SelectedIndex
-            if (cbKhoa.Items.Count > 0)
-                cbKhoa.SelectedIndex = 0;
-        }
-        // Hiển thị tất cả lớp
+        // Nút hiển thị tất cả
         private void btnShowAllLop_Click(object sender, EventArgs e)
         {
-            LoadLop();
+            LoadTableLop();
+            ResetText(new List<Control> { txbMalop, txbTenLop });
+         
+            UnEnableControls(new List<Control> { txbMalop, txbTenLop,  btnSaveLop, btnEditLop, btnDeleteLop });
         }
-        // Thêm lớp mới
+
+        // Thêm mới dữ liệu 
         private void btnAddLop_Click(object sender, EventArgs e)
         {
-            EnableControls(new List<Control> { txbMalop, txbTenLop, cbKhoa, btnSaveLop });
+            EnableControls(new List<Control> { txbMalop, txbTenLop, btnSaveLop });
             UnEnableControls(new List<Control> { btnEditLop, btnDeleteLop });
             ResetText(new List<Control> { txbMalop, txbTenLop });
-            if (cbKhoa.Items.Count > 0)
-                cbKhoa.SelectedIndex = 0;
+          
             txbMalop.Focus();
         }
-        // Lưu lớp mới
+
+        // Hàm khởi tạo control
+        private void EnableControls(List<Control> controls)
+        {
+            foreach (var control in controls)
+            {
+                if (control != null) control.Enabled = true;
+            }
+        }
+
+        // Hàm vô hiệu hóa control
+        private void UnEnableControls(List<Control> controls)
+        {
+            foreach (var control in controls)
+            {
+                if (control != null) control.Enabled = false;
+            }
+        }
+
+        // Hàm reset control
+        private void ResetText(List<Control> controls)
+        {
+            foreach (var control in controls)
+            {
+                if (control != null) control.Text = string.Empty;
+            }
+        }
+
+        // Lưu dữ liệu vào database 
         private void btnSaveLop_Click(object sender, EventArgs e)
         {
             string maLop = txbMalop.Text.Trim();
             string tenLop = txbTenLop.Text.Trim();
-            string maKhoa = cbKhoa.SelectedValue?.ToString();
+          
 
-            if (string.IsNullOrWhiteSpace(maLop) || string.IsNullOrWhiteSpace(tenLop) || string.IsNullOrWhiteSpace(maKhoa))
+            // Validation
+            if (string.IsNullOrWhiteSpace(maLop))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin lớp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng nhập mã lớp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txbMalop.Focus();
                 return;
             }
+
+            if (string.IsNullOrWhiteSpace(tenLop))
+            {
+                MessageBox.Show("Vui lòng nhập tên lớp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txbTenLop.Focus();
+                return;
+            }
+
+           
 
             // Kiểm tra trùng mã lớp
             string checkQuery = $"SELECT COUNT(*) FROM Lop WHERE MaLop = '{maLop}'";
-            int count = (int)DataProvider.LoadCSDL(checkQuery).Rows[0][0];
-            if (count > 0)
+            DataTable checkResult = DataProvider.LoadCSDL(checkQuery);
+            if (checkResult != null && checkResult.Rows.Count > 0)
             {
-                MessageBox.Show("Mã lớp đã tồn tại. Vui lòng sử dụng mã khác.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                int count = Convert.ToInt32(checkResult.Rows[0][0]);
+                if (count > 0)
+                {
+                    MessageBox.Show("Mã lớp đã tồn tại. Vui lòng sử dụng mã khác.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txbMalop.Focus();
+                    return;
+                }
             }
 
-            string query = $"INSERT INTO Lop(MaLop, TenLop, MaKhoa) VALUES ('{maLop}', N'{tenLop}', '{maKhoa}')";
+            string query = $"INSERT INTO Lop(MaLop, TenLop) VALUES ('{maLop}', N'{tenLop}')";
             int kq = DataProvider.ThaoTacCSDL(query);
 
             if (kq > 0)
             {
-                MessageBox.Show("Thêm lớp thành công!");
-                LoadLop();
-                UnEnableControls(new List<Control> { txbMalop, txbTenLop, cbKhoa, btnSaveLop });
-                EnableControls(new List<Control> { btnAddLop, btnShowAllLop, btnExportLop });
+                MessageBox.Show("Thêm mới lớp thành công");
+                LoadTableLop();
+                UnEnableControls(new List<Control> { txbMalop, txbTenLop, btnSaveLop, btnEditLop, btnDeleteLop });
                 ResetText(new List<Control> { txbMalop, txbTenLop });
-                if (cbKhoa.Items.Count > 0)
-                    cbKhoa.SelectedIndex = 0;
             }
             else
             {
-                MessageBox.Show("Thêm lớp thất bại!");
+                MessageBox.Show("Thêm mới lớp thất bại. Vui lòng xem lại!");
             }
         }
-        // Xử lý sự kiện khi chọn một dòng trong DataGridView
+
+        // Hiển thị dữ liệu lên textbox khi chọn dòng 
         private void dvgInfoLop_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dvgInfoLop.SelectedRows.Count > 0)
             {
+                // Lấy dòng dữ liệu được chọn
                 var row = dvgInfoLop.SelectedRows[0];
-                txbMalop.Text = row.Cells["MaLop"].Value.ToString();
-                txbTenLop.Text = row.Cells["TenLop"].Value.ToString();
-                cbKhoa.SelectedValue = row.Cells["MaKhoa"].Value.ToString();
 
-                EnableControls(new List<Control> { txbTenLop, cbKhoa, btnEditLop, btnDeleteLop });
+                // Truyền giá trị dữ liệu lên textbox
+                txbMalop.Text = row.Cells["MaLop"].Value?.ToString() ?? "";
+                txbTenLop.Text = row.Cells["TenLop"].Value?.ToString() ?? "";
+
+              
+
+                // Hiển thị các textbox và button
+                EnableControls(new List<Control> { txbTenLop,  btnDeleteLop, btnEditLop });
+
+                // Ẩn textbox mã lớp
                 txbMalop.Enabled = false;
             }
         }
-        // Sửa lớp
+
+        // Sửa dữ liệu
         private void btnEditLop_Click(object sender, EventArgs e)
         {
             string maLop = txbMalop.Text.Trim();
             string tenLop = txbTenLop.Text.Trim();
-            string maKhoa = cbKhoa.SelectedValue?.ToString();
+          
 
             if (string.IsNullOrWhiteSpace(maLop))
             {
-                MessageBox.Show("Vui lòng chọn lớp để sửa!");
+                MessageBox.Show("Vui lòng chọn lớp để sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            if (string.IsNullOrWhiteSpace(tenLop))
+            {
+                MessageBox.Show("Vui lòng nhập tên lớp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txbTenLop.Focus();
+                return;
+            }
+
+         
 
             if (MessageBox.Show("Bạn có muốn cập nhật thông tin lớp này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
 
-            string query = $"UPDATE Lop SET TenLop = N'{tenLop}', MaKhoa = '{maKhoa}' WHERE MaLop = '{maLop}'";
+            string query = $"UPDATE Lop SET TenLop = N'{tenLop}' WHERE MaLop = '{maLop}'";
             int kq = DataProvider.ThaoTacCSDL(query);
 
             if (kq > 0)
             {
-                MessageBox.Show("Cập nhật lớp thành công!");
-                LoadLop();
+                MessageBox.Show("Cập nhật lớp thành công");
+                LoadTableLop();
+                UnEnableControls(new List<Control> { txbMalop, txbTenLop,  btnSaveLop, btnEditLop, btnDeleteLop });
                 ResetText(new List<Control> { txbMalop, txbTenLop });
-                if (cbKhoa.Items.Count > 0)
-                    cbKhoa.SelectedIndex = 0;
-                UnEnableControls(new List<Control> { txbMalop, txbTenLop, cbKhoa, btnEditLop, btnDeleteLop });
-                EnableControls(new List<Control> { btnAddLop, btnShowAllLop, btnExportLop });
+               
             }
             else
             {
-                MessageBox.Show("Cập nhật thất bại!");
+                MessageBox.Show("Cập nhật lớp thất bại. Vui lòng xem lại!");
             }
         }
-        // Xóa lớp
+
+        // Xóa dữ liệu
         private void btnDeleteLop_Click(object sender, EventArgs e)
         {
             string maLop = txbMalop.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(maLop))
             {
-                MessageBox.Show("Vui lòng chọn lớp để xóa!");
+                MessageBox.Show("Vui lòng chọn lớp để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+
+            // Kiểm tra xem lớp có sinh viên hay không
+            string checkStudentQuery = $"SELECT COUNT(*) FROM SinhVien WHERE Lop = '{maLop}'";
+            DataTable checkResult = DataProvider.LoadCSDL(checkStudentQuery);
+            if (checkResult != null && checkResult.Rows.Count > 0)
+            {
+                int studentCount = Convert.ToInt32(checkResult.Rows[0][0]);
+                if (studentCount > 0)
+                {
+                    MessageBox.Show($"Không thể xóa lớp này vì có {studentCount} sinh viên đang thuộc lớp này!",
+                                  "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
             }
 
             if (MessageBox.Show("Bạn có chắc muốn xóa lớp này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
@@ -199,34 +241,21 @@ namespace Quan_Ly_Sinh_Vien
 
             if (kq > 0)
             {
-                MessageBox.Show("Xóa lớp thành công!");
-                LoadLop();
+                MessageBox.Show("Xóa lớp thành công");
+                LoadTableLop();
+                UnEnableControls(new List<Control> { txbMalop, txbTenLop, btnSaveLop, btnEditLop, btnDeleteLop });
                 ResetText(new List<Control> { txbMalop, txbTenLop });
-                if (cbKhoa.Items.Count > 0)
-                    cbKhoa.SelectedIndex = 0;
-                UnEnableControls(new List<Control> { txbMalop, txbTenLop, cbKhoa, btnEditLop, btnDeleteLop });
-                EnableControls(new List<Control> { btnAddLop, btnShowAllLop, btnExportLop });
+            
             }
             else
             {
-                MessageBox.Show("Xóa thất bại!");
+                MessageBox.Show("Xóa lớp thất bại. Vui lòng xem lại!");
             }
         }
-
-        // Xử lý sự kiện khi chọn khoa
-        private void cbKhoa_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbKhoa.SelectedIndex > 0) // Chỉ khi chọn khoa thực sự
-            {
-                string maKhoa = cbKhoa.SelectedValue.ToString();
-                Console.WriteLine("Mã khoa đang chọn: " + maKhoa);
-            }
-        }
-
         // Xuất Excel danh sách lớp
         private void btnExportLop_Click(object sender, EventArgs e)
         {
-            if (dvgInfoLop.Rows.Count == 0)
+            if (dvgInfoLop?.Rows.Count == 0)
             {
                 MessageBox.Show("Không có dữ liệu để xuất.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -236,7 +265,7 @@ namespace Quan_Ly_Sinh_Vien
             {
                 Filter = "Excel Workbook|*.xlsx",
                 ValidateNames = true,
-                FileName = "DanhSachLop.xlsx"
+                FileName = $"DanhSachLop_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx"
             })
             {
                 if (sfd.ShowDialog() == DialogResult.OK)
@@ -247,53 +276,47 @@ namespace Quan_Ly_Sinh_Vien
                         {
                             var ws = wb.Worksheets.Add("DanhSachLop");
 
-                            // Xác định các dòng cần xuất
-                            List<DataGridViewRow> rowsToExport = new List<DataGridViewRow>();
-                            if (dvgInfoLop.SelectedRows.Count > 0)
-                                rowsToExport.Add(dvgInfoLop.SelectedRows[0]);
-                            else
-                                foreach (DataGridViewRow r in dvgInfoLop.Rows)
-                                    rowsToExport.Add(r);
+                            // Tiêu đề báo cáo
+                            ws.Cell(1, 1).Value = "DANH SÁCH LỚP";
+                            ws.Range(1, 1, 1, 4).Merge().Style.Font.Bold = true;
+                            ws.Range(1, 1, 1, 4).Style.Font.FontSize = 16;
+                            ws.Range(1, 1, 1, 4).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
 
-                            // Header
-                            for (int i = 1; i <= dvgInfoLop.Columns.Count; i++)
+                            // Header bảng
+                            int headerRow = 3;
+                            string[] headers = { "Mã Lớp", "Tên Lớp" };
+                            for (int i = 0; i < headers.Length; i++)
                             {
-                                ws.Cell(1, i).Value = dvgInfoLop.Columns[i - 1].HeaderText;
-                                ws.Cell(1, i).Style.Font.Bold = true;
-                                ws.Cell(1, i).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                                ws.Cell(1, i).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
+                                ws.Cell(headerRow, i + 1).Value = headers[i];
+                                ws.Cell(headerRow, i + 1).Style.Font.Bold = true;
+                                ws.Cell(headerRow, i + 1).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                             }
 
                             // Dữ liệu
-                            for (int i = 0; i < rowsToExport.Count; i++)
+                            for (int i = 0; i < dvgInfoLop.Rows.Count; i++)
                             {
-                                for (int j = 0; j < dvgInfoLop.Columns.Count; j++)
+                                if (dvgInfoLop.Rows[i].Cells["MaLop"].Value != null)
                                 {
-                                    ws.Cell(i + 2, j + 1).Value = rowsToExport[i].Cells[j].Value?.ToString() ?? "";
-                                    ws.Cell(i + 2, j + 1).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                                    ws.Cell(i + 2, j + 1).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
+                                    int dataRow = headerRow + 1 + i;
+                                    ws.Cell(dataRow, 1).Value = dvgInfoLop.Rows[i].Cells["MaLop"].Value?.ToString() ?? "";
+                                    ws.Cell(dataRow, 2).Value = dvgInfoLop.Rows[i].Cells["TenLop"].Value?.ToString() ?? "";
+                                   
                                 }
                             }
 
-                            // Border toàn bảng
-                            var range = ws.Range(1, 1, rowsToExport.Count + 1, dvgInfoLop.Columns.Count);
-                            range.Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
-                            range.Style.Border.InsideBorder = XLBorderStyleValues.Thin;
-
-                            // Auto-fit cột
                             ws.Columns().AdjustToContents();
-
                             wb.SaveAs(sfd.FileName);
-                            MessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Xuất Excel thành công!");
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Lỗi khi xuất Excel: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Lỗi khi xuất Excel: " + ex.Message);
                     }
                 }
             }
         }
 
+        
     }
 }
