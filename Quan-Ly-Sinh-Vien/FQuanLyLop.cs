@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Quan_Ly_Sinh_Vien.Quan_Ly_Sinh_VienDataSetTableAdapters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -43,7 +44,7 @@ namespace Quan_Ly_Sinh_Vien
         {
             LoadKhoa();
             LoadLop();
-          
+
             UnEnableControls(new List<Control> { txbMalop, txbTenLop, cbKhoa, btnSaveLop, btnEditLop, btnDeleteLop });
             EnableControls(new List<Control> { btnAddLop, btnShowAllLop });
 
@@ -51,11 +52,13 @@ namespace Quan_Ly_Sinh_Vien
         // Hiển thị danh sách Khoa vào combobox
         private void LoadKhoa()
         {
-            string query = "SELECT * FROM Khoa";
+            string query = "SELECT MaKhoa, TenKhoa FROM Khoa";
             DataTable dt = DataProvider.LoadCSDL(query);
+
             cbKhoa.DataSource = dt;
-            cbKhoa.DisplayMember = "TenKhoa";
-            cbKhoa.ValueMember = "MaKhoa";
+            cbKhoa.DisplayMember = "TenKhoa";   // HIỂN THỊ: tên khoa
+            cbKhoa.ValueMember = "MaKhoa";      // GIÁ TRỊ: mã khoa
+            cbKhoa.SelectedIndex = -1;
         }
 
         // Hiển thị tất cả lớp
@@ -186,6 +189,8 @@ namespace Quan_Ly_Sinh_Vien
                 DataGridViewRow row = dvgInfoLop.Rows[e.RowIndex];
                 txbMalop.Text = row.Cells["MaLop"].Value.ToString();
                 txbTenLop.Text = row.Cells["TenLop"].Value.ToString();
+
+                // Gán MaKhoa cho combobox → sẽ tự hiển thị TenKhoa
                 cbKhoa.SelectedValue = row.Cells["MaKhoa"].Value.ToString();
 
                 EnableControls(new List<Control> { txbTenLop, cbKhoa, btnEditLop, btnDeleteLop });
@@ -193,6 +198,25 @@ namespace Quan_Ly_Sinh_Vien
             }
         }
 
-       
+        private void btnBaoCaoLop_Click(object sender, EventArgs e)
+        {
+
+        }
+        //hiển thị khoa được chọn trong combobox
+
+        private void LoadcbKhoa()
+        {
+            string query = "SELECT MaKhoa, TenKhoa FROM Khoa";
+            DataTable dt = DataProvider.LoadCSDL(query);
+            cbKhoa.DataSource = dt;
+            cbKhoa.DisplayMember = "TenKhoa";   // HIỂN THỊ: tên khoa
+            cbKhoa.ValueMember = "MaKhoa";      // GIÁ TRỊ: mã khoa
+          
+        }
+        private void cbKhoa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+         
+            LoadcbKhoa();
+        }
     }
 }

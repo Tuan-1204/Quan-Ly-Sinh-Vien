@@ -115,6 +115,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quan_Ly_Sinh_VienDataSet.cs">
+      <DependentUpon>Quan_Ly_Sinh_VienDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Quan_Ly_Sinh_VienDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

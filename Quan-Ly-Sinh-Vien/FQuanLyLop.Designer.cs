@@ -35,7 +35,7 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.btnShowAllLop = new System.Windows.Forms.Button();
             this.panel19 = new System.Windows.Forms.Panel();
-            this.btnBaoCaoKhoa = new System.Windows.Forms.Button();
+            this.btnBaoCaoLop = new System.Windows.Forms.Button();
             this.panel18 = new System.Windows.Forms.Panel();
             this.btnDeleteLop = new System.Windows.Forms.Button();
             this.panel17 = new System.Windows.Forms.Panel();
@@ -144,20 +144,21 @@
             // 
             // panel19
             // 
-            this.panel19.Controls.Add(this.btnBaoCaoKhoa);
+            this.panel19.Controls.Add(this.btnBaoCaoLop);
             this.panel19.Location = new System.Drawing.Point(565, 79);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(167, 41);
             this.panel19.TabIndex = 22;
             // 
-            // btnBaoCaoKhoa
+            // btnBaoCaoLop
             // 
-            this.btnBaoCaoKhoa.Location = new System.Drawing.Point(3, 4);
-            this.btnBaoCaoKhoa.Name = "btnBaoCaoKhoa";
-            this.btnBaoCaoKhoa.Size = new System.Drawing.Size(157, 32);
-            this.btnBaoCaoKhoa.TabIndex = 16;
-            this.btnBaoCaoKhoa.Text = "Báo Cáo & Thống Kê";
-            this.btnBaoCaoKhoa.UseVisualStyleBackColor = true;
+            this.btnBaoCaoLop.Location = new System.Drawing.Point(3, 4);
+            this.btnBaoCaoLop.Name = "btnBaoCaoLop";
+            this.btnBaoCaoLop.Size = new System.Drawing.Size(157, 32);
+            this.btnBaoCaoLop.TabIndex = 16;
+            this.btnBaoCaoLop.Text = "Báo Cáo & Thống Kê";
+            this.btnBaoCaoLop.UseVisualStyleBackColor = true;
+            this.btnBaoCaoLop.Click += new System.EventHandler(this.btnBaoCaoLop_Click);
             // 
             // panel18
             // 
@@ -265,6 +266,7 @@
             this.cbKhoa.Name = "cbKhoa";
             this.cbKhoa.Size = new System.Drawing.Size(151, 26);
             this.cbKhoa.TabIndex = 1;
+            this.cbKhoa.SelectedIndexChanged += new System.EventHandler(this.cbKhoa_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -419,7 +421,7 @@
         private System.Windows.Forms.ComboBox cbKhoa;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel19;
-        private System.Windows.Forms.Button btnBaoCaoKhoa;
+        private System.Windows.Forms.Button btnBaoCaoLop;
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Button btnDeleteLop;
         private System.Windows.Forms.Panel panel17;

@@ -36,7 +36,7 @@ namespace Quan_Ly_Sinh_Vien
         {
             string query = "select * from MonHoc";
             dt = DataProvider.LoadCSDL(query);
-            dvgShow.DataSource = dt;
+            dvgShowMh.DataSource = dt;
         }
         //thêm mới dữ liệu
         private void btnAdd_Click(object sender, EventArgs e)
@@ -99,10 +99,10 @@ namespace Quan_Ly_Sinh_Vien
         //hiển thị dữ liệu lên textbox khi chọn dòng trong datagridview
         private void dvgShow_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dvgShow.SelectedRows.Count > 0)
+            if (dvgShowMh.SelectedRows.Count > 0)
             {
                 //lấy dòng dữ liệu được chọn
-                var row = dvgShow.SelectedRows[0];
+                var row = dvgShowMh.SelectedRows[0];
                 //truyền giá trị dữ liệu lên textbox
                 txbMaMH.Text = row.Cells["MaMH"].Value.ToString();
                 txbTenMH.Text = row.Cells["TenMH"].Value.ToString();
@@ -177,7 +177,7 @@ namespace Quan_Ly_Sinh_Vien
             string query = $"select * from MonHoc where MaMH = '{maMH}'";
             dt.Clear();
             dt = DataProvider.LoadCSDL(query);
-            dvgShow.DataSource = dt;
+            dvgShowMh.DataSource = dt;
         }
         //tìm kiếm theo tên môn học
         private void btnSearchTT_Click(object sender, EventArgs e)
@@ -186,7 +186,7 @@ namespace Quan_Ly_Sinh_Vien
             string query = $"select * from MonHoc where TenMH like N'%{tenMH}%'";
             dt.Clear();
             dt = DataProvider.LoadCSDL(query);
-            dvgShow.DataSource = dt;
+            dvgShowMh.DataSource = dt;
 
         }
         //nút xem danh sách sinh viên
@@ -217,12 +217,7 @@ namespace Quan_Ly_Sinh_Vien
             fKetQua.ShowDialog();
             this.Show();
         }
-        //xem điểm theo môn
-        private void btnDiemTheoMon_Click(object sender, EventArgs e)
-        {
-            string maMH = cbSearchMaMH.SelectedValue.ToString();
 
-        }
 
         private void btnDsLop_Click(object sender, EventArgs e)
         {
@@ -232,7 +227,20 @@ namespace Quan_Ly_Sinh_Vien
             this.Show();
 
         }
-    }
-}
+
+        private void btnBaoCaoMh_Click(object sender, EventArgs e)
+        {
+            if (dvgShowMh.Rows.Count > 0)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Không có dữ liệu để in báo cáo");
+            }
+            }
+        }
+    } 
+
 
 

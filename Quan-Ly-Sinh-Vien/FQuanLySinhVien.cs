@@ -221,6 +221,11 @@ private void LoadComboBoxLop()
             cbLop.DisplayMember = "TenLop";
             cbLop.ValueMember = "MaLop";
         }
+
+        private void btnBaoCaoSinhVien_Click(object sender, EventArgs e)
+        {
+         
+        }
     }
     
 }

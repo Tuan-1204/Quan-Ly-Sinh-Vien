@@ -251,5 +251,11 @@ namespace Quan_Ly_Sinh_Vien
             dgvDiemSinhVien.DataSource = dt;
 
         }
+
+        private void btnBaoCaoKetqua_Click(object sender, EventArgs e)
+        {
+           
+
+        }
     }
 }

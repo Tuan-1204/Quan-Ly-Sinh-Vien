@@ -24,10 +24,22 @@ namespace Quan_Ly_Sinh_Vien
         //hàm khởi tạo load dữ liệu khoa
         private void LoadTableKhoa()
         {
+          
             string query = "select * from Khoa";
-             dt = DataProvider.LoadCSDL(query);
+            dt = DataProvider.LoadCSDL(query);
             dgvInKhoa.DataSource = dt;
+
+            // căn chỉnh hiển thị
+            dgvInKhoa.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvInKhoa.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvInKhoa.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvInKhoa.MultiSelect = false;
+            dgvInKhoa.AllowUserToAddRows = false; // ẩn dòng trống cuối
+            dgvInKhoa.ReadOnly = true; // không cho sửa trực tiếp trên grid
+            dgvInKhoa.RowHeadersVisible = false; // ẩn cột STT mặc định bên trái
         }
+
+        
 
 
         //hàm khởi tạo control
@@ -60,8 +72,10 @@ namespace Quan_Ly_Sinh_Vien
             ResetText(new List<Control> { txbIdKhoa, txbQLNameKhoa });
             EnableControls(new List<Control> { txbIdKhoa, txbQLNameKhoa, btnSaveInfoKhoa });
             UnEnableControls(new List<Control> { btnEditInfoKhoa, btnDeleteInfoKhoa });
+            txbIdKhoa.Enabled = true; // khi thêm mới phải cho nhập lại MãKhoa
             txbIdKhoa.Focus();
         }
+
         //nút lưu thông tin khoa
         private void btnSaveInfoKhoa_Click(object sender, EventArgs e)
         {
@@ -100,13 +114,10 @@ namespace Quan_Ly_Sinh_Vien
         {
             string maKhoa = txbIdKhoa.Text;
             string tenKhoa = txbQLNameKhoa.Text;
-            if (string.IsNullOrWhiteSpace(maKhoa) || string.IsNullOrWhiteSpace(tenKhoa))
-            {
-                MessageBox.Show("Vui lòng chọn mã khoa để sửa.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            string query = $"update Khoa set TenKhoa = N'{tenKhoa}' where MaKhoa = '{maKhoa}'";
+
+            string query = $"UPDATE Khoa SET TenKhoa = N'{tenKhoa}' WHERE MaKhoa = '{maKhoa}'";
             int kq = DataProvider.ThaoTacCSDL(query);
+
             if (kq > 0)
             {
                 MessageBox.Show("Cập nhật thông tin khoa thành công");
@@ -119,6 +130,7 @@ namespace Quan_Ly_Sinh_Vien
                 MessageBox.Show("Cập nhật thông tin khoa thất bại. Vui lòng xem lại !");
             }
         }
+
         //nút xóa thông tin khoa
         private void btnDeleteInfoKhoa_Click(object sender, EventArgs e)
         {
@@ -128,11 +140,14 @@ namespace Quan_Ly_Sinh_Vien
                 MessageBox.Show("Vui lòng chọn mã khoa để xóa.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            //hỏi lại trước khi xóa
-            DialogResult dr = MessageBox.Show($"Bạn có chắc muốn xóa khoa {maKhoa} không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            DialogResult dr = MessageBox.Show($"Bạn có chắc muốn xóa khoa {maKhoa} không?",
+                                              "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dr == DialogResult.No) return;
-            string query = $"delete from Khoa where MaKhoa = '{maKhoa}'";
+
+            string query = $"DELETE FROM Khoa WHERE MaKhoa = '{maKhoa}'";
             int kq = DataProvider.ThaoTacCSDL(query);
+
             if (kq > 0)
             {
                 MessageBox.Show("Xóa khoa thành công");
@@ -144,23 +159,42 @@ namespace Quan_Ly_Sinh_Vien
             {
                 MessageBox.Show("Xóa khoa thất bại. Vui lòng xem lại !");
             }
-
         }
+
         //nút hiển thị tất cả khoa Lên datagridview
         private void btnShowALLKhoa_Click(object sender, EventArgs e)
         {
             LoadTableKhoa();
         }
 
+        //hiển thị thông tin khoa khi chọn vào datagridview
         private void dgvInKhoa_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvInKhoa.SelectedRows.Count > 0)
             {
-                txbIdKhoa.Text = dgvInKhoa.SelectedRows[0].Cells["MaKhoa"].Value.ToString();
-                txbQLNameKhoa.Text = dgvInKhoa.SelectedRows[0].Cells["TenKhoa"].Value.ToString();
-                EnableControls(new List<Control> { txbIdKhoa, txbQLNameKhoa, btnEditInfoKhoa, btnDeleteInfoKhoa });
+                // Lấy dòng dữ liệu được chọn
+                var row = dgvInKhoa.SelectedRows[0];
+
+                // Đổ dữ liệu vào textbox
+                txbIdKhoa.Text = row.Cells["MaKhoa"].Value.ToString();
+                txbQLNameKhoa.Text = row.Cells["TenKhoa"].Value.ToString();
+
+                // Hiển thị textbox tên khoa + bật nút Edit, Delete
+                EnableControls(new List<Control> { txbQLNameKhoa, btnEditInfoKhoa, btnDeleteInfoKhoa });
+
+                // Khóa textbox mã khoa (không cho sửa)
+                txbIdKhoa.Enabled = false;
+
+                // Tắt nút Save để tránh lưu nhầm
                 UnEnableControls(new List<Control> { btnSaveInfoKhoa });
             }
+        }
+
+
+        //nút báo cáo khoa để mở report báo cáo
+        private void btnBaoCaoKhoa_Click(object sender, EventArgs e)
+        {
+          
         }
     }
 }

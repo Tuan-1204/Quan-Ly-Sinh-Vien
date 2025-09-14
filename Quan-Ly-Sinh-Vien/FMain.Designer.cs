@@ -53,7 +53,7 @@
             this.quan_Ly_Sinh_VienDataSet1 = new Quan_Ly_Sinh_Vien.Quan_Ly_Sinh_VienDataSet();
             this.panel10 = new System.Windows.Forms.Panel();
             this.panel20 = new System.Windows.Forms.Panel();
-            this.dvgShow = new System.Windows.Forms.DataGridView();
+            this.dvgShowMh = new System.Windows.Forms.DataGridView();
             this.panel21 = new System.Windows.Forms.Panel();
             this.btnShowAll = new System.Windows.Forms.Button();
             this.panel12 = new System.Windows.Forms.Panel();
@@ -87,7 +87,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.quan_Ly_Sinh_VienDataSet1)).BeginInit();
             this.panel10.SuspendLayout();
             this.panel20.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgShow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgShowMh)).BeginInit();
             this.panel21.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel22.SuspendLayout();
@@ -317,27 +317,27 @@
             // 
             // panel20
             // 
-            this.panel20.Controls.Add(this.dvgShow);
+            this.panel20.Controls.Add(this.dvgShowMh);
             this.panel20.Location = new System.Drawing.Point(3, 49);
             this.panel20.Name = "panel20";
             this.panel20.Size = new System.Drawing.Size(1151, 314);
             this.panel20.TabIndex = 14;
             // 
-            // dvgShow
+            // dvgShowMh
             // 
-            this.dvgShow.AllowUserToAddRows = false;
-            this.dvgShow.AllowUserToDeleteRows = false;
-            this.dvgShow.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dvgShow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgShow.Location = new System.Drawing.Point(3, 3);
-            this.dvgShow.Name = "dvgShow";
-            this.dvgShow.ReadOnly = true;
-            this.dvgShow.RowHeadersWidth = 51;
-            this.dvgShow.RowTemplate.Height = 24;
-            this.dvgShow.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvgShow.Size = new System.Drawing.Size(1145, 308);
-            this.dvgShow.TabIndex = 0;
-            this.dvgShow.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgShow_CellContentClick);
+            this.dvgShowMh.AllowUserToAddRows = false;
+            this.dvgShowMh.AllowUserToDeleteRows = false;
+            this.dvgShowMh.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dvgShowMh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvgShowMh.Location = new System.Drawing.Point(3, 3);
+            this.dvgShowMh.Name = "dvgShowMh";
+            this.dvgShowMh.ReadOnly = true;
+            this.dvgShowMh.RowHeadersWidth = 51;
+            this.dvgShowMh.RowTemplate.Height = 24;
+            this.dvgShowMh.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dvgShowMh.Size = new System.Drawing.Size(1145, 308);
+            this.dvgShowMh.TabIndex = 0;
+            this.dvgShowMh.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgShow_CellContentClick);
             // 
             // panel21
             // 
@@ -407,7 +407,7 @@
             this.btnBaoCaoMh.TabIndex = 16;
             this.btnBaoCaoMh.Text = "Báo Cáo & Thống Kê";
             this.btnBaoCaoMh.UseVisualStyleBackColor = true;
-            this.btnBaoCaoMh.Click += new System.EventHandler(this.btnDiemTheoMon_Click);
+            this.btnBaoCaoMh.Click += new System.EventHandler(this.btnBaoCaoMh_Click);
             // 
             // panel18
             // 
@@ -567,7 +567,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.quan_Ly_Sinh_VienDataSet1)).EndInit();
             this.panel10.ResumeLayout(false);
             this.panel20.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dvgShow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgShowMh)).EndInit();
             this.panel21.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             this.panel22.ResumeLayout(false);
@@ -629,7 +629,7 @@
         private System.Windows.Forms.Panel panel20;
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.Button btnShowAll;
-        private System.Windows.Forms.DataGridView dvgShow;
+        private System.Windows.Forms.DataGridView dvgShowMh;
         private System.Windows.Forms.Panel panel22;
         private System.Windows.Forms.Button btnDsLop;
     }

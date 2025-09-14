@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.cbLop = new System.Windows.Forms.ComboBox();
+            this.lBLNAMECLASS = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.btnBaoCaoSinhVien = new System.Windows.Forms.Button();
             this.panel16 = new System.Windows.Forms.Panel();
             this.btnDeleteSinhVien = new System.Windows.Forms.Button();
             this.panel15 = new System.Windows.Forms.Panel();
@@ -65,12 +70,9 @@
             this.dvgInfoSinhVien = new System.Windows.Forms.DataGridView();
             this.panel21 = new System.Windows.Forms.Panel();
             this.btnShowAllInfoSv = new System.Windows.Forms.Button();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.btnBaoCaoKhoa = new System.Windows.Forms.Button();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.lBLNAMECLASS = new System.Windows.Forms.Label();
-            this.cbLop = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel14.SuspendLayout();
@@ -87,8 +89,6 @@
             this.panel19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvgInfoSinhVien)).BeginInit();
             this.panel21.SuspendLayout();
-            this.panel9.SuspendLayout();
-            this.panel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -110,6 +110,50 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1175, 224);
             this.panel2.TabIndex = 1;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.cbLop);
+            this.panel11.Controls.Add(this.lBLNAMECLASS);
+            this.panel11.Location = new System.Drawing.Point(346, 174);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(312, 47);
+            this.panel11.TabIndex = 18;
+            // 
+            // cbLop
+            // 
+            this.cbLop.FormattingEnabled = true;
+            this.cbLop.Location = new System.Drawing.Point(73, 12);
+            this.cbLop.Name = "cbLop";
+            this.cbLop.Size = new System.Drawing.Size(234, 26);
+            this.cbLop.TabIndex = 1;
+            // 
+            // lBLNAMECLASS
+            // 
+            this.lBLNAMECLASS.AutoSize = true;
+            this.lBLNAMECLASS.Location = new System.Drawing.Point(3, 14);
+            this.lBLNAMECLASS.Name = "lBLNAMECLASS";
+            this.lBLNAMECLASS.Size = new System.Drawing.Size(53, 18);
+            this.lBLNAMECLASS.TabIndex = 0;
+            this.lBLNAMECLASS.Text = "Lớp  : ";
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.btnBaoCaoSinhVien);
+            this.panel9.Location = new System.Drawing.Point(850, 66);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(167, 41);
+            this.panel9.TabIndex = 17;
+            // 
+            // btnBaoCaoSinhVien
+            // 
+            this.btnBaoCaoSinhVien.Location = new System.Drawing.Point(3, 4);
+            this.btnBaoCaoSinhVien.Name = "btnBaoCaoSinhVien";
+            this.btnBaoCaoSinhVien.Size = new System.Drawing.Size(157, 32);
+            this.btnBaoCaoSinhVien.TabIndex = 16;
+            this.btnBaoCaoSinhVien.Text = "Báo Cáo & Thống Kê";
+            this.btnBaoCaoSinhVien.UseVisualStyleBackColor = true;
+            this.btnBaoCaoSinhVien.Click += new System.EventHandler(this.btnBaoCaoSinhVien_Click);
             // 
             // panel16
             // 
@@ -435,50 +479,6 @@
             this.btnShowAllInfoSv.UseVisualStyleBackColor = true;
             this.btnShowAllInfoSv.Click += new System.EventHandler(this.btnShowAllInfoSv_Click);
             // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.btnBaoCaoKhoa);
-            this.panel9.Location = new System.Drawing.Point(850, 66);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(167, 41);
-            this.panel9.TabIndex = 17;
-            // 
-            // btnBaoCaoKhoa
-            // 
-            this.btnBaoCaoKhoa.Location = new System.Drawing.Point(3, 4);
-            this.btnBaoCaoKhoa.Name = "btnBaoCaoKhoa";
-            this.btnBaoCaoKhoa.Size = new System.Drawing.Size(157, 32);
-            this.btnBaoCaoKhoa.TabIndex = 16;
-            this.btnBaoCaoKhoa.Text = "Báo Cáo & Thống Kê";
-            this.btnBaoCaoKhoa.UseVisualStyleBackColor = true;
-            // 
-            // panel11
-            // 
-            this.panel11.Controls.Add(this.cbLop);
-            this.panel11.Controls.Add(this.lBLNAMECLASS);
-            this.panel11.Location = new System.Drawing.Point(346, 174);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(312, 47);
-            this.panel11.TabIndex = 18;
-            // 
-            // lBLNAMECLASS
-            // 
-            this.lBLNAMECLASS.AutoSize = true;
-            this.lBLNAMECLASS.Location = new System.Drawing.Point(3, 14);
-            this.lBLNAMECLASS.Name = "lBLNAMECLASS";
-            this.lBLNAMECLASS.Size = new System.Drawing.Size(53, 18);
-            this.lBLNAMECLASS.TabIndex = 0;
-            this.lBLNAMECLASS.Text = "Lớp  : ";
-            // 
-            // cbLop
-            // 
-            this.cbLop.FormattingEnabled = true;
-            this.cbLop.Location = new System.Drawing.Point(73, 12);
-            this.cbLop.Name = "cbLop";
-            this.cbLop.Size = new System.Drawing.Size(234, 26);
-            this.cbLop.TabIndex = 1;
-       
-            // 
             // FQuanLySinhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -493,6 +493,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản Lý Sinh Viên";
             this.panel2.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            this.panel9.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
@@ -517,9 +520,6 @@
             this.panel19.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dvgInfoSinhVien)).EndInit();
             this.panel21.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
-            this.panel11.ResumeLayout(false);
-            this.panel11.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -563,7 +563,7 @@
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Button btnDeleteSinhVien;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Button btnBaoCaoKhoa;
+        private System.Windows.Forms.Button btnBaoCaoSinhVien;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Label lBLNAMECLASS;
         private System.Windows.Forms.ComboBox cbLop;

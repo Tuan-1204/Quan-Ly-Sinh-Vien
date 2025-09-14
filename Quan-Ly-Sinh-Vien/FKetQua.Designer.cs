@@ -267,6 +267,7 @@
             this.btnBaoCaoKetqua.TabIndex = 16;
             this.btnBaoCaoKetqua.Text = "Báo Cáo & Thống Kê";
             this.btnBaoCaoKetqua.UseVisualStyleBackColor = true;
+            this.btnBaoCaoKetqua.Click += new System.EventHandler(this.btnBaoCaoKetqua_Click);
             // 
             // panel20
             // 
