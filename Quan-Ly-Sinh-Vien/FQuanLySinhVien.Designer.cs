@@ -33,7 +33,7 @@
             this.cbLop = new System.Windows.Forms.ComboBox();
             this.lBLNAMECLASS = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.btnBaoCaoSinhVien = new System.Windows.Forms.Button();
+            this.btnExportSinhvien = new System.Windows.Forms.Button();
             this.panel16 = new System.Windows.Forms.Panel();
             this.btnDeleteSinhVien = new System.Windows.Forms.Button();
             this.panel15 = new System.Windows.Forms.Panel();
@@ -140,20 +140,20 @@
             // 
             // panel9
             // 
-            this.panel9.Controls.Add(this.btnBaoCaoSinhVien);
+            this.panel9.Controls.Add(this.btnExportSinhvien);
             this.panel9.Location = new System.Drawing.Point(850, 66);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(167, 41);
             this.panel9.TabIndex = 17;
             // 
-            // btnBaoCaoSinhVien
+            // btnExportSinhvien
             // 
-            this.btnBaoCaoSinhVien.Location = new System.Drawing.Point(3, 4);
-            this.btnBaoCaoSinhVien.Name = "btnBaoCaoSinhVien";
-            this.btnBaoCaoSinhVien.Size = new System.Drawing.Size(157, 32);
-            this.btnBaoCaoSinhVien.TabIndex = 16;
-            this.btnBaoCaoSinhVien.Text = "Báo Cáo & Thống Kê";
-            this.btnBaoCaoSinhVien.UseVisualStyleBackColor = true;
+            this.btnExportSinhvien.Location = new System.Drawing.Point(3, 4);
+            this.btnExportSinhvien.Name = "btnExportSinhvien";
+            this.btnExportSinhvien.Size = new System.Drawing.Size(157, 32);
+            this.btnExportSinhvien.TabIndex = 16;
+            this.btnExportSinhvien.Text = "Xuất Exel";
+            this.btnExportSinhvien.UseVisualStyleBackColor = true;
             // 
             // panel16
             // 
@@ -564,7 +564,7 @@
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Button btnDeleteSinhVien;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Button btnBaoCaoSinhVien;
+        private System.Windows.Forms.Button btnExportSinhvien;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Label lBLNAMECLASS;
         private System.Windows.Forms.ComboBox cbLop;
