@@ -153,8 +153,8 @@ namespace Quan_Ly_Sinh_Vien
                 var row = dvgInfoLop.SelectedRows[0];
 
                 // Truyền giá trị dữ liệu lên textbox
-                txbMalop.Text = row.Cells["MaLop"].Value?.ToString() ?? "";
-                txbTenLop.Text = row.Cells["TenLop"].Value?.ToString() ?? "";
+                txbMalop.Text = row.Cells["MaLop"].Value?.ToString() ;
+                txbTenLop.Text = row.Cells["TenLop"].Value?.ToString() ;
 
               
 
@@ -255,7 +255,7 @@ namespace Quan_Ly_Sinh_Vien
         // Xuất Excel danh sách lớp
         private void btnExportLop_Click(object sender, EventArgs e)
         {
-            if (dvgInfoLop?.Rows.Count == 0)
+            if (dvgInfoLop.Rows.Count == 0)
             {
                 MessageBox.Show("Không có dữ liệu để xuất.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -298,8 +298,8 @@ namespace Quan_Ly_Sinh_Vien
                                 if (dvgInfoLop.Rows[i].Cells["MaLop"].Value != null)
                                 {
                                     int dataRow = headerRow + 1 + i;
-                                    ws.Cell(dataRow, 1).Value = dvgInfoLop.Rows[i].Cells["MaLop"].Value?.ToString() ?? "";
-                                    ws.Cell(dataRow, 2).Value = dvgInfoLop.Rows[i].Cells["TenLop"].Value?.ToString() ?? "";
+                                    ws.Cell(dataRow, 1).Value = dvgInfoLop.Rows[i].Cells["MaLop"].Value.ToString()  ;
+                                    ws.Cell(dataRow, 2).Value = dvgInfoLop.Rows[i].Cells["TenLop"].Value.ToString()  ;
                                    
                                 }
                             }

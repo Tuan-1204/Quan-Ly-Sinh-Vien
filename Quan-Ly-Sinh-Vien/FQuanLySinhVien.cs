@@ -104,7 +104,7 @@ namespace Quan_Ly_Sinh_Vien
                 cbLop.Text = row.Cells["TenLop"].Value.ToString();
 
                 EnableControls(new List<Control> { txbNameSv, dateSinhVien, txbPhone, txbAdress, cbLop, btnEditSinhVien, btnDeleteSinhVien });
-                txbIDSinhvien.Enabled = false; // không cho sửa mã
+                txbIDSinhvien.Enabled = false; // không cho sửa mã sinh viên
             }
         }
 
@@ -157,7 +157,7 @@ namespace Quan_Ly_Sinh_Vien
      
 
      
-
+        //hiển thị thông tin sinh viên lên datagrid view
         private void btnShowAllInfoSv_Click(object sender, EventArgs e)
         {
 
@@ -170,6 +170,49 @@ namespace Quan_Ly_Sinh_Vien
             {
                 MessageBox.Show("Lỗi khi tải dữ liệu sinh viên: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        
+        private void cbLop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Kiểm tra nếu có lựa chọn hợp lệ
+            if (cbLop.SelectedValue != null && !string.IsNullOrEmpty(cbLop.SelectedValue.ToString()))
+            {
+                string maLop = cbLop.SelectedValue.ToString();
+                string tenLop = cbLop.Text;
+                Console.WriteLine($"Đã chọn lớp: {tenLop} (Mã: {maLop})");
+            }
+        }
+        
+
+        private void LoadComboBoxLop()
+        {
+            try
+            {
+                string query = "SELECT MaLop, TenLop FROM Lop ORDER BY TenLop";
+                DataTable dtLop = DataProvider.LoadCSDL(query);
+
+                // Thêm dòng trống để người dùng có thể chọn "không chọn lớp"
+                DataRow emptyRow = dtLop.NewRow();
+                emptyRow["MaLop"] = "";
+                emptyRow["TenLop"] = "-- Chọn lớp --";
+                dtLop.Rows.InsertAt(emptyRow, 0);
+
+                cbLop.DataSource = dtLop;
+                cbLop.DisplayMember = "TenLop";  // Hiển thị tên lớp
+                cbLop.ValueMember = "MaLop";    // Giá trị là mã lớp
+                cbLop.SelectedIndex = 0;        // Chọn dòng đầu tiên (dòng trống)
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải danh sách lớp: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void FQuanLySinhVien_Load(object sender, EventArgs e)
+        {
+            LoadComboBoxLop();
+            LoadTableSinhVien();
+            
         }
     }
 }

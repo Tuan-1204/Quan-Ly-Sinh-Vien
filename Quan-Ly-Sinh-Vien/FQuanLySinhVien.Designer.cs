@@ -127,6 +127,7 @@
             this.cbLop.Name = "cbLop";
             this.cbLop.Size = new System.Drawing.Size(234, 26);
             this.cbLop.TabIndex = 1;
+            this.cbLop.SelectedIndexChanged += new System.EventHandler(this.cbLop_SelectedIndexChanged);
             // 
             // lBLNAMECLASS
             // 
@@ -491,6 +492,7 @@
             this.Name = "FQuanLySinhVien";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản Lý Sinh Viên";
+            this.Load += new System.EventHandler(this.FQuanLySinhVien_Load);
             this.panel2.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
